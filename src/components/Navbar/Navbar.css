@@ -3,11 +3,9 @@
 .Navbar-container {
   position: fixed;
   background-color: cornflowerblue;
-  padding: 0 1.5em;
+  padding: 0.75em 1.5em;
   z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto 0;
 }
 
 .Navbar-logo-container {
@@ -16,9 +14,15 @@
   text-decoration: underline;
 }
 
-.Navbar-list-container > ul {
-  list-style-type: none;
+.Navbar-hamburger-icon {
+  display: none;
+}
+
+.Navbar-list-container {
+  list-style: none;
   text-decoration: none;
+  display: flex;
+  padding: 0;
 }
 
 .Navbar-list-item {
@@ -29,4 +33,34 @@
 
 .nav-active {
   color: blue !important;
+}
+
+@media screen and (max-width: 30em) {
+  .Navbar-container {
+    padding: 1.5em;
+  }
+
+  .Navbar-hamburger-icon {
+    display: block;
+    z-index: 999;
+  }
+
+  .Navbar-list-container {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    position: fixed;
+    inset: 4.375em 0 0 50%;
+    margin: auto;
+    transform: translateX(100%);
+    transition: all 300ms ease-in;
+  }
+
+  .Navbar-list-item {
+    margin: 1em auto;
+  }
+
+  .side-nav-open {
+    transform: translateX(0);
+  }
 }
