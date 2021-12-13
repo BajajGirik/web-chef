@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NAV_ITEMS } from "../../constants";
+import MenuIcon from '@mui/icons-material/Menu';
 import "./Navbar.css";
 
 function Navbar() {
@@ -16,12 +17,11 @@ function Navbar() {
     <nav className="Navbar-container flex al-center j-between">
       <div className="Navbar-logo-container">HOMECHEF</div>
       <div className="Navbar-menu-container">
-        {/* Add Hamburger and cancel img/svg  */}
         <div
           className="Navbar-hamburger-icon"
           onClick={() => setIsMovNavOpen(!isMobNavOpen)}
         >
-          XXX
+          <MenuIcon />
         </div>
 
         <ul
@@ -34,7 +34,7 @@ function Navbar() {
           {NAV_ITEMS.map(({ to, displayText }) => (
             <li className="Navbar-list-item">
               <Link
-                className={path === to ? "linkW nav-active" : "linkW"}
+                className={path === to ? "link nav-active" : "link"}
                 to={to}
                 onClick={() => handleLinkClick(to)}
               >
