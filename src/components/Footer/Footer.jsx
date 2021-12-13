@@ -16,7 +16,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="Footer-container flex j-between">
+    <div className="Footer-container flex j-around">
       {/* HomeChef  */}
       <div className="Footer-list-container flex-c">
         <div className="Footer-list-header">HOMECHEF</div>
@@ -31,15 +31,23 @@ function Footer() {
       {/* Contact Us  */}
       <div className="Footer-list-container flex-c">
         <span className="Footer-list-header">CONTACT US</span>
-        <a className="Footer-list-item link flex" href="#" target="_blank">
+        <a
+          className="Footer-list-item link flex al-center"
+          href="#"
+          target="_blank"
+        >
           <WhatsAppIcon className="icon bg-whatsapp" />
           <span className="display-text blue">{PHONE_NUMBER}</span>
         </a>
-        <a className="Footer-list-item link flex" href="#" target="_blank">
+        <a
+          className="Footer-list-item link flex al-center"
+          href="#"
+          target="_blank"
+        >
           <EmailIcon className="icon bg-mail" />
           <span className="display-text blue">{EMAIL}</span>
         </a>
-        <div className="Footer-list-item flex">
+        <div className="Footer-list-item flex al-center">
           <HomeIcon className="icon bg-home" />
           <span className="display-text grey">
             {HOME_ADDRESS + " - " + PIN_CODE}
@@ -50,11 +58,19 @@ function Footer() {
       {/* Follow Us  */}
       <div className="Footer-list-container flex-c">
         <span className="Footer-list-header">FOLLOW US</span>
-        <a className="Footer-list-item link flex" href="#" target="_blank">
+        <a
+          className="Footer-list-item link flex al-center"
+          href="#"
+          target="_blank"
+        >
           <InstagramIcon className="icon bg-insta" />
           <span className="display-text blue">{INSTAGRAM.id}</span>
         </a>
-        <a className="Footer-list-item link flex" href="#" target="_blank">
+        <a
+          className="Footer-list-item link flex al-center"
+          href="#"
+          target="_blank"
+        >
           <FacebookIcon className="icon bg-facebook" />
           <span className="display-text blue">{FACEBOOK.id}</span>
         </a>

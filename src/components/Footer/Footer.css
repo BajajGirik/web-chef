@@ -6,7 +6,6 @@
 .Footer-list-container {
   font-size: 15px;
   flex: 0.15;
-  text-align: justify;
 }
 
 .Footer-list-container:nth-child(2) {
@@ -58,4 +57,25 @@
 .bg-home {
   background-color: rgb(87, 87, 87);
   border: 3px solid rgb(87, 87, 87);
+}
+
+@media screen and (max-width: 62.5em) {
+  .Footer-container {
+    padding-left: 1em;
+  }
+}
+
+@media screen and (max-width: 32.5em) {
+  .Footer-container {
+    padding: 2em 2em 0.5em 2em;
+    flex-direction: column;
+  }
+
+  .Footer-list-container {
+    margin-bottom: 1.5em;
+  }
+
+  /* .Footer-list-container:nth-child(1) {
+    order: 3;
+  } */
 }
