@@ -1,0 +1,61 @@
+.Footer-container {
+  box-shadow: 1.5px -1px 8px 5px rgb(233, 233, 233);
+  padding: 1.5em 0 1.5em 3em;
+}
+
+.Footer-list-container {
+  font-size: 15px;
+  flex: 0.15;
+  text-align: justify;
+}
+
+.Footer-list-container:nth-child(2) {
+  flex: 0.2;
+}
+
+.Footer-list-header {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 18px;
+  text-decoration: underline;
+  margin-bottom: 1em;
+}
+
+.Footer-list-item {
+  opacity: 0.8;
+  margin-bottom: 0.9em;
+}
+
+.display-text {
+  margin-left: 0.7em;
+}
+
+.icon {
+  color: white;
+  font-size: normal;
+  border-radius: 50%;
+}
+
+.bg-insta {
+  background-color: #e51b1b;
+  border: 3px solid #e51b1b;
+}
+
+.bg-facebook {
+  background-color: #1778f2;
+  border: 3px solid #1778f2;
+}
+
+.bg-mail {
+  background-color: #0d6efd;
+  border: 4px solid #0d6efd;
+}
+
+.bg-whatsapp {
+  background-color: #25d366;
+  border: 3px solid #25d366;
+}
+
+.bg-home {
+  background-color: rgb(87, 87, 87);
+  border: 3px solid rgb(87, 87, 87);
+}

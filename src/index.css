@@ -34,8 +34,31 @@ code {
   justify-content: space-between;
 }
 
+.j-around {
+  justify-content: space-around;
+}
+
 .link {
   text-decoration: none;
   color: white;
-  padding: 0.2em;
+}
+
+.blue {
+  color: #0d6efd;
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: #dc3545;
+}
+
+.green {
+  color: #198754;
+}
+
+.grey {
+  color: rgb(87, 87, 87);
 }

@@ -1,10 +1,11 @@
 import { Navbar } from "./Navbar";
 import { Routes, Route } from "react-router-dom";
+import { Footer } from "./Footer";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         {/* <Route path="/" element={<Navbar />} />
           <Route
@@ -16,6 +17,7 @@ function App() {
             }
           /> */}
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavItems } from "./";
+import { NAV_ITEMS } from "../../constants";
 import "./Navbar.css";
 
 function Navbar() {
@@ -31,10 +31,10 @@ function Navbar() {
               : "Navbar-list-container"
           }
         >
-          {NavItems.map(({ to, displayText }) => (
+          {NAV_ITEMS.map(({ to, displayText }) => (
             <li className="Navbar-list-item">
               <Link
-                className={path === to ? "link nav-active" : "link"}
+                className={path === to ? "linkW nav-active" : "linkW"}
                 to={to}
                 onClick={() => handleLinkClick(to)}
               >
