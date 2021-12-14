@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Castoro&display=swap&family=Gwendolyn:wght@700&display=swap");
+
+.Product-container {
+  margin: 2em;
+  width: 20em;
+  border-radius: 0.75em;
+  border-top: 50px;
+  box-shadow: 3px 3px 5px 5px lightgrey;
+}
+
+.Product-img-container {
+  height: 15em;
+  width: 100%;
+}
+
+.Product-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.75em;
+  /* border-top-left-radius: 0.75em;
+  border-top-right-radius: 0.75em; */
+  object-fit: cover;
+}
+
+.Product-details-container {
+  padding: 1em 0;
+}
+
+.Product-det-item {
+  margin: 0.1em 0.5em;
+  font-family: "Gwendolyn", cursive;
+  color: black;
+  font-size: 1.5em;
+}
+
+.Product-btn {
+  padding: 1em;
+  width: 9em;
+  font-family: "Castoro", serif;
+  font-size: 1em;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.img-veg {
+  width: 1em;
+  height: 1em;
+}
+
+.pb-1 {
+  padding-bottom: 1em;
+}
