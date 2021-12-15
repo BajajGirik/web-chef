@@ -1,13 +1,13 @@
 import { Navbar } from "./Navbar";
 import { Routes, Route } from "react-router-dom";
 import { Footer } from "./Footer";
-import Product from "./Product/Product";
+import { IndivisualProduct } from "./IndivisualProduct";
 
 function App() {
   return (
     <div className="App">
       {/* <Navbar /> */}
-      <Product />
+      <IndivisualProduct />
       <Routes>
         {/* <Route path="/" element={<Navbar />} />
           <Route
