@@ -32,7 +32,7 @@ function Navbar() {
           }
         >
           {NAV_ITEMS.map(({ to, displayText }) => (
-            <li className="Navbar-list-item">
+            <li key={displayText} className="Navbar-list-item">
               <Link
                 className={path === to ? "link nav-active" : "link"}
                 to={to}

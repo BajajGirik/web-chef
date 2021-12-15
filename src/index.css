@@ -70,3 +70,8 @@ code {
 .grey {
   color: rgb(87, 87, 87);
 }
+
+.m-nav {
+  margin-top: 7em;
+  margin-bottom: 2.4em;
+}

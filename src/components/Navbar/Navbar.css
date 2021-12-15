@@ -3,7 +3,7 @@
 .Navbar-container {
   position: fixed;
   background-color: cornflowerblue;
-  padding: 0.75em 1.5em;
+  padding: 0.7em 1.5em;
   z-index: 999;
   inset: 0 0 auto 0;
 }
@@ -39,7 +39,7 @@
 
 @media screen and (max-width: 39em) {
   .Navbar-container {
-    padding: 1.5em;
+    padding: 1.4em;
   }
 
   .Navbar-hamburger-icon {
@@ -52,7 +52,7 @@
     flex-direction: column;
     background-color: red;
     position: fixed;
-    inset: 4.6875em 0 0 50%;
+    inset: 4.48625em 0 0 50%;
     margin: auto;
     transform: translateX(100%);
     transition: transform 300ms ease-in;

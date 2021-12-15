@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { IndivisualProduct } from "../../components/IndivisualProduct";
 import { PRODUCTS } from "../../constants";
+import "./Products.css";
 
 function Products() {
   const params = useParams();
@@ -10,7 +11,7 @@ function Products() {
   );
 
   return (
-    <div className="flex flex-wrap">
+    <div className="Products-container m-nav">
       {productArray?.map(({ id, name, pricing, imgUrl }) => (
         <IndivisualProduct
           key={id}
