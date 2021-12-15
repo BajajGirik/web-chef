@@ -1,14 +1,14 @@
-import { Navbar } from "./Navbar";
+import { Navbar } from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import { Footer } from "./Footer";
-import { IndivisualProduct } from "./IndivisualProduct";
+import { Footer } from "./components/Footer";
+import { Products } from "./pages/Products";
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
-      <IndivisualProduct />
+      <Navbar />
       <Routes>
+        <Route path="product/:category" element={<Products />} />
         {/* <Route path="/" element={<Navbar />} />
           <Route
             path="*"
@@ -19,7 +19,7 @@ function App() {
             }
           /> */}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

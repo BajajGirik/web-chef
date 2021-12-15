@@ -26,6 +26,10 @@ code {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .al-center {
   align-items: center;
 }
