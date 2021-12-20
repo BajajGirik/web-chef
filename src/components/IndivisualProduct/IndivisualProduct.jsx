@@ -4,13 +4,14 @@ import "./IndivisualProduct.css";
 
 function IndivisualProduct({ id, name, pricing, imgUrl }) {
   const saveItemToCart = () => {
-    const items = localStorage.getItem("cart");
+    let items = JSON.parse(localStorage.getItem("cart"));
     if (items) {
       items = [...items, { productId: id, qty: 1 }];
     } else {
       items = [{ productId: id, qty: 1 }];
     }
-    localStorage.setItem("cart", items);
+
+    localStorage.setItem("cart", JSON.stringify(items));
   };
 
   return (
@@ -24,7 +25,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl }) {
           <img className="img-veg" src={Veg} alt="_Veg" />
         </div>
         <div className="IndivisualProduct-det-item">
-          <span>{pricing?.[0]?.price}</span>
+          <span>₹{pricing?.[0]?.price}/-</span>
         </div>
       </div>
       <div className="txt-al-center pb-1">

@@ -1,5 +1,6 @@
 .Footer-container {
-  box-shadow: 1.5px -1px 8px 5px rgb(233, 233, 233);
+  background-color: white;
+  box-shadow: 1.5px -1px 8px 5px rgb(205, 205, 205);
   padding: 1.5em 0 1.5em 3em;
 }
 
