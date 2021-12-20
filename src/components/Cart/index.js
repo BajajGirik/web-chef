@@ -1,3 +1,4 @@
-import Cart from "./Cart";
+import IndivisualCartItem from "./IndivisualCartItem";
+import OrderSummary from "./OrderSummary";
 
-export { Cart };
+export { IndivisualCartItem, OrderSummary };

@@ -11,6 +11,7 @@ export const HOME_ADDRESS = "A-5/334 IInd Floor, Paschim Vihar, New Delhi";
 export const PIN_CODE = "110063";
 export const INSTAGRAM = { url: "#", id: "insta" };
 export const FACEBOOK = { url: "#", id: "facebook" };
+export const WHATSAPP_LINK = "https://wa.me/919990852682";
 
 export const PRODUCT_TYPE_LADDO = "ladoos";
 export const PRODUCT_TYPE_CAKE = "cakes";

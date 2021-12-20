@@ -2,6 +2,7 @@
 
 .IndivisualCartItem-container {
   background-color: white;
+  max-width: 30em;
   border-radius: 0.75em;
   margin: 0.5em 0;
   padding: 0.5em;
@@ -45,10 +46,4 @@
 .bg-green {
   background-color: #198754;
   border: 3px solid #198754;
-}
-
-@media screen and (max-width: 55em) {
-  .IndivisualCartItem-container {
-    flex-direction: column;
-  }
 }

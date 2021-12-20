@@ -38,7 +38,7 @@ function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
   };
 
   return (
-    <div className="IndivisualCartItem-container flex">
+    <div className="IndivisualCartItem-container">
       <div className="flex">
         <img
           className="IndivisualCartItem-img"

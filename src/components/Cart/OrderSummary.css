@@ -1,0 +1,44 @@
+.OrderSummary-container {
+  background-color: white;
+  border-radius: 0.75em;
+  margin: 1em 0 0 0;
+  padding: 0.5em;
+}
+
+.OrderSummary-conditions {
+  display: block;
+  margin: 0.7em;
+  font-size: x-small;
+  color: grey;
+}
+
+.OrderSummary-input-fields {
+  margin: 0.8em 0 !important;
+  width: 20em;
+}
+
+.place-order-btn {
+  /* width: 100%; */
+  text-align: center;
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #dd2476 51%,
+    #ff512f 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.place-order-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
