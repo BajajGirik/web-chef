@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+.IndivisualCartItem-container {
+  background-color: white;
+  border-radius: 0.75em;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  font-family: "Lobster", cursive;
+  font-size: 1.2em;
+  letter-spacing: 0.12em;
+}
+
+.IndivisualCartItem-img {
+  max-width: 11.5rem;
+  height: 7rem;
+  border-top-left-radius: 0.75em;
+  border-bottom-right-radius: 0.75em;
+  object-fit: cover;
+}
+
+.IndivisualCartItem-details {
+  padding: 0.5em;
+}
+
+.IndivisualCartItem-btns {
+  padding: 1em 0 0em;
+}
+
+.price-txt {
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+.icon {
+  color: white;
+  font-size: normal;
+  border-radius: 50%;
+}
+
+.bg-cross {
+  background-color: #e51b1b;
+  border: 3px solid #e51b1b;
+}
+
+.bg-green {
+  background-color: #198754;
+  border: 3px solid #198754;
+}
+
+@media screen and (max-width: 55em) {
+  .IndivisualCartItem-container {
+    flex-direction: column;
+  }
+}

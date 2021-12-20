@@ -11,7 +11,7 @@ function Products() {
   );
 
   return (
-    <div className="Products-container m-nav">
+    <div className="Products-container m-nav plr-1">
       {productArray?.map(({ id, name, pricing, imgUrl }) => (
         <IndivisualProduct
           key={id}

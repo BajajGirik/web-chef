@@ -1,5 +1,4 @@
 .Products-container {
-  padding: 0 1em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3em;
