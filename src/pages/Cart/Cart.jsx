@@ -9,17 +9,19 @@ function Cart() {
       setItems([]);
       return;
     }
-    cartItems?.map(({ productId, qty }) => {
+
+    const finalList = cartItems?.map(({ productId, qty }) => {
       const item = PRODUCTS.find((product) => product.id === productId);
-      console.log({ ...item, qty: qty });
       return { ...item, qty: qty };
     });
+
+    setItems(finalList);
   }, []);
 
-  return (
-    <div className="Cart-container">
-      {/* {items ?  : <>No Items present</>} */}
-    </div>
+  return (null
+    // <div className="Cart-container">
+    //   {items ? items.map(()) : <>No Items present</>}
+    // </div>
   );
 }
 

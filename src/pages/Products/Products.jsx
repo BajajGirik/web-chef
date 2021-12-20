@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { IndivisualProduct } from "../../components/IndivisualProduct";
+import { IndivisualProduct } from "../../components/Product";
 import { PRODUCTS } from "../../constants";
 import "./Products.css";
 
