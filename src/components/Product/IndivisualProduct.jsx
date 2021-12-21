@@ -1,5 +1,6 @@
 import React from "react";
-import Veg from "../../assets/Veg.png";
+import { VEG_ICON_URI } from "../../constants";
+import { Carousal } from "../UI/Caraousal";
 import "./IndivisualProduct.css";
 
 function IndivisualProduct({ id, name, pricing, imgUrl }) {
@@ -17,12 +18,13 @@ function IndivisualProduct({ id, name, pricing, imgUrl }) {
   return (
     <div className="IndivisualProduct-container">
       <div className="IndivisualProduct-img-container">
-        <img className="IndivisualProduct-img" src={imgUrl} alt="_ProductImg" />
+        {/* <img className="IndivisualProduct-img" src={imgUrl} alt="_ProductImg" /> */}
+        <Carousal classname="IndivisualProduct-img" imgArray={imgUrl} alt="_ProductImg" />
       </div>
       <div className="IndivisualProduct-details-container">
         <div className="IndivisualProduct-det-item flex al-center j-between">
           <span>{name}</span>
-          <img className="img-veg" src={Veg} alt="_Veg" />
+          <img className="img-veg" src={VEG_ICON_URI} alt="_Veg" />
         </div>
         <div className="IndivisualProduct-det-item">
           <span>₹{pricing?.[0]?.price}/-</span>

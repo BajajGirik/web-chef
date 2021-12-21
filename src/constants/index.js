@@ -1,3 +1,8 @@
+import Veg from "../assets/Veg.png";
+import TuttiFrooti1 from "../assets/TootiFrooti_Cake_001.jpg";
+import TuttiFrooti2 from "../assets/TootiFrooti_Cake_002.jpg";
+import TuttiFrooti3 from "../assets/TootiFrooti_Cake_003.jpg";
+
 export const NAV_ITEMS = [
   { to: "/home", displayText: "Home" },
   { to: "/product/cakes", displayText: "Cakes" },
@@ -12,73 +17,16 @@ export const PIN_CODE = "110063";
 export const INSTAGRAM = { url: "#", id: "insta" };
 export const FACEBOOK = { url: "#", id: "facebook" };
 export const WHATSAPP_LINK = "https://wa.me/919990852682";
+export const VEG_ICON_URI = Veg;
 
 export const PRODUCT_TYPE_LADDO = "ladoos";
 export const PRODUCT_TYPE_CAKE = "cakes";
-
 export const PRODUCTS = [
-  {
-    id: `${PRODUCT_TYPE_LADDO}-001`,
-    name: "Ladoo",
-    pricing: [{ price: 100, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-  {
-    id: `${PRODUCT_TYPE_LADDO}-002`,
-    name: "Ladoo2",
-    pricing: [{ price: 200, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-  {
-    id: `${PRODUCT_TYPE_LADDO}-003`,
-    name: "Ladoo2",
-    pricing: [{ price: 200, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-  {
-    id: `${PRODUCT_TYPE_LADDO}-004`,
-    name: "Ladoo2",
-    pricing: [{ price: 200, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-  {
-    id: `${PRODUCT_TYPE_LADDO}-005`,
-    name: "Ladoo2",
-    pricing: [{ price: 200, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-  {
-    id: `${PRODUCT_TYPE_LADDO}-006`,
-    name: "Ladoo2",
-    pricing: [{ price: 200, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-  {
-    id: `${PRODUCT_TYPE_LADDO}-007`,
-    name: "Ladoo2",
-    pricing: [{ price: 200, weight: "500gm" }],
-    imgUrl:
-      "https://static3.srcdn.com/wordpress/wp-content/uploads/2021/04/Godzilla-vs-kong-Skull-crawlers-Skull-island-.jpg",
-    type: PRODUCT_TYPE_LADDO,
-  },
-
   {
     id: `${PRODUCT_TYPE_CAKE}-001`,
     name: "Tuti Frooti",
     pricing: [{ price: 100, weight: "500gm" }],
-    imgUrl: "#",
+    imgUrl: [TuttiFrooti1, TuttiFrooti2, TuttiFrooti3],
     type: PRODUCT_TYPE_CAKE,
   },
 ];

@@ -2,8 +2,8 @@ import React from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Veg from "../../../assets/Veg.png";
 import "./IndivisualCartItem.css";
+import { VEG_ICON_URI } from "../../../constants";
 
 function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
   const decreaseQty = () => {
@@ -43,7 +43,7 @@ function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
       <div className="flex">
         <img
           className="IndivisualCartItem-img"
-          src={imgUrl}
+          src={imgUrl[0]}
           alt="_ProductImg"
         />
         <div className="IndivisualCartItem-details flex j-between">
@@ -51,7 +51,7 @@ function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
             <span>{name}</span>
             <span className="price-txt">₹{pricing?.[0]?.price}/-</span>
           </div>
-          <img className="img-veg" src={Veg} alt="_Veg" />
+          <img className="img-veg" src={VEG_ICON_URI} alt="_Veg" />
         </div>
       </div>
       <div className="IndivisualCartItem-btns flex al-center j-around">
