@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IndivisualCartItem, OrderSummary } from "../../components/Cart";
 import { PRODUCTS } from "../../constants";
+import "./Cart.css";
 
 function Cart() {
   const [items, setItems] = useState([]);
@@ -31,9 +32,10 @@ function Cart() {
   }, []);
 
   return (
-    <div className="flex-c m-nav plr-1">
+    <div className="m-nav plr-1">
       {items.length ? (
-        <>
+        <div className="Cart-container">
+          <div className="flex-c">
           {items.map(({ id, name, pricing, imgUrl, qty }) => (
             <IndivisualCartItem
               key={id}
@@ -45,9 +47,9 @@ function Cart() {
               refreshItems={refreshItems}
             />
           ))}
-
+          </div>
           <OrderSummary items={items} totalAmount={totalAmount} />
-        </>
+        </div>
       ) : (
         <>No Items present</>
       )}

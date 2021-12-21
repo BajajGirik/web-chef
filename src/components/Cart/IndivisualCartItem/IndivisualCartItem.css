@@ -2,7 +2,7 @@
 
 .IndivisualCartItem-container {
   background-color: white;
-  max-width: 30em;
+  /* max-width: 30em; */
   border-radius: 0.75em;
   margin: 0.5em 0;
   padding: 0.5em;
@@ -20,7 +20,12 @@
 }
 
 .IndivisualCartItem-details {
-  padding: 0.5em;
+  padding: 0.5em 0.5em 0.5em 0.8em;
+  width: 100%;
+}
+
+.IndivisualCartItem-details > div > span {
+  margin-bottom: 0.5em;
 }
 
 .IndivisualCartItem-btns {

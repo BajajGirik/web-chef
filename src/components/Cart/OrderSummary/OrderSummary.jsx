@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import React, { useState } from "react";
-import { WHATSAPP_LINK } from "../../constants";
+import { WHATSAPP_LINK } from "../../../constants";
 import "./OrderSummary.css";
 
 function OrderSummary({ items, totalAmount }) {

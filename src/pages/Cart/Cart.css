@@ -1,0 +1,18 @@
+.Cart-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5em;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 58.75em) {
+  .Cart-container {
+    gap: 1.2em;
+  }
+}
+
+@media screen and (max-width: 53em) {
+  .Cart-container {
+    grid-template-columns: 1fr;
+  }
+}
