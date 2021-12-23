@@ -12,7 +12,6 @@ function Carousal({ classname, imgArray, alt }) {
     setTimeout(updateDisplayImage, 5000);
   }, [displayImgIndex]);
 
-  console.log(displayImgIndex);
   return (
     <>
       {imgArray.length && (

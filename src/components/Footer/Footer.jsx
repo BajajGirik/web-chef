@@ -13,6 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -20,12 +21,12 @@ function Footer() {
       {/* HomeChef  */}
       <div className="Footer-list-container flex-c">
         <div className="Footer-list-header">HOMECHEF</div>
-        <a className="Footer-list-item link grey" href="#">
+        <Link className="Footer-list-item link grey" to="/tnc">
           Terms & Conditions
-        </a>
-        <a className="Footer-list-item link grey" href="#">
+        </Link>
+        <Link className="Footer-list-item link grey" to="/privacypolicy">
           Privacy Policy
-        </a>
+        </Link>
       </div>
 
       {/* Contact Us  */}
@@ -60,7 +61,7 @@ function Footer() {
         <span className="Footer-list-header">FOLLOW US</span>
         <a
           className="Footer-list-item link flex al-center"
-          href="#"
+          href={INSTAGRAM.url}
           target="_blank"
         >
           <InstagramIcon className="icon bg-insta" />
@@ -68,7 +69,7 @@ function Footer() {
         </a>
         <a
           className="Footer-list-item link flex al-center"
-          href="#"
+          href={FACEBOOK.url}
           target="_blank"
         >
           <FacebookIcon className="icon bg-facebook" />
