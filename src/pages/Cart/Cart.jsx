@@ -36,17 +36,17 @@ function Cart() {
       {items.length ? (
         <div className="Cart-container">
           <div className="flex-c">
-          {items.map(({ id, name, pricing, imgUrl, qty }) => (
-            <IndivisualCartItem
-              key={id}
-              id={id}
-              name={name}
-              pricing={pricing}
-              imgUrl={imgUrl}
-              qty={qty}
-              refreshItems={refreshItems}
-            />
-          ))}
+            {items.map(({ id, name, pricing, imgUrl, qty }) => (
+              <IndivisualCartItem
+                key={id}
+                id={id}
+                name={name}
+                pricing={pricing}
+                imgUrl={imgUrl}
+                qty={qty}
+                refreshItems={refreshItems}
+              />
+            ))}
           </div>
           <OrderSummary items={items} totalAmount={totalAmount} />
         </div>

@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "../../constants";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import "./Navbar.css";
 
 function Navbar() {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);
-  const [path, setPath] = useState(window.location.pathname)
 
-  const handleLinkClick = (path) => {
-    setIsMovNavOpen(false);
-    setPath(path);
-  }
-  
   return (
     <nav className="Navbar-container flex al-center j-between">
       <div className="Navbar-logo-container">HOMECHEF</div>
@@ -33,13 +27,15 @@ function Navbar() {
         >
           {NAV_ITEMS.map(({ to, displayText }) => (
             <li key={displayText} className="Navbar-list-item">
-              <Link
-                className={path === to ? "link nav-active" : "link"}
+              <NavLink
+                className={(props) =>
+                  props.isActive ? "link nav-active" : "link"
+                }
                 to={to}
-                onClick={() => handleLinkClick(to)}
+                onClick={() => setIsMovNavOpen(false)}
               >
                 {displayText}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

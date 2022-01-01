@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Carousal({ classname, imgArray }) {
+function Carousal({ classname, imgArray, children }) {
   const [displayImgIndex, setDisplayImgIndex] = useState(0);
 
   const updateDisplayImage = () => {
@@ -16,6 +16,7 @@ function Carousal({ classname, imgArray }) {
     <>
       {imgArray.length && (
         <div className={classname + " carousal_animation"} style={{ backgroundImage: `url(${imgArray[displayImgIndex]})` }} >
+          {children}
         </div>
         // <img className={classname} src={imgArray[displayImgIndex]} alt={alt} />
       )}
