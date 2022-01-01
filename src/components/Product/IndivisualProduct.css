@@ -9,18 +9,12 @@
   box-shadow: 3px 3px 5px 5px lightgrey;
 }
 
-.IndivisualProduct-img-container {
-  height: 15rem;
-  width: 100%;
-}
-
 .IndivisualProduct-img {
-  height: 100%;
+  height: 15rem;
   width: 100%;
   border-radius: 0.75em;
   /* border-top-left-radius: 0.75em;
   border-top-right-radius: 0.75em; */
-  object-fit: cover;
 }
 
 .IndivisualProduct-details-container {

@@ -5,6 +5,11 @@ import TuttiFrooti3 from "../assets/TootiFrooti_Cake_003.jpg";
 import ChocolateCake1 from "../assets/Chocolate_Cake_001.jpg";
 import ChocolateCake2 from "../assets/Chocolate_Cake_002.jpg";
 import ChocolateCake3 from "../assets/Chocolate_Cake_003.jpg";
+import AllCakes1 from "../assets/All_Cakes_013.jpg";
+import AllCakes2 from "../assets/All_Cakes_014.jpg";
+import AllCakes3 from "../assets/All_Cakes_015.jpg";
+import AllCakes4 from "../assets/All_Cakes_016.jpg";
+import AllCakes5 from "../assets/All_Cakes_005.jpg";
 
 export const NAV_ITEMS = [
   { to: "/home", displayText: "Home" },
@@ -45,4 +50,26 @@ export const PRODUCTS = [
     imgUrl: [ChocolateCake1, ChocolateCake2, ChocolateCake3],
     type: PRODUCT_TYPE_CAKE,
   },
+  {
+    id: `${PRODUCT_TYPE_CAKE}-003`,
+    name: "Chocolate Cake",
+    pricing: [{ price: 100, weight: "500gm" }],
+    imgUrl: [ChocolateCake1, ChocolateCake2, ChocolateCake3],
+    type: PRODUCT_TYPE_CAKE,
+  },
+  {
+    id: `${PRODUCT_TYPE_CAKE}-004`,
+    name: "Chocolate Cake",
+    pricing: [{ price: 100, weight: "500gm" }],
+    imgUrl: [ChocolateCake1, ChocolateCake2, ChocolateCake3],
+    type: PRODUCT_TYPE_CAKE,
+  },
+];
+
+export const HOME_CAROUSEL_IMGS = [
+  AllCakes1,
+  AllCakes2,
+  AllCakes3,
+  AllCakes4,
+  AllCakes5,
 ];

@@ -4,12 +4,14 @@ import { Footer } from "./components/Footer";
 import { Products } from "./pages/Products";
 import { Cart } from "./pages/Cart";
 import { Terms, PrivacyPolicy } from "./pages/T&C";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
+        <Route path="home" element={<Home />} />
         <Route path="product/:category" element={<Products />} />
         <Route path="cart" element={<Cart />} />
         <Route path="tnc" element={<Terms />} />

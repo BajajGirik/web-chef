@@ -17,10 +17,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl }) {
 
   return (
     <div className="IndivisualProduct-container">
-      <div className="IndivisualProduct-img-container">
-        {/* <img className="IndivisualProduct-img" src={imgUrl} alt="_ProductImg" /> */}
-        <Carousal classname="IndivisualProduct-img" imgArray={imgUrl} alt="_ProductImg" />
-      </div>
+      <Carousal classname="IndivisualProduct-img" imgArray={imgUrl} />
       <div className="IndivisualProduct-details-container">
         <div className="IndivisualProduct-det-item flex al-center j-between">
           <span>{name}</span>

@@ -85,3 +85,10 @@ code {
   width: 1em;
   height: 1em;
 }
+
+.carousal_animation {
+  transition: all 1.5s ease-in;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
