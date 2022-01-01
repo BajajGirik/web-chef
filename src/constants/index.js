@@ -12,7 +12,7 @@ import AllCakes4 from "../assets/All_Cakes_016.jpg";
 import AllCakes5 from "../assets/All_Cakes_005.jpg";
 
 export const NAV_ITEMS = [
-  { to: "/home", displayText: "Home" },
+  { to: "/", displayText: "Home" },
   { to: "/product/cakes", displayText: "Cakes" },
   { to: "/product/ladoos", displayText: "Ladoos" },
   { to: "/cart", displayText: "Cart" },
@@ -31,6 +31,7 @@ export const FACEBOOK = {
   id: "Ambika's Kitchen",
 };
 export const WHATSAPP_LINK = "https://wa.me/919990852682";
+export const EMAIL_LINK = "mailto:" + EMAIL;
 export const VEG_ICON_URI = Veg;
 
 export const PRODUCT_TYPE_LADDO = "ladoos";

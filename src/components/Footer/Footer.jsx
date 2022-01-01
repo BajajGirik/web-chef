@@ -6,6 +6,8 @@ import {
   PIN_CODE,
   INSTAGRAM,
   FACEBOOK,
+  WHATSAPP_LINK,
+  EMAIL_LINK,
 } from "../../constants";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
@@ -34,16 +36,18 @@ function Footer() {
         <span className="Footer-list-header">CONTACT US</span>
         <a
           className="Footer-list-item link flex al-center"
-          href="#"
+          href={WHATSAPP_LINK}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <WhatsAppIcon className="icon bg-whatsapp" />
           <span className="display-text blue">{PHONE_NUMBER}</span>
         </a>
         <a
           className="Footer-list-item link flex al-center"
-          href="#"
+          href={EMAIL_LINK}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <EmailIcon className="icon bg-mail" />
           <span className="display-text blue">{EMAIL}</span>
@@ -63,6 +67,7 @@ function Footer() {
           className="Footer-list-item link flex al-center"
           href={INSTAGRAM.url}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <InstagramIcon className="icon bg-insta" />
           <span className="display-text blue">{INSTAGRAM.id}</span>
@@ -71,6 +76,7 @@ function Footer() {
           className="Footer-list-item link flex al-center"
           href={FACEBOOK.url}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <FacebookIcon className="icon bg-facebook" />
           <span className="display-text blue">{FACEBOOK.id}</span>

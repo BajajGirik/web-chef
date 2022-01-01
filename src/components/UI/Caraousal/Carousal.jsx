@@ -3,19 +3,24 @@ import React, { useEffect, useState } from "react";
 function Carousal({ classname, imgArray, children }) {
   const [displayImgIndex, setDisplayImgIndex] = useState(0);
 
-  const updateDisplayImage = () => {
-    if (imgArray.length === 0) return;
-    setDisplayImgIndex((displayImgIndex + 1) % imgArray.length);
-  };
-
   useEffect(() => {
-    setTimeout(updateDisplayImage, 5000);
-  }, [displayImgIndex]);
+    const updateDisplayImage = () => {
+      if (imgArray.length === 0) return;
+      setDisplayImgIndex((displayImgIndex + 1) % imgArray.length);
+    };
+
+    const img = new Image();
+    img.src = imgArray[(displayImgIndex + 1) % imgArray.length];
+    img.onload = () => setTimeout(updateDisplayImage, 5000);
+  }, [displayImgIndex, imgArray]);
 
   return (
     <>
       {imgArray.length && (
-        <div className={classname + " carousal_animation"} style={{ backgroundImage: `url(${imgArray[displayImgIndex]})` }} >
+        <div
+          className={classname + " carousal_animation"}
+          style={{ backgroundImage: `url(${imgArray[displayImgIndex]})` }}
+        >
           {children}
         </div>
         // <img className={classname} src={imgArray[displayImgIndex]} alt={alt} />
