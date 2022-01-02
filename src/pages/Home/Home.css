@@ -26,6 +26,8 @@
   color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
+  opacity: 0;
+  animation: change-opacity 0.75s ease-in forwards;
 }
 
 .Home-carousal-btn:hover {

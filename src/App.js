@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Products } from "./pages/Products";
 import { Cart } from "./pages/Cart";
-import { Terms, PrivacyPolicy } from "./pages/T&C";
+import { Terms, PrivacyPolicy, RefundPolicy } from "./pages/T&C";
 import { Home } from "./pages/Home";
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="tnc" element={<Terms />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="refundpolicy" element={<RefundPolicy />} />
         {/* <Route path="/" element={<Navbar />} />
           <Route
             path="*"

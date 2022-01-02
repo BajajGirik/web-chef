@@ -92,3 +92,9 @@ code {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@keyframes change-opacity {
+  100% {
+    opacity: 1;
+  }
+}

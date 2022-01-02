@@ -29,6 +29,9 @@ function Footer() {
         <Link className="Footer-list-item link grey" to="/privacypolicy">
           Privacy Policy
         </Link>
+        <Link className="Footer-list-item link grey" to="/refundpolicy">
+          Refund Policy
+        </Link>
       </div>
 
       {/* Contact Us  */}

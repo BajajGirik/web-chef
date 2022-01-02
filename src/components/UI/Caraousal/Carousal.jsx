@@ -6,12 +6,14 @@ function Carousal({ classname, imgArray, children }) {
   useEffect(() => {
     const updateDisplayImage = () => {
       if (imgArray.length === 0) return;
-      setDisplayImgIndex((displayImgIndex + 1) % imgArray.length);
+
+      const img = new Image();
+      img.src = imgArray[(displayImgIndex + 1) % imgArray.length];
+      img.onload = () =>
+        setDisplayImgIndex((displayImgIndex + 1) % imgArray.length);
     };
 
-    const img = new Image();
-    img.src = imgArray[(displayImgIndex + 1) % imgArray.length];
-    img.onload = () => setTimeout(updateDisplayImage, 5000);
+    setTimeout(updateDisplayImage, 5000);
   }, [displayImgIndex, imgArray]);
 
   return (
