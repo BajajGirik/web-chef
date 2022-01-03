@@ -18,21 +18,26 @@ export const NAV_ITEMS = [
   { to: "/cart", displayText: "Cart" },
 ];
 
-export const PHONE_NUMBER = "+91 98180 19728";
-export const EMAIL = "ambikaskitchen2034@gmail.com";
-export const HOME_ADDRESS = "A-5/334 IInd Floor, Paschim Vihar, New Delhi";
-export const PIN_CODE = "110063";
-export const INSTAGRAM = {
-  url: "https://www.instagram.com/ambika_kitchen2034/",
-  id: "ambika_kitchen2034",
-};
-export const FACEBOOK = {
-  url: "https://www.facebook.com/profile.php?id=100073953483206",
-  id: "Ambika's Kitchen",
-};
-export const WHATSAPP_LINK = "https://wa.me/919990852682";
-export const EMAIL_LINK = "mailto:" + EMAIL;
-export const VEG_ICON_URI = Veg;
+export const HOME_PRODUCTS_LIST = [
+  {
+    carouselImgs: [AllCakes1, AllCakes2, AllCakes3, AllCakes4, AllCakes5],
+    heading: "Cakes",
+    starterDesc: "Get tasty, healthy ",
+    boldTxt: "Home-Made",
+    finalDesc: " cakes at a very low price.",
+    btnLink: "/product/cakes",
+    btnText: "Order Cakes Now!",
+  },
+  {
+    carouselImgs: [AllCakes1, AllCakes2, AllCakes3, AllCakes4, AllCakes5],
+    heading: "Ladoos",
+    starterDesc: "Get tasty, healthy ",
+    boldTxt: "Home-Made",
+    finalDesc: " ladoos at a very low price.",
+    btnLink: "/product/ladoos",
+    btnText: "Order Ladoos Now!",
+  },
+];
 
 export const PRODUCT_TYPE_LADDO = "ladoos";
 export const PRODUCT_TYPE_CAKE = "cakes";
@@ -67,10 +72,19 @@ export const PRODUCTS = [
   },
 ];
 
-export const HOME_CAROUSEL_IMGS = [
-  AllCakes1,
-  AllCakes2,
-  AllCakes3,
-  AllCakes4,
-  AllCakes5,
-];
+export const VEG_ICON_URI = Veg;
+
+export const PHONE_NUMBER = "+91 98180 19728";
+export const EMAIL = "ambikaskitchen2034@gmail.com";
+export const HOME_ADDRESS = "A-5/334 IInd Floor, Paschim Vihar, New Delhi";
+export const PIN_CODE = "110063";
+export const INSTAGRAM = {
+  url: "https://www.instagram.com/ambika_kitchen2034/",
+  id: "ambika_kitchen2034",
+};
+export const FACEBOOK = {
+  url: "https://www.facebook.com/profile.php?id=100073953483206",
+  id: "Ambika's Kitchen",
+};
+export const WHATSAPP_LINK = "https://wa.me/919990852682";
+export const EMAIL_LINK = "mailto:" + EMAIL;

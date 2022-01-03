@@ -27,10 +27,6 @@ code {
   flex-direction: column;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
 .al-center {
   align-items: center;
 }
@@ -76,7 +72,7 @@ code {
   margin-top: 7em;
   margin-bottom: 2.4em;
   opacity: 0;
-  animation: change-opacity 1s ease-in forwards;
+  animation: change-opacity 1.5s ease-in forwards;
 }
 
 .plr-1 {

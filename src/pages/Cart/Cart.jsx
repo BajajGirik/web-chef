@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { IndivisualCartItem, OrderSummary, CartEmpty } from "../../components/Cart";
+import {
+  IndivisualCartItem,
+  OrderSummary,
+  CartEmpty,
+} from "../../components/Cart";
 import { PRODUCTS } from "../../constants";
 import "./Cart.css";
 
@@ -32,9 +36,9 @@ function Cart() {
   }, []);
 
   return (
-    <div className="m-nav plr-1">
+    <div className="Cart-container m-nav plr-1">
       {items.length ? (
-        <div className="Cart-container">
+        <>
           <div className="flex-c">
             {items.map(({ id, name, pricing, imgUrl, qty }) => (
               <IndivisualCartItem
@@ -49,7 +53,7 @@ function Cart() {
             ))}
           </div>
           <OrderSummary items={items} totalAmount={totalAmount} />
-        </div>
+        </>
       ) : (
         <CartEmpty />
       )}

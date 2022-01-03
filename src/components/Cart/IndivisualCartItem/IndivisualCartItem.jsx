@@ -57,12 +57,12 @@ function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
       <div className="IndivisualCartItem-btns flex al-center j-around">
         <div>
           <div className="flex al-center">
-            <RemoveIcon onClick={decreaseQty} className="icon bg-cross" />
+            <RemoveIcon onClick={decreaseQty} className="icon bg-cross cur-pointer" />
             &nbsp;&nbsp;{qty}&nbsp;&nbsp;
-            <AddIcon onClick={increaseQty} className="icon bg-green" />
+            <AddIcon onClick={increaseQty} className="icon bg-green cur-pointer" />
           </div>
         </div>
-        <DeleteIcon onClick={removeFromCart} htmlColor="red" />
+        <DeleteIcon onClick={removeFromCart} htmlColor="red" className="cur-pointer" />
       </div>
     </div>
   );

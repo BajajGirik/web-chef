@@ -52,3 +52,7 @@
   background-color: #198754;
   border: 3px solid #198754;
 }
+
+.cur-pointer {
+  cursor: pointer;
+}

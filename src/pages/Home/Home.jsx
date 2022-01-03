@@ -1,29 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Carousal } from "../../components/UI/Caraousal";
-import { HOME_CAROUSEL_IMGS } from "../../constants";
+import { HOME_PRODUCTS_LIST } from "../../constants";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./Home.css";
 
 function Home() {
   return (
     <div className="m-nav plr-1 flex-c al-center">
-      <Carousal classname="Home-carousal" imgArray={HOME_CAROUSEL_IMGS}>
-        <Link
-          className="link Home-carousal-btn flex al-center"
-          to="/product/cakes"
-        >
-          Order Cakes &nbsp; <ArrowForwardIcon />
-        </Link>
-      </Carousal>
-      <Carousal classname="Home-carousal" imgArray={HOME_CAROUSEL_IMGS}>
-        <Link
-          className="link Home-carousal-btn flex al-center"
-          to="/product/ladoos"
-        >
-          Order Ladoos &nbsp; <ArrowForwardIcon />
-        </Link>
-      </Carousal>
+      {HOME_PRODUCTS_LIST.map(
+        ({
+          carouselImgs,
+          heading,
+          starterDesc,
+          boldTxt,
+          finalDesc,
+          btnLink,
+          btnText,
+        }) => (
+          <div className="Home-product-container flex j-between">
+            <Carousal classname="Home-carousal" imgArray={carouselImgs} />
+            <div className="Home-product-desc flex-c j-between txt-al-center">
+              <div>
+                <h1>{heading}</h1>
+                <p>
+                  {starterDesc} <b>{boldTxt}</b> {finalDesc}
+                </p>
+              </div>
+              <Link className="Home-btn link flex al-center" to={btnLink}>
+                {btnText} &nbsp;
+                <ArrowForwardIcon />
+              </Link>
+            </div>
+          </div>
+        )
+      )}
     </div>
   );
 }
