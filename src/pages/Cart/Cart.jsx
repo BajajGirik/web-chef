@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IndivisualCartItem, OrderSummary } from "../../components/Cart";
+import { IndivisualCartItem, OrderSummary, CartEmpty } from "../../components/Cart";
 import { PRODUCTS } from "../../constants";
 import "./Cart.css";
 
@@ -51,7 +51,7 @@ function Cart() {
           <OrderSummary items={items} totalAmount={totalAmount} />
         </div>
       ) : (
-        <>No Items present</>
+        <CartEmpty />
       )}
     </div>
   );

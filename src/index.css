@@ -75,6 +75,8 @@ code {
 .m-nav {
   margin-top: 7em;
   margin-bottom: 2.4em;
+  opacity: 0;
+  animation: change-opacity 1s ease-in forwards;
 }
 
 .plr-1 {

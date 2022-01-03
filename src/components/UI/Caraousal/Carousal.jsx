@@ -25,7 +25,6 @@ function Carousal({ classname, imgArray, children }) {
         >
           {children}
         </div>
-        // <img className={classname} src={imgArray[displayImgIndex]} alt={alt} />
       )}
     </>
   );

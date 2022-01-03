@@ -30,6 +30,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl }) {
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("cart"));
+    if (!items) return;
     const index = items.findIndex(({ productId }) => productId === id);
 
     if (index !== -1) {

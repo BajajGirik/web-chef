@@ -1,0 +1,21 @@
+.CartEmpty-gif {
+  width: 20em;
+  height: 20em;
+  border-radius: 50%;
+}
+
+.CartEmpty-txt {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 31.25rem) {
+  .CartEmpty-gif {
+    width: 15em;
+    height: 15em;
+  }
+
+  .CartEmpty-txt {
+    margin-top: 1.5em;
+    font-size: 1em;
+  }
+}
