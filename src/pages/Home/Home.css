@@ -11,13 +11,18 @@
 }
 
 .Home-carousal {
-  width: 45%;
-  height: 17em;
+  width: 55%;
+  height: 19em;
   border-radius: 10px;
 }
 
-.Home-product-desc {
-  width: 45%;
+.Home-product-desc-container {
+  width: 40%;
+}
+
+.Home-product-desc-container p {
+  color: rgb(128, 123, 123);
+  font-style: italic;
 }
 
 .Home-btn {
@@ -47,19 +52,27 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 58rem) {
-  .Home-carousal {
-    width: 90vw;
-    height: 40vw;
+@media screen and (max-width: 46.875rem) {
+  .Home-product-container {
+    flex-direction: column !important;
   }
-  .Home-carousal-btn {
-    padding: 0.5em 1em;
-  }
-}
 
-@media screen and (max-width: 40rem) {
-  .Home-carousal {
-    width: 90vw;
-    height: 70vw;
+  .Home-carousal,
+  .Home-product-desc-container {
+    width: 100%;
+  }
+
+  .Home-product-desc-container > div {
+    margin: 1.5em 0 2em 0;
+  }
+
+  .Home-product-desc-container h1,
+  .Home-product-desc-container p {
+    margin: 0;
+  }
+
+  .Home-product-desc-container p {
+    font-size: 0.9em;
+    margin-top: 0.25em;
   }
 }
