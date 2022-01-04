@@ -18,7 +18,7 @@ function Home() {
           btnLink,
           btnText,
         }) => (
-          <div className="Home-product-container flex j-between">
+          <div key={heading} className="Home-product-container flex j-between">
             <Carousal classname="Home-carousal" imgArray={carouselImgs} />
             <div className="Home-product-desc-container flex-c j-between txt-al-center">
               <div>
