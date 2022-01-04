@@ -7,19 +7,15 @@ import { Terms, PrivacyPolicy, RefundPolicy } from "./pages/T&C";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Auth";
 import { useEffect } from "react";
-import { auth } from "./firebase";
+import { connect } from "react-redux";
+import { getUser } from "./state/user/userActions";
 
-function App() {
-  
+function App(props) {
+  const { dispatch } = props;
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log("User Signed in");
-      } else {
-        console.log("User Signed out");
-      }
-    });
-  });
+    console.log("Called Me");
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -48,4 +44,10 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state,
+  };
+}
+
+export default connect(mapStateToProps)(App);
