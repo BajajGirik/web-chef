@@ -2,9 +2,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --white-shade: #f1faee;
+  --red-shade: #de3c4b;
+  --blue-shade: #4361ee;
+  --green-shade: #28afb0;
+  --yellow-shade: #ffd275;
+  --maroon-shade: #820404;
+}
+
 body {
   margin: 0;
-  background-color: #00000030;
+  background-color: #00000015;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",

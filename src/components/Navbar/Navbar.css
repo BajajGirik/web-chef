@@ -2,18 +2,18 @@
 
 .Navbar-container {
   position: fixed;
-  background: #0f0c29; /* fallback for old browsers */
+  background: #4376de; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #24243e,
-    #302b63,
-    #0f0c29
+    #4376de,
+    #5454de,
+    #1616de
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #24243e,
-    #302b63,
-    #0f0c29
+    #4376de,
+    #5454de,
+    #1616de
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 0.7em 1.5em;
   z-index: 999;
@@ -35,7 +35,6 @@
 .Navbar-list-container {
   list-style: none;
   text-decoration: none;
-  display: flex;
   padding: 0;
 }
 
@@ -43,10 +42,11 @@
   font-family: "Cinzel Decorative", cursive;
   margin-left: 3em;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-active {
-  color: rgb(255, 43, 43) !important;
+  color: #ffea00 !important;
 }
 
 @media screen and (max-width: 39em) {
@@ -60,17 +60,18 @@
   }
 
   .Navbar-list-container {
-    background: #23074d; /* fallback for old browsers */
+    background: hsla(159, 82%, 55%, 1); /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to right,
-      #23074d,
-      #cc5333
+      #4376de,
+      #5454de,
+      #1616de
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
-      to right,
-      #23074d,
-      #cc5333
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      to bottom,
+      hsla(159, 82%, 55%, 1) 0%,
+      hsla(206, 98%, 48%, 1) 100%
+    );
     display: flex;
     flex-direction: column;
     position: fixed;

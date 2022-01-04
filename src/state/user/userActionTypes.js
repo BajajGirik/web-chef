@@ -1,3 +1,8 @@
 export const GET_USER_REQUEST = "GET_USER_REQUEST";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_NOT_FOUND = "GET_USER_NOT_FOUND";
+
+export const SIGNIN_FAIL = "SIGNIN_FAILED";
+
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";

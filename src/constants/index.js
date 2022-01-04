@@ -10,6 +10,7 @@ import AllCakes2 from "../assets/All_Cakes_014.jpg";
 import AllCakes3 from "../assets/All_Cakes_015.jpg";
 import AllCakes4 from "../assets/All_Cakes_016.jpg";
 import AllCakes5 from "../assets/All_Cakes_005.jpg";
+import Logo from "../assets/Logo.png";
 
 export const NAV_ITEMS = [
   { to: "/", displayText: "Home" },
@@ -73,6 +74,7 @@ export const PRODUCTS = [
 ];
 
 export const VEG_ICON_URI = Veg;
+export const LOGO = Logo;
 
 export const PHONE_NUMBER = "+91 98180 19728";
 export const EMAIL = "ambikaskitchen2034@gmail.com";

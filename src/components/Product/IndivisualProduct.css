@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Castoro&display=swap&family=Gwendolyn:wght@700&display=swap");
 
 .IndivisualProduct-container {
-  background-color: white;
+  background-color: #fcfcfc;
   width: 20em;
   justify-self: center;
   border-radius: 0.75em;
@@ -32,37 +32,27 @@
   font-family: "Castoro", serif;
   font-size: 1em;
   cursor: pointer;
-  background-image: linear-gradient(
-    to right,
-    #1a2980 0%,
-    #26d0ce 51%,
-    #1a2980 100%
-  );
+  background-color: #d81159;
   border: none;
   margin: 10px;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
-  transition: all 0.5s;
+  transition: all 1.5s;
   background-size: 200% auto;
   color: white;
-  box-shadow: 0 0 20px #eee;
   border-radius: 10px;
 }
 
 .IndivisualProduct-btn:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
+  transform: scale(110%);
   text-decoration: none;
 }
 
 .remove-cart-btn {
-  background-image: linear-gradient(
-    to right,
-    #e53935 0%,
-    #e35d5b 51%,
-    #e53935 100%
-  );
+  background-color: #f2c977 !important;
+  color: rgb(70, 67, 67);
+  /* background-color: #a36e05 !important; */
 }
 
 .pb-1 {

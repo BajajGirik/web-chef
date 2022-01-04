@@ -11,9 +11,8 @@ import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 
 function App(props) {
-  const { dispatch } = props;
+  const { user, dispatch } = props;
   useEffect(() => {
-    console.log("Called Me");
     dispatch(getUser());
   }, [dispatch]);
 

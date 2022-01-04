@@ -3,9 +3,13 @@ import { NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "../../constants";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Navbar.css";
+import { Avatar } from "@mui/material";
+import { connect } from "react-redux";
+import { logout } from "../../state/user/userActions";
 
-function Navbar() {
+function Navbar(props) {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);
+  const { isLoggedIn, displayName, photoURL, dispatch } = props;
 
   return (
     <nav className="Navbar-container flex al-center j-between">
@@ -21,15 +25,15 @@ function Navbar() {
         <ul
           className={
             isMobNavOpen
-              ? "Navbar-list-container side-nav-open"
-              : "Navbar-list-container"
+              ? "Navbar-list-container flex al-center side-nav-open"
+              : "Navbar-list-container flex al-center"
           }
         >
           {NAV_ITEMS.map(({ to, displayText }) => (
             <li key={displayText} className="Navbar-list-item">
               <NavLink
-                className={(props) =>
-                  props.isActive ? "link nav-active" : "link"
+                className={({ isActive }) =>
+                  isActive ? "link nav-active" : "link"
                 }
                 to={to}
                 onClick={() => setIsMovNavOpen(false)}
@@ -38,10 +42,39 @@ function Navbar() {
               </NavLink>
             </li>
           ))}
+
+          <li className="Navbar-list-item">
+            {isLoggedIn ? (
+              <Avatar
+                src={photoURL}
+                alt={displayName[0]}
+                onClick={() => dispatch(logout())}
+              />
+            ) : (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "link nav-active" : "link"
+                }
+                to="/auth/login"
+                onClick={() => setIsMovNavOpen(false)}
+              >
+                Login
+              </NavLink>
+            )}
+          </li>
         </ul>
       </div>
     </nav>
   );
 }
 
-export default Navbar;
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    isLoggedIn: state?.isLoggedIn,
+    displayName: state?.data?.displayName,
+    photoURL: state?.data?.photoURL,
+  };
+}
+
+export default connect(mapStateToProps)(Navbar);

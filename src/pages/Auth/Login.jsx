@@ -1,24 +1,31 @@
-import { auth } from "../../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { connect } from "react-redux";
+import { signInViaGoogle } from "../../state/user/userActions";
+import { LOGO } from "../../constants";
+import GoogleIcon from "@mui/icons-material/Google";
+import "./auth.css";
 
-function Login() {
-  const signInViaGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    provider.addScope("profile");
-    provider.addScope("email");
-
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => console.log(error));
-  };
+function Login(props) {
+  const { dispatch } = props;
 
   return (
-    <div className="Login-container m-nav plr-1">
-      <button onClick={signInViaGoogle}>Sign In With Google</button>
+    <div className="m-nav plr-1 flex-c al-center">
+      <img className="Login-img" src={LOGO} alt="_Logo" />
+
+      <button
+        className="Login-btn flex al-center"
+        onClick={() => dispatch(signInViaGoogle())}
+      >
+        <GoogleIcon className="icon bg-google" />
+        &nbsp; Sign In With Google
+      </button>
     </div>
   );
 }
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    user: state,
+  };
+}
+
+export default connect(mapStateToProps)(Login);
