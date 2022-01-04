@@ -50,7 +50,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl }) {
           <span>₹{pricing?.[0]?.price}/-</span>
         </div>
       </div>
-      <div className="txt-al-center pb-1">
+      <div className="txt-al-center pb">
         {!isInCart ? (
           <button className="IndivisualProduct-btn" onClick={saveItemToCart}>
             Add To Cart

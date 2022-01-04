@@ -1,7 +1,15 @@
 .Home-product-container {
+  background-color: #e85050;
+  background-image: linear-gradient(
+    to right,
+    #c90f0f 0%,
+    #e85050 40%,
+    #fa5959 100%
+  );
   padding: 1.8em;
   margin: 0.5em 0;
   border-radius: 15px;
+  color: white;
   width: 95%;
 }
 
@@ -20,35 +28,26 @@
 }
 
 .Home-product-desc-container p {
-  color: rgb(128, 123, 123);
+  color: rgb(228, 228, 228);
+  /* color: rgb(128, 123, 123); */
   font-style: italic;
 }
 
 .Home-btn {
   width: fit-content;
   cursor: pointer;
-  background-color: red;
-  background-image: linear-gradient(
-    to right,
-    #1a2980 0%,
-    #26d0ce 51%,
-    #1a2980 100%
-  );
+  background-color: #025c5c;
+  background-image: linear-gradient(to right, #025c5c 0%, #06e1e1);
   padding: 0.75em 1.5em;
   text-align: center;
   text-transform: uppercase;
-  transition: 0.5s;
+  transition: 1.5s;
   background-size: 200% auto;
   color: white;
-  box-shadow: 0 0 20px #eee;
+  box-shadow: 2px 2px 10px #163e16;
   border-radius: 10px;
   margin: 0 auto;
-}
-
-.Home-btn:hover {
-  background-position: right center;
-  color: #fff;
-  text-decoration: none;
+  animation: scale-infinite 2.6s ease-in-out infinite;
 }
 
 @media screen and (max-width: 46.875rem) {
@@ -75,3 +74,7 @@
     margin-top: 0.25em;
   }
 }
+
+/* .bg-h {
+  background-color: #de3b4b;
+} */

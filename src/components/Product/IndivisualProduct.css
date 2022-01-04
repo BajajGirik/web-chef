@@ -2,11 +2,13 @@
 
 .IndivisualProduct-container {
   background-color: #fcfcfc;
+  /* background-image: linear-gradient(to bottom, #f4fffd 40%, #ffc6ac); */
+  background-image: linear-gradient(to bottom, #fff5f1 40%, #ffbea0);
   width: 20em;
   justify-self: center;
   border-radius: 0.75em;
   border-top: 50px;
-  box-shadow: 3px 3px 5px 5px lightgrey;
+  box-shadow: 4px 4px 10px #807d7d;
 }
 
 .IndivisualProduct-img {
@@ -50,11 +52,10 @@
 }
 
 .remove-cart-btn {
-  background-color: #f2c977 !important;
-  color: rgb(70, 67, 67);
+  background-color: #b5582d !important;
   /* background-color: #a36e05 !important; */
 }
 
-.pb-1 {
-  padding-bottom: 1em;
+.pb {
+  padding-bottom: 0.7em;
 }

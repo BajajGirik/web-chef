@@ -4,7 +4,7 @@
 
 :root {
   --white-shade: #f1faee;
-  --red-shade: #de3c4b;
+  --red-shade: #de3b4b;
   --blue-shade: #4361ee;
   --green-shade: #28afb0;
   --yellow-shade: #ffd275;
@@ -105,3 +105,15 @@ code {
     opacity: 1;
   }
 }
+
+@keyframes scale-infinite {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* @keyframes rotate-Y {
+  50% {
+    transform: rotateY(180deg);
+  }
+} */

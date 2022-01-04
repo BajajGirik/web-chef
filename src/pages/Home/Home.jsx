@@ -7,7 +7,7 @@ import "./Home.css";
 
 function Home() {
   return (
-    <div className="m-nav plr-1 flex-c al-center">
+    <div className="m-nav plr-1 flex-c al-center bg-h">
       {HOME_PRODUCTS_LIST.map(
         ({
           carouselImgs,
