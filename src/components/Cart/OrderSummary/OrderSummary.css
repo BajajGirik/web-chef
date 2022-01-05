@@ -1,21 +1,29 @@
 .OrderSummary-container {
   background-color: white;
+  min-width: 21.875rem;
   border-radius: 0.75em;
-  margin: 0.5em 0;
+  margin: 0.8em 0;
   margin-bottom: auto;
-  padding: 2em 4em;
+  padding: 1.5em;
+}
+
+.OrderSummary-container h2 {
+  margin: 0.5em 0;
+  text-decoration: underline;
+}
+
+.OrderSummary-li {
+  width: 100%;
+  margin: 0.5em 0;
 }
 
 .OrderSummary-conditions {
   display: block;
+  max-width: 18rem;
   margin: 0.7em;
   font-size: x-small;
   color: grey;
-}
-
-.OrderSummary-input-fields {
-  margin: 0.8em 0 !important;
-  width: 20em;
+  text-align: center;
 }
 
 .place-order-btn {
@@ -44,8 +52,16 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 60em) {
+.w-100 {
+  width: 100%;
+}
+
+@media screen and (max-width: 58.5em) {
   .OrderSummary-container {
-    padding: 2em;
+    min-width: none;
+  }
+
+  .OrderSummary-conditions {
+    max-width: none;
   }
 }

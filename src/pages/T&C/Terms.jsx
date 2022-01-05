@@ -4,7 +4,7 @@ import { PHONE_NUMBER, EMAIL } from "../../constants";
 
 function Terms() {
   return (
-    <div className="m-nav plr-1">
+    <div className="p-nav">
       <h2>
         <strong>Terms and Conditions</strong>
       </h2>

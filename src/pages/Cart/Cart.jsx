@@ -36,7 +36,7 @@ function Cart() {
   }, []);
 
   return (
-    <div className="Cart-container m-nav plr-1">
+    <div className="Cart-container p-nav">
       {items.length ? (
         <>
           <div className="flex-c">

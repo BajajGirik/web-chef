@@ -5,13 +5,13 @@
   justify-content: space-around;
 }
 
-@media screen and (max-width: 58.75em) {
+@media screen and (max-width: 67.125rem) {
   .Cart-container {
     gap: 1.2em;
   }
 }
 
-@media screen and (max-width: 53em) {
+@media screen and (max-width: 58.5em) {
   .Cart-container {
     grid-template-columns: 1fr;
   }

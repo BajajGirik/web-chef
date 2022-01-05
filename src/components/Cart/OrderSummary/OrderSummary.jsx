@@ -29,10 +29,31 @@ function OrderSummary({ items, totalAmount }) {
 
   return (
     <div className="OrderSummary-container flex-c al-center">
-      <div>
-        <b>₹{totalAmount}/- + Delivery Charges</b>
+      <h2>Order Summary</h2>
+      <div className="flex j-between OrderSummary-li">
+        <b>Subtotal: </b>
+        <span>₹{totalAmount}</span>
       </div>
-      <TextField
+      <div className="flex j-between OrderSummary-li">
+        <b>Delivery: </b>
+        <span>Not decided yet</span>
+      </div>
+      <div className="flex j-between OrderSummary-li">
+        <b>Total: </b>
+        <b>₹{totalAmount + 50}</b>
+      </div>
+      
+      {/* <h2>Contact Details</h2>
+      <div className="flex j-between OrderSummary-li">
+        <b>Phone: </b>
+        <span>{PHONE_NUMBER}</span>
+      </div>
+      <div className="flex j-between OrderSummary-li">
+        <b>Address: </b>
+        <span>{HOME_ADDRESS}</span>
+      </div> */}
+      
+      {/* <TextField
         className="OrderSummary-input-fields"
         label="Phone Number"
         variant="standard"
@@ -45,10 +66,14 @@ function OrderSummary({ items, totalAmount }) {
         variant="standard"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-      />
+      /> */}
+      
+      
       <span className="OrderSummary-conditions">
-        *Ordering can be done through whatsApp only for now
+        *Delivery Charges will be updated within 2 days after order confirmation. (Max - ₹100)
       </span>
+      
+      
       <div onClick={placeOrder} className="place-order-btn disabled">
         Order Now!
       </div>

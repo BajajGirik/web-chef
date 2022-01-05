@@ -51,13 +51,15 @@ export function logoutFail(error) {
 export function getUser() {
   return (dispatch) => {
     dispatch(getUserRequest());
-    auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(getUserSuccess(user));
       } else {
         dispatch(getUserNotFound());
       }
     });
+
+    return unsubscribe;
   };
 }
 

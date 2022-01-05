@@ -2,7 +2,7 @@ import React from "react";
 
 function PrivacyPolicy() {
   return (
-    <div className="m-nav plr-1">
+    <div className="p-nav">
       <h1>Privacy Policy for HomeChef</h1>
 
       <p>

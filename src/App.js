@@ -13,7 +13,8 @@ import { getUser } from "./state/user/userActions";
 function App(props) {
   const { user, dispatch } = props;
   useEffect(() => {
-    dispatch(getUser());
+    const unsubscribe = dispatch(getUser());
+    return unsubscribe;
   }, [dispatch]);
 
   return (

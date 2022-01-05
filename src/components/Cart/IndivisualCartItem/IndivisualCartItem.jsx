@@ -39,30 +39,42 @@ function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
   };
 
   return (
-    <div className="IndivisualCartItem-container">
-      <div className="flex">
-        <img
-          className="IndivisualCartItem-img"
-          src={imgUrl[0]}
-          alt="_ProductImg"
-        />
-        <div className="IndivisualCartItem-details flex j-between">
-          <div className="flex-c">
-            <span>{name}</span>
-            <span className="price-txt">₹{pricing?.[0]?.price}/-</span>
-          </div>
-          <img className="img-veg" src={VEG_ICON_URI} alt="_Veg" />
-        </div>
+    <div className="IndivisualCartItem-container flex j-around">
+      {/* left part (img) */}
+      <div className="IndivisualCartItem-img-container">
+        <img src={imgUrl[0]} alt="_ProductImg" />
       </div>
-      <div className="IndivisualCartItem-btns flex al-center j-around">
-        <div>
-          <div className="flex al-center">
-            <RemoveIcon onClick={decreaseQty} className="icon bg-cross cur-pointer" />
-            &nbsp;&nbsp;{qty}&nbsp;&nbsp;
-            <AddIcon onClick={increaseQty} className="icon bg-green cur-pointer" />
+
+      {/* right part  */}
+      <div className="flex-c j-around w-50">
+        {/* row one  */}
+        <div className="flex j-between">
+          <div className="flex">
+            <span className="w-min"> {name} </span>
+            <img className="img-veg" src={VEG_ICON_URI} alt="_Veg" />
           </div>
+          <DeleteIcon
+            onClick={removeFromCart}
+            htmlColor="red"
+            className="cur-pointer"
+          />
         </div>
-        <DeleteIcon onClick={removeFromCart} htmlColor="red" className="cur-pointer" />
+
+        {/* row two */}
+        <div className="flex al-center j-between">
+          <div className="flex al-center">
+            <RemoveIcon
+              onClick={decreaseQty}
+              className="icon bg-cross cur-pointer"
+            />
+            &nbsp;{qty}&nbsp;
+            <AddIcon
+              onClick={increaseQty}
+              className="icon bg-green cur-pointer"
+            />
+          </div>
+          <span className="price-txt">₹{qty * pricing?.[0]?.price}</span>
+        </div>
       </div>
     </div>
   );

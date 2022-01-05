@@ -8,7 +8,7 @@ function Login(props) {
   const { dispatch } = props;
 
   return (
-    <div className="m-nav plr-1 flex-c al-center">
+    <div className="p-nav  flex-c al-center">
       <img className="Login-img" src={LOGO} alt="_Logo" />
 
       <button

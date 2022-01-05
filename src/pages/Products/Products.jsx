@@ -11,7 +11,7 @@ function Products() {
   );
 
   return (
-    <div key={params.category} className="Products-container m-nav plr-1">
+    <div key={params.category} className="Products-container p-nav">
       {productArray?.map(({ id, name, pricing, imgUrl }) => (
         <IndivisualProduct
           key={id}
