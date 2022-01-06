@@ -49,7 +49,7 @@
   color: #ffea00 !important;
 }
 
-@media screen and (max-width: 39em) {
+@media screen and (max-width: 39rem) {
   .Navbar-container {
     padding: 1.4em;
   }

@@ -53,11 +53,16 @@
 @media screen and (max-width: 46.875rem) {
   .Home-product-container {
     flex-direction: column !important;
+    padding: 1.3em 1em;
   }
 
   .Home-carousal,
   .Home-product-desc-container {
     width: 100%;
+  }
+
+  .Home-carousal {
+    height: 15.5em;
   }
 
   .Home-product-desc-container > div {

@@ -1,35 +1,75 @@
 .Auth-container {
-  background-color: white;
-  margin-top: 5em;
-  padding: 1em;
-  padding-top: 0;
+  background-color: #ffefba;
+  background-image: linear-gradient(to right, #ffefba 0%, #ffffff);
+  padding: 0 1em 1em 1em;
   border-radius: 15px;
 }
 
-.Auth-container h1 {
+.Auth-container > form {
+  padding: 1em 2em 1em 3em;
+}
+
+.Auth-form-heading {
   font-weight: 500;
-  margin: 0.2em 0;
+  margin: 0;
+  color: rgb(75, 75, 75);
 }
 
 .Auth-img {
-  margin-top: -5em;
   width: 10em;
   border-radius: 50%;
+  box-shadow: 10px 10px 15px #b6af9b;
 }
 
-.Auth-input-field {
+.Auth-form-input-field {
   width: 20rem;
-  background-color: transparent !important;
-  margin-bottom: 1em !important;
+  background-color: white !important;
+  margin-top: 1em !important;
 }
 
-.Auth-btn {
+.Auth-form-forgot-pass-redirect {
+  align-self: flex-end;
+  margin: 0.5em 0 1em 0;
+  font-size: 0.9em;
+}
+
+.Auth-form-btn {
   width: 20rem;
-  background-color: lightblue !important;
-  border-radius: 30px !important;
+  background-color: #ae9235 !important;
+  background-image: linear-gradient(to right, #ae9235 0%, #cea418);
+  color: white !important;
+  border-radius: 10px !important;
+}
+
+.Auth-form-redirect {
+  opacity: 0.7;
+  font-size: 0.98em;
+  margin-bottom: 0;
 }
 
 .bg-google {
   background-color: #4285f4;
   border: 3px solid #4285f4;
+}
+
+@media screen and (max-width: 39rem) {
+  .Auth-container {
+    flex-direction: column;
+    margin-top: 3.5em;
+    padding: 0 0.2rem 1em 0.2rem;
+  }
+
+  .Auth-container > form {
+    padding: 1em;
+  }
+
+  .Auth-img {
+    margin-top: -5em;
+    width: 9em;
+  }
+
+  .Auth-form-input-field,
+  .Auth-form-btn {
+    width: 17.4rem;
+  }
 }

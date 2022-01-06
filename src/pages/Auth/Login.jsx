@@ -6,6 +6,7 @@ import { loginViaEmailPass } from "../../state/user/userActions";
 import { LOGO } from "../../constants";
 import "./auth.css";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login(props) {
   const [passVisible, setPassVisible] = useState(false);
@@ -16,19 +17,19 @@ function Login(props) {
 
   return (
     <div className="p-nav mh-auto">
-      <div className="Auth-container flex-c al-center">
+      <div className="Auth-container flex al-center">
         <img className="Auth-img" src={LOGO} alt="_Logo" />
 
         <form className="flex-c al-center">
-          <h1>Login</h1>
+          <h1 className="Auth-form-heading">Login</h1>
           <TextField
-            className="Auth-input-field"
+            className="Auth-form-input-field"
             label="Email"
             variant="outlined"
             inputRef={emailRef}
           />
           <TextField
-            className="Auth-input-field"
+            className="Auth-form-input-field"
             label="Password"
             variant="outlined"
             inputRef={passRef}
@@ -41,13 +42,21 @@ function Login(props) {
               ),
             }}
           />
-
+          <Link
+            className="Auth-form-forgot-pass-redirect link red"
+            to="auth/forgot-password"
+          >
+            Forgot Password?
+          </Link>
           <Button
-            className="Auth-btn "
+            className="Auth-form-btn"
             // onClick={() => dispatch(loginViaEmailPass())}
           >
-            Sign In
+            Log In
           </Button>
+          <p className="Auth-form-redirect">
+            New User? <Link to="auth/sign-up">Sign Up</Link>{" "}
+          </p>
         </form>
       </div>
     </div>
