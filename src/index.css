@@ -28,6 +28,17 @@ code {
     monospace;
 }
 
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mh-auto {
+  margin: 0 auto;
+}
+
 .flex {
   display: flex;
 }

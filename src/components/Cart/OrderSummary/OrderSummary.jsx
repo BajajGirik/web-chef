@@ -1,30 +1,26 @@
-import { TextField } from "@mui/material";
 import React, { useState } from "react";
 import { WHATSAPP_LINK } from "../../../constants";
 import "./OrderSummary.css";
 
 function OrderSummary({ items, totalAmount }) {
-  const [phoneNo, setPhoneNo] = useState("");
-  const [address, setAddress] = useState("");
-
   const placeOrder = () => {
-    if (address === "") {
-      alert("Address can't be empty");
-      return;
-    }
+    // if (address === "") {
+    //   alert("Address can't be empty");
+    //   return;
+    // }
 
-    let orderText = "Items for order:\n";
+    // let orderText = "Items for order:\n";
 
-    items.forEach(({ name, qty }) => {
-      orderText += `*${name} - ${qty}*\n`;
-    });
+    // items.forEach(({ name, qty }) => {
+    //   orderText += `*${name} - ${qty}*\n`;
+    // });
 
-    orderText += `\n*Phone No*: ${phoneNo}\n`;
-    orderText += `*Address*: ${address}\n`;
-    orderText = encodeURIComponent(orderText);
-    const link = `${WHATSAPP_LINK}?text=${orderText}`;
+    // orderText += `\n*Phone No*: ${phoneNo}\n`;
+    // orderText += `*Address*: ${address}\n`;
+    // orderText = encodeURIComponent(orderText);
+    // const link = `${WHATSAPP_LINK}?text=${orderText}`;
 
-    window.location.href = link;
+    // window.location.href = link;
   };
 
   return (

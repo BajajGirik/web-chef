@@ -1,10 +1,32 @@
-.Login-img {
+.Auth-container {
+  background-color: white;
+  margin-top: 5em;
+  padding: 1em;
+  padding-top: 0;
+  border-radius: 15px;
+}
+
+.Auth-container h1 {
+  font-weight: 500;
+  margin: 0.2em 0;
+}
+
+.Auth-img {
+  margin-top: -5em;
   width: 10em;
   border-radius: 50%;
 }
 
-.Login-btn {
-  
+.Auth-input-field {
+  width: 20rem;
+  background-color: transparent !important;
+  margin-bottom: 1em !important;
+}
+
+.Auth-btn {
+  width: 20rem;
+  background-color: lightblue !important;
+  border-radius: 30px !important;
 }
 
 .bg-google {

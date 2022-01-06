@@ -1,17 +1,21 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  // GoogleAuthProvider,
+  // signInWithPopup,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 import {
-  GET_USER_REQUEST,
   GET_USER_SUCCESS,
   GET_USER_NOT_FOUND,
   SIGNIN_FAIL,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
+  REFRESH_USER_STATE,
 } from "./userActionTypes";
 
-export function getUserRequest() {
+export function refreshUserState() {
   return {
-    type: GET_USER_REQUEST,
+    type: REFRESH_USER_STATE,
   };
 }
 
@@ -50,7 +54,7 @@ export function logoutFail(error) {
 
 export function getUser() {
   return (dispatch) => {
-    dispatch(getUserRequest());
+    dispatch(refreshUserState());
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(getUserSuccess(user));
@@ -63,20 +67,34 @@ export function getUser() {
   };
 }
 
-export function signInViaGoogle() {
+// export function signInViaGoogle() {
+//   return (dispatch) => {
+//     dispatch(refreshUserState());
+
+//     const provider = new GoogleAuthProvider();
+//     provider.addScope("profile");
+//     provider.addScope("email");
+
+//     signInWithPopup(auth, provider)
+//       .then((result) => {
+//         dispatch(getUserSuccess(result.user));
+//       })
+//       .catch((error) => {
+//         dispatch(signInFail(error.message));
+//       });
+//   };
+// }
+
+export function loginViaEmailPass(email, password) {
   return (dispatch) => {
-    dispatch(getUserRequest());
+    dispatch(refreshUserState());
 
-    const provider = new GoogleAuthProvider();
-    provider.addScope("profile");
-    provider.addScope("email");
-
-    signInWithPopup(auth, provider)
+    signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        dispatch(getUserSuccess(result.user));
+        console.log(result);
       })
       .catch((error) => {
-        dispatch(signInFail(error.message));
+        console.log(error);
       });
   };
 }

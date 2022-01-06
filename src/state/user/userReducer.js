@@ -1,9 +1,9 @@
 import {
   GET_USER_NOT_FOUND,
-  GET_USER_REQUEST,
   GET_USER_SUCCESS,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
+  REFRESH_USER_STATE,
   SIGNIN_FAIL,
 } from "./userActionTypes";
 
@@ -16,9 +16,9 @@ const userInitialState = {
 
 const userReducer = (state = userInitialState, action) => {
   switch (action.type) {
-    case GET_USER_REQUEST:
+    case REFRESH_USER_STATE:
       return {
-        ...state,
+        ...userInitialState,
         loading: true,
       };
 
