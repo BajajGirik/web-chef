@@ -8,31 +8,37 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
 import {
-  getLoginErrors,
   getEmailError,
   getPasswordError,
+  getRePasswordError,
+  getSignUpErrors,
 } from "../../helpers/utils";
 
-function Login(props) {
+function SignUp(props) {
   const [passVisible, setPassVisible] = useState(false);
+  const [rePassVisible, setRePassVisible] = useState(false);
+
   const [errors, setErrors] = useState({
     emailError: "",
     passError: "",
+    rePassError: "",
   });
 
   const [activeFields, setActiveFields] = useState({
     emailActive: false,
     passActive: false,
+    rePassActive: false,
   });
 
   const emailRef = useRef();
   const passRef = useRef();
+  const rePassRef = useRef();
 
   const { dispatch } = props;
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (getLoginErrors(emailRef.current.value, passRef.current.value)) return;
+    if (getSignUpErrors(emailRef.current.value, passRef.current.value)) return;
 
     dispatch(loginViaEmailPass(emailRef.current.value, passRef.current.value));
   };
@@ -43,7 +49,7 @@ function Login(props) {
         <img className="Auth-img" src={LOGO} alt="_Logo" />
 
         <form className="flex-c al-center">
-          <h1 className="Auth-form-heading">Login</h1>
+          <h1 className="Auth-form-heading">Sign Up</h1>
 
           <TextField
             className="Auth-form-input-field"
@@ -93,18 +99,40 @@ function Login(props) {
               ),
             }}
           />
+          <TextField
+            className="Auth-form-input-field"
+            label="Re-Password"
+            variant="outlined"
+            inputRef={rePassRef}
+            type={rePassVisible ? "text" : "password"}
+            onChange={(e) =>
+              setErrors({
+                ...errors,
+                rePassError: getRePasswordError(e.target.value),
+              })
+            }
+            error={!activeFields.rePassActive && errors.rePassError !== ""}
+            helperText={!activeFields.rePassActive && errors.rePassError}
+            onFocus={() =>
+              setActiveFields({ ...activeFields, rePassActive: true })
+            }
+            onBlur={() =>
+              setActiveFields({ ...activeFields, rePassActive: false })
+            }
+            InputProps={{
+              endAdornment: (
+                <IconButton onClick={() => setRePassVisible(!rePassVisible)}>
+                  {rePassVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </IconButton>
+              ),
+            }}
+          />
 
-          <Link
-            className="Auth-form-forgot-pass-redirect link red"
-            to="auth/forgot-password"
-          >
-            Forgot Password?
-          </Link>
           <Button className="Auth-form-btn" onClick={handleFormSubmit}>
-            Log In
+            Sign Up
           </Button>
           <p className="Auth-form-redirect">
-            New User? <Link to="/auth/sign-up">Sign Up</Link>
+            Old User? <Link to="/auth/log-in">Log In</Link>
           </p>
         </form>
       </div>
@@ -118,4 +146,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(SignUp);
