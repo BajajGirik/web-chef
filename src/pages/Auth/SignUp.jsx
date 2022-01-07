@@ -1,29 +1,27 @@
 import { connect } from "react-redux";
-import { IconButton, TextField, Button } from "@mui/material";
+import { IconButton, TextField, Button, Alert } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { loginViaEmailPass } from "../../state/user/userActions";
+import { signinViaEmailPass } from "../../state/user/userActions";
 import { LOGO } from "../../constants";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import {
   getEmailError,
   getPasswordError,
   getRePasswordError,
-  getSignUpErrors,
+  signUpErrors,
 } from "../../helpers/utils";
 
 function SignUp(props) {
   const [passVisible, setPassVisible] = useState(false);
   const [rePassVisible, setRePassVisible] = useState(false);
-
   const [errors, setErrors] = useState({
     emailError: "",
     passError: "",
     rePassError: "",
   });
-
   const [activeFields, setActiveFields] = useState({
     emailActive: false,
     passActive: false,
@@ -34,13 +32,28 @@ function SignUp(props) {
   const passRef = useRef();
   const rePassRef = useRef();
 
-  const { dispatch } = props;
+  const navigate = useNavigate();
+  const { user, dispatch } = props;
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (getSignUpErrors(emailRef.current.value, passRef.current.value)) return;
+    if (
+      signUpErrors(
+        emailRef.current.value,
+        passRef.current.value,
+        rePassRef.current.value
+      ) ||
+      user.loading
+    )
+      return;
 
-    dispatch(loginViaEmailPass(emailRef.current.value, passRef.current.value));
+    dispatch(
+      signinViaEmailPass(
+        emailRef.current.value,
+        passRef.current.value,
+        navigate
+      )
+    );
   };
 
   return (
@@ -48,8 +61,13 @@ function SignUp(props) {
       <div className="Auth-container flex al-center">
         <img className="Auth-img" src={LOGO} alt="_Logo" />
 
-        <form className="flex-c al-center">
+        <form onSubmit={handleFormSubmit} className="flex-c al-center">
           <h1 className="Auth-form-heading">Sign Up</h1>
+          {user?.error && (
+            <Alert className="Auth-alert" severity="error">
+              {user.error}
+            </Alert>
+          )}
 
           <TextField
             className="Auth-form-input-field"
@@ -108,7 +126,10 @@ function SignUp(props) {
             onChange={(e) =>
               setErrors({
                 ...errors,
-                rePassError: getRePasswordError(e.target.value),
+                rePassError: getRePasswordError(
+                  passRef.current.value,
+                  e.target.value
+                ),
               })
             }
             error={!activeFields.rePassActive && errors.rePassError !== ""}
@@ -128,7 +149,7 @@ function SignUp(props) {
             }}
           />
 
-          <Button className="Auth-form-btn" onClick={handleFormSubmit}>
+          <Button className="Auth-form-btn" type="submit">
             Sign Up
           </Button>
           <p className="Auth-form-redirect">

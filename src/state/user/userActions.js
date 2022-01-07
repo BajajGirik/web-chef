@@ -2,15 +2,19 @@ import {
   // GoogleAuthProvider,
   // signInWithPopup,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 import {
   GET_USER_SUCCESS,
   GET_USER_NOT_FOUND,
-  SIGNIN_FAIL,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
   REFRESH_USER_STATE,
+  LOGIN_VIA_EMAIL_PASS_FAIL,
+  LOGIN_VIA_EMAIL_PASS_SUCCESS,
+  SIGNIN_VIA_EMAIL_PASS_SUCCESS,
+  SIGNIN_VIA_EMAIL_PASS_FAIL,
 } from "./userActionTypes";
 
 export function refreshUserState() {
@@ -32,9 +36,37 @@ export function getUserNotFound() {
   };
 }
 
-export function signInFail(error) {
+// export function signInFail(error) {
+//   return {
+//     type: SIGNIN_FAIL,
+//     payload: error,
+//   };
+// }
+
+export function signinViaEmailPassSuccess(user) {
   return {
-    type: SIGNIN_FAIL,
+    type: SIGNIN_VIA_EMAIL_PASS_SUCCESS,
+    payload: user,
+  };
+}
+
+export function signinViaEmailPassFail(error) {
+  return {
+    type: SIGNIN_VIA_EMAIL_PASS_FAIL,
+    payload: error,
+  };
+}
+
+export function loginViaEmailPassSuccess(user) {
+  return {
+    type: LOGIN_VIA_EMAIL_PASS_SUCCESS,
+    payload: user,
+  };
+}
+
+export function loginViaEmailPassFail(error) {
+  return {
+    type: LOGIN_VIA_EMAIL_PASS_FAIL,
     payload: error,
   };
 }
@@ -63,7 +95,7 @@ export function getUser() {
       }
     });
 
-    return unsubscribe;
+    unsubscribe();
   };
 }
 
@@ -85,17 +117,31 @@ export function getUser() {
 //   };
 // }
 
-export function loginViaEmailPass(email, password) {
+export function signinViaEmailPass(email, password, navigate) {
+  return (dispatch) => {
+    dispatch(refreshUserState());
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        dispatch(signinViaEmailPassSuccess(result.user));
+        navigate("/");
+      })
+      .catch((error) =>
+        dispatch(signinViaEmailPassFail("Email already registered"))
+      );
+  };
+}
+
+export function loginViaEmailPass(email, password, navigate) {
   return (dispatch) => {
     dispatch(refreshUserState());
 
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        console.log(result);
+        dispatch(loginViaEmailPassSuccess(result.user));
+        navigate("/");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => dispatch(loginViaEmailPassFail("Invalid Credentials")));
   };
 }
 

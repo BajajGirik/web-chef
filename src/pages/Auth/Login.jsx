@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
-import { IconButton, TextField, Button } from "@mui/material";
+import { IconButton, TextField, Button, Alert } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { loginViaEmailPass } from "../../state/user/userActions";
 import { LOGO } from "../../constants";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import {
-  getLoginErrors,
+  loginErrors,
   getEmailError,
   getPasswordError,
 } from "../../helpers/utils";
@@ -19,7 +19,6 @@ function Login(props) {
     emailError: "",
     passError: "",
   });
-
   const [activeFields, setActiveFields] = useState({
     emailActive: false,
     passActive: false,
@@ -28,13 +27,20 @@ function Login(props) {
   const emailRef = useRef();
   const passRef = useRef();
 
-  const { dispatch } = props;
+  const navigate = useNavigate();
+  const { user, dispatch } = props;
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (getLoginErrors(emailRef.current.value, passRef.current.value)) return;
+    if (
+      loginErrors(emailRef.current.value, passRef.current.value) ||
+      user.loading
+    )
+      return;
 
-    dispatch(loginViaEmailPass(emailRef.current.value, passRef.current.value));
+    dispatch(
+      loginViaEmailPass(emailRef.current.value, passRef.current.value, navigate)
+    );
   };
 
   return (
@@ -42,8 +48,13 @@ function Login(props) {
       <div className="Auth-container flex al-center">
         <img className="Auth-img" src={LOGO} alt="_Logo" />
 
-        <form className="flex-c al-center">
+        <form onSubmit={handleFormSubmit} className="flex-c al-center">
           <h1 className="Auth-form-heading">Login</h1>
+          {user?.error && (
+            <Alert className="Auth-alert" severity="error">
+              {user.error}
+            </Alert>
+          )}
 
           <TextField
             className="Auth-form-input-field"
@@ -100,9 +111,11 @@ function Login(props) {
           >
             Forgot Password?
           </Link>
-          <Button className="Auth-form-btn" onClick={handleFormSubmit}>
+
+          <Button className="Auth-form-btn" type="submit">
             Log In
           </Button>
+
           <p className="Auth-form-redirect">
             New User? <Link to="/auth/sign-up">Sign Up</Link>
           </p>

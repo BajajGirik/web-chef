@@ -13,11 +13,18 @@ export function getRePasswordError(pass, rePass) {
   return pass === rePass ? "" : "Passwords don't match";
 }
 
-export function getLoginErrors(email, pass) {
-  const isFieldEmpty = !email || !pass ? "Fields cannot be empty" : "";
-  return isFieldEmpty || getEmailError(email) || getPasswordError(pass);
+export function loginErrors(email, pass) {
+  const isFieldEmpty = !email || !pass ? true : false;
+  return (
+    isFieldEmpty ||
+    (getEmailError(email) !== "" ? true : false) ||
+    (getPasswordError(pass) !== "" ? true : false)
+  );
 }
 
-export function getSignUpErrors(email, pass, repass) {
-  return getLoginErrors(email, pass) || getRePasswordError(pass, repass);
+export function signUpErrors(email, pass, repass) {
+  return (
+    loginErrors(email, pass) ||
+    (getRePasswordError(pass, repass) !== "" ? true : false)
+  );
 }

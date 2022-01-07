@@ -15,6 +15,11 @@
   color: rgb(75, 75, 75);
 }
 
+.Auth-alert {
+  width: 20rem !important;
+  margin-top: 1em !important;
+}
+
 .Auth-img {
   width: 10em;
   border-radius: 50%;
@@ -71,7 +76,8 @@
   }
 
   .Auth-form-input-field,
-  .Auth-form-btn {
+  .Auth-form-btn,
+  .Auth-alert {
     width: 17.4rem;
   }
 }

@@ -9,7 +9,7 @@ import { logout } from "../../state/user/userActions";
 
 function Navbar(props) {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);
-  const { isLoggedIn, displayName, photoURL, dispatch } = props;
+  const { isLoggedIn, email, photoURL, dispatch } = props;
 
   return (
     <nav className="Navbar-container flex al-center j-between">
@@ -44,23 +44,23 @@ function Navbar(props) {
           ))}
 
           <li className="Navbar-list-item">
-            {isLoggedIn ? (
-              <Avatar
-                src={photoURL}
-                alt={displayName[0]}
-                onClick={() => dispatch(logout())}
-              />
-            ) : (
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "link nav-active" : "link"
-                }
-                to="/auth/log-in"
-                onClick={() => setIsMovNavOpen(false)}
-              >
-                Login
-              </NavLink>
-            )}
+            {/* <Avatar
+                 src={photoURL}
+                alt={email?.[0]}
+                 onClick={() => dispatch(logout())}
+               /> */}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "link nav-active" : "link"
+              }
+              to="/auth/log-in"
+              onClick={() => {
+                isLoggedIn && dispatch(logout());
+                setIsMovNavOpen(false);
+              }}
+            >
+              {isLoggedIn ? "Logout" : "Login"}
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -72,7 +72,7 @@ function mapStateToProps(state) {
   console.log(state);
   return {
     isLoggedIn: state?.isLoggedIn,
-    displayName: state?.data?.displayName,
+    email: state?.data?.email,
     photoURL: state?.data?.photoURL,
   };
 }
