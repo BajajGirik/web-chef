@@ -5,7 +5,7 @@ import { Products } from "./pages/Products";
 import { Cart } from "./pages/Cart";
 import { Terms, PrivacyPolicy, RefundPolicy } from "./pages/T&C";
 import { Home } from "./pages/Home";
-import { Login } from "./pages/Auth";
+import { Login, SignUp } from "./pages/Auth";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
@@ -22,7 +22,8 @@ function App(props) {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/log-in" element={<Login />} />
+        <Route path="/auth/sign-up" element={<SignUp />} />
         {/* <Route path="/auth/register" element={<Home />} /> */}
         <Route path="product/:category" element={<Products />} />
         <Route path="cart" element={<Cart />} />

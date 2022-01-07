@@ -23,7 +23,8 @@
 
 .Auth-form-input-field {
   width: 20rem;
-  background-color: white !important;
+  /* height: 4rem; */
+  /* background-color: white !important; */
   margin-top: 1em !important;
 }
 

@@ -4,16 +4,38 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { loginViaEmailPass } from "../../state/user/userActions";
 import { LOGO } from "../../constants";
-import "./auth.css";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import "./Auth.css";
+import {
+  getLoginErrors,
+  getEmailError,
+  getPasswordError,
+} from "../../helpers/utils";
 
 function Login(props) {
   const [passVisible, setPassVisible] = useState(false);
+  const [errors, setErrors] = useState({
+    emailError: "",
+    passError: "",
+  });
+
+  const [activeFields, setActiveFields] = useState({
+    emailActive: false,
+    passActive: false,
+  });
+
   const emailRef = useRef();
   const passRef = useRef();
 
   const { dispatch } = props;
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (getLoginErrors(emailRef.current.value, passRef.current.value)) return;
+
+    dispatch(loginViaEmailPass(emailRef.current.value, passRef.current.value));
+  };
 
   return (
     <div className="p-nav mh-auto">
@@ -22,11 +44,26 @@ function Login(props) {
 
         <form className="flex-c al-center">
           <h1 className="Auth-form-heading">Login</h1>
+
           <TextField
             className="Auth-form-input-field"
             label="Email"
             variant="outlined"
             inputRef={emailRef}
+            onChange={(e) =>
+              setErrors({
+                ...errors,
+                emailError: getEmailError(e.target.value),
+              })
+            }
+            error={!activeFields.emailActive && errors.emailError !== ""}
+            helperText={!activeFields.emailActive && errors.emailError}
+            onFocus={() =>
+              setActiveFields({ ...activeFields, emailActive: true })
+            }
+            onBlur={() =>
+              setActiveFields({ ...activeFields, emailActive: false })
+            }
           />
           <TextField
             className="Auth-form-input-field"
@@ -34,6 +71,20 @@ function Login(props) {
             variant="outlined"
             inputRef={passRef}
             type={passVisible ? "text" : "password"}
+            onChange={(e) =>
+              setErrors({
+                ...errors,
+                passError: getPasswordError(e.target.value),
+              })
+            }
+            error={!activeFields.passActive && errors.passError !== ""}
+            helperText={!activeFields.passActive && errors.passError}
+            onFocus={() =>
+              setActiveFields({ ...activeFields, passActive: true })
+            }
+            onBlur={() =>
+              setActiveFields({ ...activeFields, passActive: false })
+            }
             InputProps={{
               endAdornment: (
                 <IconButton onClick={() => setPassVisible(!passVisible)}>
@@ -42,16 +93,14 @@ function Login(props) {
               ),
             }}
           />
+
           <Link
             className="Auth-form-forgot-pass-redirect link red"
             to="auth/forgot-password"
           >
             Forgot Password?
           </Link>
-          <Button
-            className="Auth-form-btn"
-            // onClick={() => dispatch(loginViaEmailPass())}
-          >
+          <Button className="Auth-form-btn" onClick={handleFormSubmit}>
             Log In
           </Button>
           <p className="Auth-form-redirect">

@@ -55,7 +55,7 @@ function Navbar(props) {
                 className={({ isActive }) =>
                   isActive ? "link nav-active" : "link"
                 }
-                to="/auth/login"
+                to="/auth/log-in"
                 onClick={() => setIsMovNavOpen(false)}
               >
                 Login
