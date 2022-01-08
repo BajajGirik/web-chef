@@ -46,7 +46,7 @@ function App(props) {
 
 function mapStateToProps(state) {
   return {
-    user: state,
+    user: state.user,
   };
 }
 

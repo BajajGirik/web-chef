@@ -69,11 +69,10 @@ function Navbar(props) {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
-    isLoggedIn: state?.isLoggedIn,
-    email: state?.data?.email,
-    photoURL: state?.data?.photoURL,
+    isLoggedIn: state?.user?.isLoggedIn,
+    email: state?.user?.data?.email,
+    photoURL: state?.user?.data?.photoURL,
   };
 }
 

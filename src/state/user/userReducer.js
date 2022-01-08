@@ -85,6 +85,9 @@ const userReducer = (state = userInitialState, action) => {
         ...userInitialState,
         error: action.payload,
       };
+
+    default:
+      return state;
   }
 };
 

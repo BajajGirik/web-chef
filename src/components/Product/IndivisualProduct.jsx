@@ -1,23 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { connect } from "react-redux";
 import { VEG_ICON_URI } from "../../constants";
+import { saveToCart } from "../../state/cart/cartActions";
 import { Carousal } from "../UI/Caraousal";
 import "./IndivisualProduct.css";
 
-function IndivisualProduct({ id, name, pricing, imgUrl }) {
+function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
   const [isInCart, setIsInCart] = useState(false);
 
+  const { cart, dispatch } = rest;
+  
   const saveItemToCart = () => {
-    let items = JSON.parse(localStorage.getItem("cart"));
-    if (items) {
-      items = [...items, { productId: id, qty: 1 }];
-    } else {
-      items = [{ productId: id, qty: 1 }];
-    }
-
-    localStorage.setItem("cart", JSON.stringify(items));
-    setIsInCart(true);
+    dispatch(saveToCart(id, 1));
   };
 
   const removeItemFromCart = () => {
@@ -68,4 +64,10 @@ function IndivisualProduct({ id, name, pricing, imgUrl }) {
   );
 }
 
-export default IndivisualProduct;
+function mapStateToProps(state) {
+  return {
+    cart: state.cart
+  };
+}
+
+export default connect(mapStateToProps)(IndivisualProduct);
