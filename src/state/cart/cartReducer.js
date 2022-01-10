@@ -1,4 +1,6 @@
 import {
+  DELETE_FROM_CART_FAIL,
+  DELETE_FROM_CART_SUCCESS,
   GET_CART_FAIL,
   GET_CART_REQUEST,
   GET_CART_SUCCESS,
@@ -51,9 +53,28 @@ const cartReducer = (state = cartInitialState, action) => {
           { productId: action.payload.productId, qty: action.payload.qty },
           ...state.data.slice(index + 1),
         ],
+        amount: state.amount + action.payload.changeInAmount,
       };
 
     case SAVE_TO_CART_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
+    case DELETE_FROM_CART_SUCCESS:
+      const updatedCartItems = state.data.filter(
+        (cartItem) => cartItem.productId !== action.payload.productId
+      );
+
+      return {
+        ...state,
+        data: updatedCartItems,
+        amount: state.amount - action.payload.changeInAmount,
+        size: state.size - 1,
+      };
+
+    case DELETE_FROM_CART_FAIL:
       return {
         ...state,
         error: action.payload,

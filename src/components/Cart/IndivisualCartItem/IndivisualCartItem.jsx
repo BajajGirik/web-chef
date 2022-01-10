@@ -4,38 +4,24 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./IndivisualCartItem.css";
 import { VEG_ICON_URI } from "../../../constants";
+import {deleteFromCart, saveToCart} from "../../../state/cart/cartActions";
 
-function IndivisualCartItem({ id, name, pricing, imgUrl, qty, refreshItems }) {
+function IndivisualCartItem({id, name, pricing, imgUrl, qty, ...rest}) {
+
+	const {dispatch} = props;
+	
   const decreaseQty = () => {
     if (qty <= 1) return;
-
-    let items = JSON.parse(localStorage.getItem("cart"));
-    const index = items.findIndex((item) => item.productId === id);
-
-    items[index].qty--;
-    localStorage.setItem("cart", JSON.stringify(items));
-
-    refreshItems();
+	  dispatch(saveToCart(id, qty - 1, -1 * pricing?.[0]?.price));
   };
 
   const increaseQty = () => {
     if (qty >= 5) return;
-
-    let items = JSON.parse(localStorage.getItem("cart"));
-    const index = items.findIndex((item) => item.productId === id);
-
-    items[index].qty++;
-    localStorage.setItem("cart", JSON.stringify(items));
-
-    refreshItems();
+	  dispatch(saveToCart(id, qty + 1, pricing?.[0]?.price));
   };
 
   const removeFromCart = () => {
-    let items = JSON.parse(localStorage.getItem("cart"));
-    const updatedItems = items.filter((item) => item.productId !== id);
-
-    localStorage.setItem("cart", JSON.stringify(updatedItems));
-    refreshItems();
+	dispatch(deleteFromCart(id, qty*pricing?.[0]?.price))
   };
 
   return (
