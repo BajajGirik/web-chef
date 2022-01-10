@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { VEG_ICON_URI } from "../../constants";
 import { saveToCart } from "../../state/cart/cartActions";
 import { Carousal } from "../UI/Caraousal";
@@ -11,28 +12,12 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
   const [isInCart, setIsInCart] = useState(false);
 
   const { cart, dispatch } = rest;
+  const navigate = useNavigate();
   
-  const saveItemToCart = () => {
-    dispatch(saveToCart(id, 1));
-  };
-
-  const removeItemFromCart = () => {
-    let items = JSON.parse(localStorage.getItem("cart"));
-    items = items.filter(({ productId }) => productId !== id);
-
-    localStorage.setItem("cart", JSON.stringify(items));
-    setIsInCart(false);
-  };
-
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("cart"));
-    if (!items) return;
-    const index = items.findIndex(({ productId }) => productId === id);
-
-    if (index !== -1) {
-      setIsInCart(true);
-    }
-  }, [id]);
+    console.log(typeof cart.data)
+    setIsInCart(cart.data.some(item => item.productId === id));
+  }, [cart]);
 
   return (
     <div className="IndivisualProduct-container">
@@ -48,15 +33,15 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
       </div>
       <div className="txt-al-center pb">
         {!isInCart ? (
-          <button className="IndivisualProduct-btn" onClick={saveItemToCart}>
+          <button className="IndivisualProduct-btn" onClick={() => dispatch(saveToCart(id, 1))}>
             Add To Cart
           </button>
         ) : (
           <button
             className="IndivisualProduct-btn remove-cart-btn"
-            onClick={removeItemFromCart}
+            onClick={() => navigate("/cart")}
           >
-            Remove from Cart
+            Go To Cart
           </button>
         )}
       </div>

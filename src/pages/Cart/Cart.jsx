@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import {
   IndivisualCartItem,
   OrderSummary,
@@ -7,33 +8,19 @@ import {
 import { PRODUCTS } from "../../constants";
 import "./Cart.css";
 
-function Cart() {
+function Cart(props) {
   const [items, setItems] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0);
 
-  const refreshItems = () => {
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
-    if (!cartItems) {
-      setItems([]);
-      setTotalAmount(0);
-      return;
-    }
+  const { cart } = props;
 
-    let total = 0;
-
-    const finalList = cartItems?.map(({ productId, qty }) => {
+  useEffect(() => {
+    const finalList = cart.data.map(({ productId, qty }) => {
       const item = PRODUCTS.find((product) => product.id === productId);
-      total += item.pricing[0].price * qty;
       return { ...item, qty: qty };
     });
 
     setItems(finalList);
-    setTotalAmount(total);
-  };
-
-  useEffect(() => {
-    refreshItems();
-  }, []);
+  }, [cart, PRODUCTS]);
 
   return (
     <div className="Cart-container p-nav">
@@ -48,11 +35,10 @@ function Cart() {
                 pricing={pricing}
                 imgUrl={imgUrl}
                 qty={qty}
-                refreshItems={refreshItems}
               />
             ))}
           </div>
-          <OrderSummary items={items} totalAmount={totalAmount} />
+          <OrderSummary amount={cart?.amount} />
         </>
       ) : (
         <CartEmpty />
@@ -61,4 +47,10 @@ function Cart() {
   );
 }
 
-export default Cart;
+function mapStateToProps(state) {
+  return {
+    cart: state.cart,
+  };
+}
+
+export default connect(mapStateToProps)(Cart);

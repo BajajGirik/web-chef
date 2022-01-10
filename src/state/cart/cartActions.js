@@ -28,6 +28,20 @@ export function getCartFail(error) {
   };
 }
 
+export function saveToCartSuccess(productId, qty) {
+  return {
+    type: SAVE_TO_CART_SUCCESS,
+    payload: { productId, qty },
+  };
+}
+
+export function saveToCartFail(error) {
+  return {
+    type: SAVE_TO_CART_FAIL,
+    payload: error,
+  };
+}
+
 export function getCart() {
   return (dispatch) => {
     const cartCollectionRef = collection(
@@ -50,11 +64,11 @@ export function getCart() {
   };
 }
 
-export function saveToCart(productID, qty) {
+export function saveToCart(productId, qty) {
   return (dispatch) => {
-    const docRef = doc(db, "users", auth.currentUser.uid, "cart", productID);
+    const docRef = doc(db, "users", auth.currentUser.uid, "cart", productId);
     setDoc(docRef, { qty: qty }, { merge: true })
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+      .then((result) => dispatch(saveToCartSuccess(productId, qty)))
+      .catch((error) => dispatch(saveToCartFail("Failed to update cart")));
   };
 }
