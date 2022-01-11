@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import { getCart } from "../cart/cartActions";
+import { getShippingDetails } from "../shipping/shippingActiontypes";
 import {
   GET_USER_SUCCESS,
   GET_USER_NOT_FOUND,
@@ -91,7 +91,7 @@ export function getUser() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(getUserSuccess(user));
-        dispatch(getCart());
+        dispatch(getShippingDetails());
       } else {
         dispatch(getUserNotFound());
       }

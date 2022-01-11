@@ -7,7 +7,7 @@ import {
   SAVE_TO_CART_FAIL,
   SAVE_TO_CART_SUCCESS,
 } from "./cartActionTypes";
-import { collection, setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 
 export function getCartRequest() {
