@@ -1,0 +1,15 @@
+.Shipping-container {
+  background-color: white;
+  border-radius: 1em;
+  width: 90%;
+  margin: 0 auto;
+  padding: 4em;
+}
+
+.Shipping-container > h1 {
+  margin: 0 0 1.5em 0;
+}
+
+.input-fields {
+  margin-bottom: 1em !important;
+}

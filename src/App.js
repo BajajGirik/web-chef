@@ -9,6 +9,7 @@ import { Login, SignUp } from "./pages/Auth";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
+import { Shipping } from "./pages/Shipping";
 
 function App(props) {
   const { user, dispatch } = props;
@@ -20,15 +21,15 @@ function App(props) {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Shipping />} /> */}
+        {/* <Route path="/" element={<Home />} />
         <Route path="/auth/log-in" element={<Login />} />
         <Route path="/auth/sign-up" element={<SignUp />} />
-        {/* <Route path="/auth/register" element={<Home />} /> */}
         <Route path="product/:category" element={<Products />} />
         <Route path="cart" element={<Cart />} />
         <Route path="tnc" element={<Terms />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="refundpolicy" element={<RefundPolicy />} />
+        <Route path="refundpolicy" element={<RefundPolicy />} /> */}
         {/* <Route path="/" element={<Navbar />} />
           <Route
             path="*"

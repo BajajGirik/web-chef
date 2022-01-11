@@ -41,19 +41,11 @@ const cartReducer = (state = cartInitialState, action) => {
       };
 
     case SAVE_TO_CART_SUCCESS:
-      let index = state.data.findIndex(
-        (item) => item.productId === action.payload.productId
-      );
-      index === -1 && (index = state.size);
-
       return {
         ...state,
-        data: [
-          ...state.data.slice(0, index),
-          { productId: action.payload.productId, qty: action.payload.qty },
-          ...state.data.slice(index + 1),
-        ],
+        data: action.payload.updatedCart,
         amount: state.amount + action.payload.changeInAmount,
+        ...(!action.payload.itemPresentBefore && { size: state.size + 1 }),
       };
 
     case SAVE_TO_CART_FAIL:
@@ -63,13 +55,9 @@ const cartReducer = (state = cartInitialState, action) => {
       };
 
     case DELETE_FROM_CART_SUCCESS:
-      const updatedCartItems = state.data.filter(
-        (cartItem) => cartItem.productId !== action.payload.productId
-      );
-
       return {
         ...state,
-        data: updatedCartItems,
+        data: action.payload.updatedCart,
         amount: state.amount - action.payload.changeInAmount,
         size: state.size - 1,
       };

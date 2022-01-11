@@ -7,14 +7,7 @@ import {
   SAVE_TO_CART_FAIL,
   SAVE_TO_CART_SUCCESS,
 } from "./cartActionTypes";
-import {
-  collection,
-  getDocs,
-  setDoc,
-  doc,
-  getDoc,
-  deleteDoc,
-} from "firebase/firestore";
+import { collection, setDoc, doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 
 export function getCartRequest() {
@@ -37,10 +30,14 @@ export function getCartFail(error) {
   };
 }
 
-export function saveToCartSuccess(productId, qty, changeInAmount) {
+export function saveToCartSuccess(
+  updatedCart,
+  changeInAmount,
+  itemPresentBefore
+) {
   return {
     type: SAVE_TO_CART_SUCCESS,
-    payload: { productId, qty, changeInAmount },
+    payload: { updatedCart, changeInAmount, itemPresentBefore },
   };
 }
 
@@ -51,10 +48,10 @@ export function saveToCartFail(error) {
   };
 }
 
-export function deleteFromCartSuccess(productId, changeInAmount) {
+export function deleteFromCartSuccess(updatedCart, changeInAmount) {
   return {
     type: DELETE_FROM_CART_SUCCESS,
-    payload: { productId, changeInAmount },
+    payload: { updatedCart, changeInAmount },
   };
 }
 
@@ -65,44 +62,32 @@ export function deleteFromCartFail(error) {
   };
 }
 
-export function getCart() {
-  return async (dispatch) => {
-    const userDocRef = doc(db, "users", auth.currentUser.uid);
-    const cartRef = collection(db, "users", auth.currentUser.uid, "cart");
-
-    try {
-      const docs = await getDocs(cartRef);
-      const cartItems = docs.docs.map((indivisualDoc) => ({
-        productId: indivisualDoc.id,
-        qty: indivisualDoc.data().qty,
-      }));
-
-      const userSnap = await getDoc(userDocRef);
-      const amount = userSnap.data()?.amount ? userSnap.data().amount : 0;
-
-      dispatch(getCartSuccess(cartItems, docs.size, amount));
-    } catch (error) {
-      dispatch(getCartFail("Failed to load cart info"));
-    }
-  };
-}
-
 export function saveToCart(productId, qty, changeInAmount) {
-  return (dispatch) => {
-    const docRef = doc(db, "users", auth.currentUser.uid, "cart", productId);
-    setDoc(docRef, { qty: qty }, { merge: true })
-      .then(() => dispatch(saveToCartSuccess(productId, qty, changeInAmount)))
+  return (dispatch, getState) => {
+    const docRef = doc(db, "users", auth.currentUser.uid);
+    const cart = getState().cart.data;
+    const updatedCart = cart.filter((item) => item.productId !== productId);
+    const itemPresentBefore = cart.some((item) => item.productId === productId);
+    updatedCart += [{ productId, qty }];
+
+    setDoc(docRef, { cart: updatedCart }, { merge: true })
+      .then(() =>
+        dispatch(
+          saveToCartSuccess(updatedCart, changeInAmount, itemPresentBefore)
+        )
+      )
       .catch(() => dispatch(saveToCartFail("Failed to update cart")));
   };
 }
 
 export function deleteFromCart(productId, changeInAmount) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const docRef = doc(db, "users", auth.currentUser.uid, "cart", productId);
-    deleteDoc(docRef)
-      .then(() => dispatch(deleteFromCartSuccess(productId, changeInAmount)))
-      .catch(() =>
-        dispatch(deleteFromCartFail("Failed to delete item from cart"))
-      );
+    const cart = getState().cart.data;
+    const updatedCart = cart.filter((item) => item.productId !== productId);
+
+    setDoc(docRef, { cart: updatedCart }, { merge: true })
+      .then(() => dispatch(deleteFromCartSuccess(updatedCart, changeInAmount)))
+      .catch(() => dispatch(saveToCartFail("Failed to update cart")));
   };
 }

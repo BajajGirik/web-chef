@@ -5,10 +5,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import "./IndivisualCartItem.css";
 import { VEG_ICON_URI } from "../../../constants";
 import {deleteFromCart, saveToCart} from "../../../state/cart/cartActions";
+import {connect} from "react-redux";
 
 function IndivisualCartItem({id, name, pricing, imgUrl, qty, ...rest}) {
 
-	const {dispatch} = props;
+  const {dispatch} = rest;
 	
   const decreaseQty = () => {
     if (qty <= 1) return;
@@ -66,4 +67,4 @@ function IndivisualCartItem({id, name, pricing, imgUrl, qty, ...rest}) {
   );
 }
 
-export default IndivisualCartItem;
+export default connect(null)(IndivisualCartItem);

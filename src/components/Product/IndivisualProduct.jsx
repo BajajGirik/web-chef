@@ -33,7 +33,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
       </div>
       <div className="txt-al-center pb">
         {!isInCart ? (
-          <button className="IndivisualProduct-btn" onClick={() => dispatch(saveToCart(id, 1))}>
+          <button className="IndivisualProduct-btn" onClick={() => dispatch(saveToCart(id, 1, pricing?.[0]?.price))}>
             Add To Cart
           </button>
         ) : (
