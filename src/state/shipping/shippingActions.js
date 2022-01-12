@@ -1,5 +1,24 @@
 import { getCartFail, getCartSuccess } from "../cart/cartActions";
 import { doc, getDoc } from "firebase/firestore";
+import {
+  GET_SHIPPING_DETAILS_FAIL,
+  GET_SHIPPING_DETAILS_SUCCESS,
+} from "./shippingActiontypes";
+import { auth, db } from "../../firebase";
+
+export function getShippingDetailsSuccess(name, phone, address, pincode, city) {
+  return {
+    type: GET_SHIPPING_DETAILS_SUCCESS,
+    payload: { name, phone, address, pincode, city },
+  };
+}
+
+export function getShippingDetailsFail(msg, error) {
+  return {
+    type: GET_SHIPPING_DETAILS_FAIL,
+    payload: { msg, error },
+  };
+}
 
 export function getShippingDetails() {
   return (dispatch) => {
@@ -7,7 +26,7 @@ export function getShippingDetails() {
 
     getDoc(userDocRef)
       .then((userSnap) => {
-        const { name, phone, address, pincode, city, cart, amount } =
+        let { name, phone, address, pincode, city, cart, amount } =
           userSnap.data();
         name === undefined && (name = "");
         phone === undefined && (phone = "");
@@ -18,9 +37,13 @@ export function getShippingDetails() {
         amount === undefined && (amount = 0);
 
         dispatch(getCartSuccess(cart, cart.length, amount));
+        dispatch(
+          getShippingDetailsSuccess(name, phone, address, pincode, city)
+        );
       })
       .catch(() => {
-        dispatch(getCartFail("Failed to load cart info"));
+        dispatch(getCartFail("", "Failed to load cart info"));
+        dispatch(getShippingDetailsFail("", "Failed to load shipping details"));
       });
   };
 }

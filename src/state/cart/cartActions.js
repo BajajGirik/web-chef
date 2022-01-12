@@ -23,10 +23,10 @@ export function getCartSuccess(cartItems, size, amount) {
   };
 }
 
-export function getCartFail(error) {
+export function getCartFail(msg, error) {
   return {
     type: GET_CART_FAIL,
-    payload: error,
+    payload: { msg, error },
   };
 }
 
@@ -66,14 +66,25 @@ export function saveToCart(productId, qty, changeInAmount) {
   return (dispatch, getState) => {
     const docRef = doc(db, "users", auth.currentUser.uid);
     const cart = getState().cart.data;
-    const updatedCart = cart.filter((item) => item.productId !== productId);
-    const itemPresentBefore = cart.some((item) => item.productId === productId);
-    updatedCart += [{ productId, qty }];
+    const updateItemIndex = cart.findIndex(
+      (item) => item.productId === productId
+    );
+
+    let updatedCart;
+    if (updateItemIndex === -1) {
+      updatedCart = [...cart, { productId, qty }];
+    } else {
+      updatedCart = [
+        ...cart.slice(0, updateItemIndex),
+        { productId, qty },
+        ...cart.slice(updateItemIndex + 1),
+      ];
+    }
 
     setDoc(docRef, { cart: updatedCart }, { merge: true })
       .then(() =>
         dispatch(
-          saveToCartSuccess(updatedCart, changeInAmount, itemPresentBefore)
+          saveToCartSuccess(updatedCart, changeInAmount, updateItemIndex !== -1)
         )
       )
       .catch(() => dispatch(saveToCartFail("Failed to update cart")));

@@ -15,7 +15,6 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
   const navigate = useNavigate();
   
   useEffect(() => {
-    console.log(typeof cart.data)
     setIsInCart(cart.data.some(item => item.productId === id));
   }, [cart]);
 

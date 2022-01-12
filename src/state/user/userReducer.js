@@ -15,6 +15,7 @@ const userInitialState = {
   loading: false,
   isLoggedIn: false,
   data: {},
+  msg: "",
   error: "",
 };
 
@@ -22,7 +23,7 @@ const userReducer = (state = userInitialState, action) => {
   switch (action.type) {
     case REFRESH_USER_STATE:
       return {
-        ...userInitialState,
+        ...state,
         loading: true,
       };
 
@@ -31,6 +32,7 @@ const userReducer = (state = userInitialState, action) => {
         loading: false,
         isLoggedIn: true,
         data: action.payload,
+        msg: "SUCCESS",
         error: "",
       };
 
@@ -38,6 +40,7 @@ const userReducer = (state = userInitialState, action) => {
       return {
         ...state,
         loading: false,
+        msg: action.payload.msg,
       };
 
     // case SIGNIN_FAIL:

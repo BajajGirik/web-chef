@@ -5,7 +5,11 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import { getShippingDetails } from "../shipping/shippingActiontypes";
+import { getCartFail } from "../cart/cartActions";
+import {
+  getShippingDetails,
+  getShippingDetailsFail,
+} from "../shipping/shippingActions";
 import {
   GET_USER_SUCCESS,
   GET_USER_NOT_FOUND,
@@ -31,9 +35,10 @@ export function getUserSuccess(user) {
   };
 }
 
-export function getUserNotFound() {
+export function getUserNotFound(msg) {
   return {
     type: GET_USER_NOT_FOUND,
+    payload: msg,
   };
 }
 
@@ -72,7 +77,7 @@ export function loginViaEmailPassFail(error) {
   };
 }
 
-export function logoutSuccess() {
+export function logoutSuccess(msg) {
   return {
     type: LOGOUT_SUCCESS,
   };
@@ -93,7 +98,9 @@ export function getUser() {
         dispatch(getUserSuccess(user));
         dispatch(getShippingDetails());
       } else {
-        dispatch(getUserNotFound());
+        dispatch(getUserNotFound("User Not Logged In"));
+        dispatch(getCartFail("User Not Logged In", ""));
+        dispatch(getShippingDetailsFail("User Not Logged In", ""));
       }
     });
 

@@ -21,15 +21,15 @@ function App(props) {
     <div className="App">
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Shipping />} /> */}
-        {/* <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/auth/log-in" element={<Login />} />
         <Route path="/auth/sign-up" element={<SignUp />} />
         <Route path="product/:category" element={<Products />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="/shipping" element={<Shipping />} />
         <Route path="tnc" element={<Terms />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="refundpolicy" element={<RefundPolicy />} /> */}
+        <Route path="refundpolicy" element={<RefundPolicy />} />
         {/* <Route path="/" element={<Navbar />} />
           <Route
             path="*"

@@ -13,6 +13,7 @@ const cartInitialState = {
   size: 0,
   amount: 0,
   data: [],
+  msg: "",
   error: "",
 };
 
@@ -20,7 +21,7 @@ const cartReducer = (state = cartInitialState, action) => {
   switch (action.type) {
     case GET_CART_REQUEST:
       return {
-        ...cartInitialState,
+        ...state,
         loading: true,
       };
 
@@ -30,6 +31,7 @@ const cartReducer = (state = cartInitialState, action) => {
         size: action.payload.size,
         data: action.payload.cartItems,
         amount: action.payload.amount,
+        msg: "SUCCESS",
         error: "",
       };
 
@@ -37,7 +39,8 @@ const cartReducer = (state = cartInitialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        msg: action.payload.msg,
+        error: action.payload.error,
       };
 
     case SAVE_TO_CART_SUCCESS:
