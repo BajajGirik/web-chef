@@ -90,7 +90,9 @@ function Shipping(props) {
             onChange={handleChange}
             variant="outlined"
             fullWidth
-          />
+		  />
+
+		<button>Save And Place Order</button>
         </form>
       </div>
     </div>

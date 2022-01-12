@@ -93,7 +93,7 @@ export function saveToCart(productId, qty, changeInAmount) {
 
 export function deleteFromCart(productId, changeInAmount) {
   return (dispatch, getState) => {
-    const docRef = doc(db, "users", auth.currentUser.uid, "cart", productId);
+    const docRef = doc(db, "users", auth.currentUser.uid);
     const cart = getState().cart.data;
     const updatedCart = cart.filter((item) => item.productId !== productId);
 
