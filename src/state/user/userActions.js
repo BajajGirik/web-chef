@@ -5,26 +5,31 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebase";
-import { getCartFail } from "../cart/cartActions";
+import { setCartErrors, setCartLoadingTrue } from "../cart/cartActions";
 import {
   getShippingDetails,
-  getShippingDetailsFail,
+  setShippingErrors,
+  setShippingLoadingTrue,
 } from "../shipping/shippingActions";
 import {
   GET_USER_SUCCESS,
-  GET_USER_NOT_FOUND,
-  LOGOUT_FAIL,
   LOGOUT_SUCCESS,
-  REFRESH_USER_STATE,
-  LOGIN_VIA_EMAIL_PASS_FAIL,
+  SET_USER_LOADING_TRUE,
   LOGIN_VIA_EMAIL_PASS_SUCCESS,
   SIGNIN_VIA_EMAIL_PASS_SUCCESS,
-  SIGNIN_VIA_EMAIL_PASS_FAIL,
+  SET_USER_ERRORS,
 } from "./userActionTypes";
 
-export function refreshUserState() {
+export function setUserLoadingTrue() {
   return {
-    type: REFRESH_USER_STATE,
+    type: SET_USER_LOADING_TRUE,
+  };
+}
+
+export function setUserErrors(msg, error) {
+  return {
+    type: SET_USER_ERRORS,
+    payload: { msg, error },
   };
 }
 
@@ -32,13 +37,6 @@ export function getUserSuccess(user) {
   return {
     type: GET_USER_SUCCESS,
     payload: user,
-  };
-}
-
-export function getUserNotFound(msg) {
-  return {
-    type: GET_USER_NOT_FOUND,
-    payload: msg,
   };
 }
 
@@ -56,13 +54,6 @@ export function signinViaEmailPassSuccess(user) {
   };
 }
 
-export function signinViaEmailPassFail(error) {
-  return {
-    type: SIGNIN_VIA_EMAIL_PASS_FAIL,
-    payload: error,
-  };
-}
-
 export function loginViaEmailPassSuccess(user) {
   return {
     type: LOGIN_VIA_EMAIL_PASS_SUCCESS,
@@ -70,37 +61,26 @@ export function loginViaEmailPassSuccess(user) {
   };
 }
 
-export function loginViaEmailPassFail(error) {
-  return {
-    type: LOGIN_VIA_EMAIL_PASS_FAIL,
-    payload: error,
-  };
-}
-
-export function logoutSuccess(msg) {
+export function logoutSuccess() {
   return {
     type: LOGOUT_SUCCESS,
   };
 }
 
-export function logoutFail(error) {
-  return {
-    type: LOGOUT_FAIL,
-    payload: error,
-  };
-}
-
 export function getUser() {
   return (dispatch) => {
-    dispatch(refreshUserState());
+    dispatch(setUserLoadingTrue());
+    dispatch(setCartLoadingTrue());
+    dispatch(setShippingLoadingTrue());
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(getUserSuccess(user));
         dispatch(getShippingDetails());
       } else {
-        dispatch(getUserNotFound("User Not Logged In"));
-        dispatch(getCartFail("User Not Logged In", ""));
-        dispatch(getShippingDetailsFail("User Not Logged In", ""));
+        dispatch(setUserErrors("User Not Logged In", ""));
+        dispatch(setCartErrors("User Not Logged In", ""));
+        dispatch(setShippingErrors("User Not Logged In", ""));
       }
     });
 
@@ -110,7 +90,7 @@ export function getUser() {
 
 // export function signInViaGoogle() {
 //   return (dispatch) => {
-//     dispatch(refreshUserState());
+//     dispatch(setUserLoadingTrue());
 
 //     const provider = new GoogleAuthProvider();
 //     provider.addScope("profile");
@@ -128,7 +108,7 @@ export function getUser() {
 
 export function signinViaEmailPass(email, password, navigate) {
   return (dispatch) => {
-    dispatch(refreshUserState());
+    dispatch(setUserLoadingTrue());
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
@@ -136,21 +116,21 @@ export function signinViaEmailPass(email, password, navigate) {
         navigate("/");
       })
       .catch((error) =>
-        dispatch(signinViaEmailPassFail("Email already registered"))
+        dispatch(setUserErrors("", "Email already registered"))
       );
   };
 }
 
 export function loginViaEmailPass(email, password, navigate) {
   return (dispatch) => {
-    dispatch(refreshUserState());
+    dispatch(setUserLoadingTrue());
 
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         dispatch(loginViaEmailPassSuccess(result.user));
         navigate("/");
       })
-      .catch((error) => dispatch(loginViaEmailPassFail("Invalid Credentials")));
+      .catch((error) => dispatch(setUserErrors("", "Invalid Credentials")));
   };
 }
 
@@ -159,6 +139,6 @@ export function logout() {
     auth
       .signOut()
       .then(() => dispatch(logoutSuccess()))
-      .catch((error) => logoutFail(error));
+      .catch((error) => setUserErrors("", "Error Logging Out"));
   };
 }

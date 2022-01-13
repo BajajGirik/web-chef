@@ -1,7 +1,8 @@
 import {
-  GET_ORDER_HISTORY_FAIL,
   GET_ORDER_HISTORY_REQUEST,
   GET_ORDER_HISTORY_SUCCESS,
+  PLACE_ORDER_SUCCESS,
+  SET_ORDER_ERRORS,
 } from "./orderActionTypes";
 
 const intialOrderState = {
@@ -19,14 +20,7 @@ const orderReducer = (state = intialOrderState, action) => {
         loading: true,
       };
 
-    case GET_ORDER_HISTORY_SUCCESS:
-      return {
-        ...state,
-        history: action.payload,
-        msg: "SUCCESS",
-      };
-
-    case GET_ORDER_HISTORY_FAIL:
+    case SET_ORDER_ERRORS:
       return {
         ...state,
         loading: false,
@@ -34,7 +28,22 @@ const orderReducer = (state = intialOrderState, action) => {
         error: action.payload.error,
       };
 
+    case GET_ORDER_HISTORY_SUCCESS:
+      return {
+        ...state,
+        history: action.payload,
+        msg: "SUCCESS",
+      };
+
+    case PLACE_ORDER_SUCCESS:
+      return {
+        ...state,
+        history: [action.payload, ...state.history],
+      };
+
     default:
       return state;
   }
 };
+
+export default orderReducer;

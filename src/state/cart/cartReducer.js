@@ -1,11 +1,9 @@
 import {
-  DELETE_FROM_CART_FAIL,
   DELETE_FROM_CART_SUCCESS,
-  GET_CART_FAIL,
-  GET_CART_REQUEST,
   GET_CART_SUCCESS,
-  SAVE_TO_CART_FAIL,
   SAVE_TO_CART_SUCCESS,
+  SET_CART_ERRORS,
+  SET_CART_LOADING_TRUE,
 } from "./cartActionTypes";
 
 const cartInitialState = {
@@ -19,10 +17,18 @@ const cartInitialState = {
 
 const cartReducer = (state = cartInitialState, action) => {
   switch (action.type) {
-    case GET_CART_REQUEST:
+    case SET_CART_LOADING_TRUE:
       return {
         ...state,
         loading: true,
+      };
+
+    case SET_CART_ERRORS:
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg,
+        error: action.payload.error,
       };
 
     case GET_CART_SUCCESS:
@@ -35,14 +41,6 @@ const cartReducer = (state = cartInitialState, action) => {
         error: "",
       };
 
-    case GET_CART_FAIL:
-      return {
-        ...state,
-        loading: false,
-        msg: action.payload.msg,
-        error: action.payload.error,
-      };
-
     case SAVE_TO_CART_SUCCESS:
       return {
         ...state,
@@ -51,24 +49,12 @@ const cartReducer = (state = cartInitialState, action) => {
         ...(!action.payload.itemPresentBefore && { size: state.size + 1 }),
       };
 
-    case SAVE_TO_CART_FAIL:
-      return {
-        ...state,
-        error: action.payload,
-      };
-
     case DELETE_FROM_CART_SUCCESS:
       return {
         ...state,
         data: action.payload.updatedCart,
         amount: state.amount - action.payload.changeInAmount,
         size: state.size - 1,
-      };
-
-    case DELETE_FROM_CART_FAIL:
-      return {
-        ...state,
-        error: action.payload,
       };
 
     default:

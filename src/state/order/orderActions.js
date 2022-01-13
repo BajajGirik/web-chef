@@ -1,13 +1,21 @@
 import {
-  GET_ORDER_HISTORY_FAIL,
-  GET_ORDER_HISTORY_REQUEST,
   GET_ORDER_HISTORY_SUCCESS,
+  PLACE_ORDER_SUCCESS,
+  SET_ORDER_ERRORS,
+  SET_ORDER_LOADING_TRUE,
 } from "./orderActionTypes";
 import { collection, getDocs } from "firebase/firestore";
 
-export function getOrderHistoryRequest() {
+export function setOrderLoadingTrue() {
   return {
-    type: GET_ORDER_HISTORY_REQUEST,
+    type: SET_ORDER_LOADING_TRUE,
+  };
+}
+
+export function setOrderErrors(msg, error) {
+  return {
+    type: SET_ORDER_ERRORS,
+    payload: { msg, error },
   };
 }
 
@@ -18,16 +26,16 @@ export function getOrderHistorySuccess(orderHistory) {
   };
 }
 
-export function getOrderHistoryFail(msg, error) {
+export function placeOrderSuccess(order) {
   return {
-    type: GET_ORDER_HISTORY_FAIL,
-    payload: { msg, error },
+    type: PLACE_ORDER_SUCCESS,
+    payload: order,
   };
 }
 
 export function getOrderHistory() {
   return async (dispatch) => {
-    dispatch(getOrderHistoryRequest());
+    dispatch(setOrderLoadingTrue());
 
     try {
       const collectionSnap = await getDocs(
@@ -40,7 +48,7 @@ export function getOrderHistory() {
 
       dispatch(getOrderHistorySuccess(orderHistory));
     } catch (error) {
-      dispatch(getOrderHistoryFail("", "Failed to load order history"));
+      dispatch(setOrderErrors("", "Failed to load order history"));
     }
   };
 }

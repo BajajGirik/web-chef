@@ -1,7 +1,7 @@
 import {
-  GET_SHIPPING_DETAILS_FAIL,
-  GET_SHIPPING_DETAILS_REQUEST,
   GET_SHIPPING_DETAILS_SUCCESS,
+  SET_SHIPPING_ERRORS,
+  SET_SHIPPING_LOADING_TRUE,
 } from "./shippingActiontypes";
 
 const initialShippingState = {
@@ -13,10 +13,18 @@ const initialShippingState = {
 
 const shippingReducer = (state = initialShippingState, action) => {
   switch (action.type) {
-    case GET_SHIPPING_DETAILS_REQUEST:
+    case SET_SHIPPING_LOADING_TRUE:
       return {
         ...state,
         loading: true,
+      };
+
+    case SET_SHIPPING_ERRORS:
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload.msg,
+        error: action.payload.error,
       };
 
     case GET_SHIPPING_DETAILS_SUCCESS:
@@ -25,14 +33,6 @@ const shippingReducer = (state = initialShippingState, action) => {
         data: action.payload,
         msg: "SUCESS",
         error: "",
-      };
-
-    case GET_SHIPPING_DETAILS_FAIL:
-      return {
-        ...state,
-        loading: false,
-        msg: action.payload.msg,
-        error: action.payload.error,
       };
 
     default:
