@@ -13,7 +13,9 @@ function Carousal({ classname, imgArray, children }) {
         setDisplayImgIndex((displayImgIndex + 1) % imgArray.length);
     };
 
-    setTimeout(updateDisplayImage, 5000);
+    const clearTimeOut = setTimeout(updateDisplayImage, 5000);
+
+    return clearTimeOut;
   }, [displayImgIndex, imgArray]);
 
   return (

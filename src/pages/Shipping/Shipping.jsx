@@ -10,8 +10,8 @@ function Shipping(props) {
     name: "",
     phone: "",
     address: "",
-    pincode: "",
     city: "",
+    pincode: "",
   });
 
   useEffect(() => {
@@ -19,8 +19,8 @@ function Shipping(props) {
       name: user.data?.name ? user.data.name : "",
       phone: user.data?.phone ? user.data.phone : "",
       address: user.data?.address ? user.data.address : "",
-      pincode: user.data?.pincode ? user.data.pincode : "",
       city: user.data?.city ? user.data.city : "",
+      pincode: user.data?.pincode ? user.data.pincode : "",
     });
   }, [user]);
 
@@ -35,7 +35,7 @@ function Shipping(props) {
     <div className="p-nav">
       <div className="Shipping-container">
         <h1 className="txt-al-center">Shipping Details</h1>
-        <form>
+        <form onSubmit={()=>dispatch()} className="txt-al-center">
           <TextField
             className="input-fields"
             name="name"
@@ -74,6 +74,15 @@ function Shipping(props) {
           />
           <TextField
             className="input-fields"
+            name="city"
+            label="Town/City"
+            value={userDetails.city}
+            onChange={handleChange}
+            variant="outlined"
+            fullWidth
+		  />
+          <TextField
+            className="input-fields"
             name="pincode"
             label="Pincode"
             value={userDetails.pincode}
@@ -82,17 +91,8 @@ function Shipping(props) {
             variant="outlined"
             fullWidth
           />
-          <TextField
-            className="input-fields"
-            name="city"
-            label="Town/City"
-            value={userDetails.city}
-            onChange={handleChange}
-            variant="outlined"
-            fullWidth
-		  />
 
-		<button>Save And Place Order</button>
+		<button className="Shipping-form-btn">Save And Place Order</button>
         </form>
       </div>
     </div>

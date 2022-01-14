@@ -1,14 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-
 .IndivisualCartItem-container {
   background-color: white;
-  /* max-width: 30em; */
   border-radius: 0.75em;
   margin: 0.8em 0;
   padding: 0.5em 1em;
-  font-family: "Lobster", cursive;
-  font-size: 1.2em;
-  letter-spacing: 0.12em;
+  font-size: 1.2rem;
+  border: solid 0.7px rgb(211, 211, 211);
 }
 
 .IndivisualCartItem-img-container {
@@ -40,11 +36,13 @@
 
 .bg-cross {
   background-color: #e51b1b;
+  opacity: 0.8;
   border: 3px solid #e51b1b;
 }
 
 .bg-green {
   background-color: #198754;
+  opacity: 0.8;
   border: 3px solid #198754;
 }
 

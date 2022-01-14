@@ -5,6 +5,7 @@
   margin: 0.8em 0;
   margin-bottom: auto;
   padding: 1.5em;
+  border: solid 0.7px rgb(211, 211, 211);
 }
 
 .OrderSummary-container h2 {

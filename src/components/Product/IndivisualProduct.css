@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Castoro&display=swap&family=Gwendolyn:wght@700&display=swap");
-
 .IndivisualProduct-container {
   background-color: #fcfcfc;
   /* background-image: linear-gradient(to bottom, #f4fffd 40%, #ffc6ac); */
@@ -7,6 +5,7 @@
   width: 20em;
   border-radius: 0.75em;
   border-top: 50px;
+  border: solid 1px #eebaa5;
   box-shadow: 4px 4px 10px #807d7d;
 }
 
@@ -24,13 +23,14 @@
 
 .IndivisualProduct-det-item {
   margin: 0.1em 0.5em;
-  font-family: "Gwendolyn", cursive;
-  color: black;
-  font-size: 1.5em;
+  color: rgb(59, 59, 59);
+  letter-spacing: 0.03rem;
+  font-size: 1.25rem;
+  font-family: "Amaranth", sans-serif;
+  font-style: italic;
 }
 
 .IndivisualProduct-btn {
-  font-family: "Castoro", serif;
   font-size: 1em;
   cursor: pointer;
   background-color: #d81159;

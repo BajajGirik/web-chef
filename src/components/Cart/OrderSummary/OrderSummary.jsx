@@ -1,9 +1,11 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import "./OrderSummary.css";
 
 function OrderSummary({ amount }) {
+	const navigate = useNavigate();
   const placeOrder = () => {
-
+	  navigate("/shipping");
   };
 
   return (

@@ -1,34 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap");
-
 .Navbar-container {
   position: fixed;
-  background: #4376de; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #4376de,
-    #5454de,
-    #1616de
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #4376de,
-    #5454de,
-    #1616de
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding: 0.7em 1.5em;
+  background: #fc7feb;
+  background: -webkit-linear-gradient(to right, #f884e9, #f759e2);
+  background: linear-gradient(to right, #f884e9, #f759e2);
+  padding: 1.5rem;
   z-index: 999;
   inset: 0 0 auto 0;
 }
 
 .Navbar-logo-container {
-  font-family: "Cinzel Decorative", cursive;
   color: white;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
   text-decoration: underline;
 }
 
 .Navbar-hamburger-icon {
   display: none;
-  color: white;
   cursor: pointer;
 }
 
@@ -36,17 +24,19 @@
   list-style: none;
   text-decoration: none;
   padding: 0;
+  margin: 0;
 }
 
 .Navbar-list-item {
-  font-family: "Cinzel Decorative", cursive;
   margin-left: 3em;
+  font-size: 1.1rem;
   text-decoration: none;
   cursor: pointer;
 }
 
 .nav-active {
   color: #ffea00 !important;
+  font-weight: bolder;
 }
 
 @media screen and (max-width: 39rem) {

@@ -3,13 +3,12 @@ import { NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "../../constants";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Navbar.css";
-import { Avatar } from "@mui/material";
 import { connect } from "react-redux";
 import { logout } from "../../state/user/userActions";
 
 function Navbar(props) {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);
-  const { isLoggedIn, email, photoURL, dispatch } = props;
+  const { isLoggedIn, dispatch } = props;
 
   return (
     <nav className="Navbar-container flex al-center j-between">

@@ -16,7 +16,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
   
   useEffect(() => {
     setIsInCart(cart.data.some(item => item.productId === id));
-  }, [cart]);
+  }, [cart, id]);
 
   return (
     <div className="IndivisualProduct-container">

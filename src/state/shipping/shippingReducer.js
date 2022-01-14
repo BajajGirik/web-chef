@@ -1,5 +1,6 @@
 import {
   GET_SHIPPING_DETAILS_SUCCESS,
+  SAVE_SHIPPING_DETAILS_SUCCESS,
   SET_SHIPPING_ERRORS,
   SET_SHIPPING_LOADING_TRUE,
 } from "./shippingActiontypes";
@@ -28,6 +29,14 @@ const shippingReducer = (state = initialShippingState, action) => {
       };
 
     case GET_SHIPPING_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+        msg: "SUCESS",
+        error: "",
+      };
+
+    case SAVE_SHIPPING_DETAILS_SUCCESS:
       return {
         loading: false,
         data: action.payload,

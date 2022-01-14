@@ -20,7 +20,7 @@ function Cart(props) {
     });
 
     setItems(finalList);
-  }, [cart, PRODUCTS]);
+  }, [cart]);
 
   return (
     <div className="Cart-container p-nav">
