@@ -29,7 +29,7 @@
 .IndivisualProduct-btn {
   font-size: 1em;
   cursor: pointer;
-  background-color: #d81159;
+  background-color: var(--product-indivisual-prod-btn-bg);
   border: none;
   margin: 10px;
   padding: 15px 45px;

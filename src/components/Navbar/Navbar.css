@@ -39,12 +39,12 @@
 
 .Navbar-CTA-btn {
   color: white;
-  background-color: var(--nav-container-bg);
+  background-color: var(--nav-cta-btn-bg);
   padding: 0.5rem 1.5rem;
   font-size: 1.1rem;
   border: none;
   border-radius: 5px;
-  box-shadow: 4px 4px 10px #30003e;
+  cursor: pointer;
 }
 
 .nav-active {
@@ -73,7 +73,6 @@
 
   .Navbar-list-container {
     background-color: var(--nav-container-bg);
-    border-top-left-radius: 4px;
     display: flex;
     flex-direction: column;
     position: fixed;

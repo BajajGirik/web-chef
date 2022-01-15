@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { Shipping } from "./pages/Shipping";
+import { Popup } from "./components/UI/Popup";
 
 function App(props) {
   const { user, dispatch } = props;
@@ -20,6 +21,7 @@ function App(props) {
   return (
     <div className="App">
       <Navbar />
+      <Popup />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth/log-in" element={<Login />} />
@@ -30,15 +32,6 @@ function App(props) {
         <Route path="tnc" element={<Terms />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
         <Route path="refundpolicy" element={<RefundPolicy />} />
-        {/* <Route path="/" element={<Navbar />} />
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
-          /> */}
       </Routes>
       <Footer />
     </div>
