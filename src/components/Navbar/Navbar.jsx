@@ -12,6 +12,11 @@ function Navbar(props) {
 
   return (
     <nav className="Navbar-container flex al-center j-between">
+      <div
+        className={
+          isMobNavOpen ? "Navbar-box-shadow bg-shadow" : "Navbar-box-shadow"
+        }
+      ></div>
       <div className="Navbar-logo-container">HOMECHEF</div>
       <div className="Navbar-menu-container">
         <div
@@ -41,28 +46,18 @@ function Navbar(props) {
               </NavLink>
             </li>
           ))}
-
-          <li className="Navbar-list-item">
-            {/* <Avatar
-                 src={photoURL}
-                alt={email?.[0]}
-                 onClick={() => dispatch(logout())}
-               /> */}
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "link nav-active" : "link"
-              }
-              to="/auth/log-in"
-              onClick={() => {
-                isLoggedIn && dispatch(logout());
-                setIsMovNavOpen(false);
-              }}
-            >
-              {isLoggedIn ? "Logout" : "Login"}
-            </NavLink>
-          </li>
         </ul>
       </div>
+      <button
+        className="Navbar-CTA-btn"
+        to="/auth/log-in"
+        onClick={() => {
+          isLoggedIn && dispatch(logout());
+          setIsMovNavOpen(false);
+        }}
+      >
+        {isLoggedIn ? "Profile" : "Login"}
+      </button>
     </nav>
   );
 }

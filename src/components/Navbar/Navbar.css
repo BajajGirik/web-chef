@@ -1,8 +1,6 @@
 .Navbar-container {
   position: fixed;
-  background: #fc7feb;
-  background: -webkit-linear-gradient(to right, #f884e9, #f759e2);
-  background: linear-gradient(to right, #f884e9, #f759e2);
+  background: var(--nav-container-bg);
   padding: 1.5rem;
   z-index: 999;
   inset: 0 0 auto 0;
@@ -11,13 +9,18 @@
 .Navbar-logo-container {
   color: white;
   font-size: 1.3rem;
-  letter-spacing: 0.05rem;
-  text-decoration: underline;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .Navbar-hamburger-icon {
   display: none;
-  cursor: pointer;
+}
+
+.Navbar-box-shadow {
+  position: fixed;
+  visibility: none;
+  z-index: -5;
 }
 
 .Navbar-list-container {
@@ -28,15 +31,25 @@
 }
 
 .Navbar-list-item {
-  margin-left: 3em;
+  margin: 0 1.5em;
   font-size: 1.1rem;
   text-decoration: none;
   cursor: pointer;
 }
 
+.Navbar-CTA-btn {
+  color: white;
+  background-color: var(--nav-container-bg);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 4px 4px 10px #30003e;
+}
+
 .nav-active {
-  color: #ffea00 !important;
-  font-weight: bolder;
+  color: var(--nav-link-active) !important;
+  font-weight: 800;
 }
 
 @media screen and (max-width: 39rem) {
@@ -47,25 +60,24 @@
   .Navbar-hamburger-icon {
     display: block;
     z-index: 999;
+    color: white;
+  }
+
+  .Navbar-box-shadow {
+    transition: background 500ms;
+  }
+
+  .Navbar-CTA-btn {
+    display: none;
   }
 
   .Navbar-list-container {
-    background: hsla(159, 82%, 55%, 1); /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #4376de,
-      #5454de,
-      #1616de
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to bottom,
-      hsla(159, 82%, 55%, 1) 0%,
-      hsla(206, 98%, 48%, 1) 100%
-    );
+    background-color: var(--nav-container-bg);
+    border-top-left-radius: 4px;
     display: flex;
     flex-direction: column;
     position: fixed;
-    inset: 4.48625em 0 0 54%;
+    inset: 4.6em 0 0 54%;
     margin: auto;
     transform: translateX(100%);
     transition: transform 300ms ease-in;
@@ -77,5 +89,10 @@
 
   .side-nav-open {
     transform: translateX(0);
+  }
+
+  .bg-shadow {
+    inset: 4.6em 0 0 0;
+    background-color: #00000080;
   }
 }

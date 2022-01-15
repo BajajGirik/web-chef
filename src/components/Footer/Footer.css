@@ -1,5 +1,4 @@
 .Footer-container {
-  background-color: white;
   box-shadow: 1.5px -1px 8px 5px rgb(205, 205, 205);
   padding: 1.5em 0 1.5em 3em;
 }
@@ -14,9 +13,8 @@
 }
 
 .Footer-list-header {
-  font-family: "Cinzel Decorative", cursive;
   font-size: 18px;
-  text-decoration: underline;
+  font-weight: 600;
   margin-bottom: 1em;
 }
 
@@ -60,13 +58,13 @@
   border: 3px solid rgb(87, 87, 87);
 }
 
-@media screen and (max-width: 62.5em) {
+@media screen and (max-width: 62.5rem) {
   .Footer-container {
     padding-left: 1em;
   }
 }
 
-@media screen and (max-width: 32.5em) {
+@media screen and (max-width: 42rem) {
   .Footer-container {
     padding: 2em 2em 0.5em 2em;
     flex-direction: column;

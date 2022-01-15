@@ -12,14 +12,8 @@ function Products() {
 
   return (
     <div key={params.category} className="Products-container p-nav">
-      {productArray?.map(({ id, name, pricing, imgUrl }) => (
-        <IndivisualProduct
-          key={id}
-          id={id}
-          name={name}
-          pricing={pricing}
-          imgUrl={imgUrl}
-        />
+      {productArray?.map((props) => (
+        <IndivisualProduct key={props.id} {...props} />
       ))}
     </div>
   );

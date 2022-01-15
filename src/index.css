@@ -6,20 +6,20 @@
 }
 
 :root {
-  --white-shade: #f1faee;
-  --red-shade: #de3b4b;
-  --blue-shade: #4361ee;
-  --green-shade: #28afb0;
-  --yellow-shade: #ffd275;
-  --maroon-shade: #820404;
+  --nav-container-bg: #850f98;
+  --nav-link-active: #ffea00;
+  --home-our-product-continer-bg: #a5c8f7;
+  --home-our-product-btn-bg: #186bd6;
+  --product-indivisual-prod-container-bg: #ffbea0;
+  --product-indivisual-prod-btn-bg: #d81159;
+  --product-indivisual-prod-rmcart-btn-bg: #b5582d;
+  --auth-container-bg: #ffefba;
+  --auth-btn-bg: #ae9235;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #fff2ff;
-  background-image: -webkit-linear-gradient(to right, #fef2fe 0%, #feeffc 100%);
-  background-image: linear-gradient(to right, #fef2fe 0%, #fff5fe 100%);
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -133,7 +133,7 @@ a,
 
 @keyframes scale-infinite {
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
 

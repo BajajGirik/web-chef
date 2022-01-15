@@ -14,6 +14,17 @@ function Shipping(props) {
     pincode: "",
   });
 
+	const handleFormSubmit = () => {
+		
+	};
+	
+  const handleChange = (event) => {
+    setUserDetails({
+      ...userDetails,
+      [event.target.name]: event.target.value,
+    });
+  };
+	
   useEffect(() => {
     setUserDetails({
       name: user.data?.name ? user.data.name : "",
@@ -24,18 +35,11 @@ function Shipping(props) {
     });
   }, [user]);
 
-  const handleChange = (event) => {
-    setUserDetails({
-      ...userDetails,
-      [event.target.name]: event.target.value,
-    });
-  };
-
   return (
     <div className="p-nav">
       <div className="Shipping-container">
         <h1 className="txt-al-center">Shipping Details</h1>
-        <form onSubmit={()=>dispatch()} className="txt-al-center">
+        <form onSubmit={handleFormSubmit} className="txt-al-center">
           <TextField
             className="input-fields"
             name="name"

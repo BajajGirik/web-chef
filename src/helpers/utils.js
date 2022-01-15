@@ -1,6 +1,8 @@
 const emailRegex =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
+const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
 export function getEmailError(email) {
   return !email ? "" : email.match(emailRegex) ? "" : "Invalid E-mail";
 }
@@ -27,4 +29,13 @@ export function signUpErrors(email, pass, repass) {
     loginErrors(email, pass) ||
     (getRePasswordError(pass, repass) !== "" ? true : false)
   );
+}
+
+export function getPinCodeError(pincode) {
+  if (isNaN(pincode)) return "Pincode Should be a number";
+  return pincode.length !== 6 ? "Pincode should be 6-digit" : "";
+}
+
+export function getPhoneNumberError(phoneNo) {
+  return phoneNo.match(phoneRegex) && !phoneNo.match(/0{5,}/);
 }

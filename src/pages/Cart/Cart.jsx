@@ -27,15 +27,8 @@ function Cart(props) {
       {items.length ? (
         <>
           <div className="flex-c">
-            {items.map(({ id, name, pricing, imgUrl, qty }) => (
-              <IndivisualCartItem
-                key={id}
-                id={id}
-                name={name}
-                pricing={pricing}
-                imgUrl={imgUrl}
-                qty={qty}
-              />
+            {items.map((props) => (
+              <IndivisualCartItem key={props.id} {...props} />
             ))}
           </div>
           <OrderSummary amount={cart?.amount} />
