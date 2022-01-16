@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { PHONE_NUMBER, EMAIL } from "../../constants";
+import { PHONE_NUMBER, EMAIL } from "../../utils/constants";
 
 function Terms() {
   return (
-    <div className="p-nav">
+    <div className="p-container">
       <h2>
         <strong>Terms and Conditions</strong>
       </h2>

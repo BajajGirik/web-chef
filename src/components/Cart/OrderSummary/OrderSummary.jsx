@@ -1,12 +1,10 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../../utils/constants";
 import "./OrderSummary.css";
 
 function OrderSummary({ amount }) {
-	const navigate = useNavigate();
-  const placeOrder = () => {
-	  navigate("/shipping");
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="OrderSummary-container flex-c al-center">
@@ -23,13 +21,15 @@ function OrderSummary({ amount }) {
         <b>Total: </b>
         <b>{amount ? `₹${amount + 50}` : "Loading..."}</b>
       </div>
-      
+
       {/* <span className="OrderSummary-conditions">
         *Delivery Charges will be updated within 2 days after order confirmation. (Max - ₹100)
       </span> */}
-      
-      
-      <div onClick={placeOrder} className="place-order-btn disabled">
+
+      <div
+        onClick={() => navigate(ROUTES.SHIPPING)}
+        className="place-order-btn disabled"
+      >
         Proceed to Buy
       </div>
     </div>

@@ -8,7 +8,7 @@ import {
   FACEBOOK,
   WHATSAPP_LINK,
   EMAIL_LINK,
-} from "../../constants";
+} from "../../utils/constants";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";

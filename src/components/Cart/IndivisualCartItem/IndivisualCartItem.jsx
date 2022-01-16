@@ -3,7 +3,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./IndivisualCartItem.css";
-import { VEG_ICON_URI } from "../../../constants";
+import { VEG_ICON_URI } from "../../../utils/constants";
 import {deleteFromCart, saveToCart} from "../../../state/cart/cartActions";
 import {connect} from "react-redux";
 

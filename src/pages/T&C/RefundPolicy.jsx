@@ -2,7 +2,7 @@ import React from "react";
 
 function RefundPolicy() {
   return (
-    <div className="p-nav">
+    <div className="p-container">
       <h1>Return and Refund Policy</h1>
       <p>Thank you for shopping at HomeChef.</p>
       <p>

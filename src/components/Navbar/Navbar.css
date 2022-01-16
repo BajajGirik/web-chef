@@ -21,6 +21,7 @@
   position: fixed;
   visibility: none;
   z-index: -5;
+  transition: background 500ms;
 }
 
 .Navbar-list-container {
@@ -52,6 +53,10 @@
   font-weight: 800;
 }
 
+.nav-height {
+  height: 5.625rem;
+}
+
 @media screen and (max-width: 39rem) {
   .Navbar-container {
     padding: 1.4em;
@@ -61,10 +66,6 @@
     display: block;
     z-index: 999;
     color: white;
-  }
-
-  .Navbar-box-shadow {
-    transition: background 500ms;
   }
 
   .Navbar-CTA-btn {
@@ -93,5 +94,9 @@
   .bg-shadow {
     inset: 4.6em 0 0 0;
     background-color: #00000080;
+  }
+
+  .nav-height {
+    height: 4.625rem;
   }
 }

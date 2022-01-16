@@ -36,8 +36,8 @@ function Shipping(props) {
   }, [user]);
 
   return (
-    <div className="p-nav">
-      <div className="Shipping-container">
+    <div className="p-container">
+      <div className="Shipping-container mh-auto">
         <h1 className="txt-al-center">Shipping Details</h1>
         <form onSubmit={handleFormSubmit} className="txt-al-center">
           <TextField

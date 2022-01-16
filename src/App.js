@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { Shipping } from "./pages/Shipping";
-import { Popup } from "./components/UI/Popup";
+import { ROUTES } from "./utils/constants";
 
 function App(props) {
   const { user, dispatch } = props;
@@ -21,17 +21,16 @@ function App(props) {
   return (
     <div className="App">
       <Navbar />
-      <Popup />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/auth/log-in" element={<Login />} />
-        <Route path="/auth/sign-up" element={<SignUp />} />
-        <Route path="product/:category" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/shipping" element={<Shipping />} />
-        <Route path="tnc" element={<Terms />} />
-        <Route path="privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="refundpolicy" element={<RefundPolicy />} />
+        <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.SIGNUP} element={<SignUp />} />
+        <Route path="/product/:category" element={<Products />} />
+        <Route path={ROUTES.CART} element={<Cart />} />
+        <Route path={ROUTES.SHIPPING} element={<Shipping />} />
+        <Route path={ROUTES.TNC} element={<Terms />} />
+        <Route path={ROUTES.PRIVACYPOLICY} element={<PrivacyPolicy />} />
+        <Route path={ROUTES.REFUNDPOLICY} element={<RefundPolicy />} />
       </Routes>
       <Footer />
     </div>

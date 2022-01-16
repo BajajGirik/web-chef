@@ -3,7 +3,7 @@ import { IconButton, TextField, Button, Alert } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { signinViaEmailPass } from "../../state/user/userActions";
-import { LOGO } from "../../constants";
+import { LOGO, ROUTES } from "../../utils/constants";
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
@@ -12,7 +12,7 @@ import {
   getPasswordError,
   getRePasswordError,
   signUpErrors,
-} from "../../helpers/utils";
+} from "../../utils/validations";
 
 function SignUp(props) {
   const [passVisible, setPassVisible] = useState(false);
@@ -57,7 +57,7 @@ function SignUp(props) {
   };
 
   return (
-    <div className="p-nav mh-auto">
+    <div className="p-container mh-auto">
       <div className="Auth-container flex al-center">
         <img className="Auth-img" src={LOGO} alt="_Logo" />
 
@@ -153,7 +153,7 @@ function SignUp(props) {
             Sign Up
           </Button>
           <p className="Auth-form-redirect">
-            Old User? <Link to="/auth/log-in">Log In</Link>
+            Old User? <Link to={ROUTES.LOGIN}>Log In</Link>
           </p>
         </form>
       </div>

@@ -5,7 +5,7 @@ import {
   OrderSummary,
   CartEmpty,
 } from "../../components/Cart";
-import { PRODUCTS } from "../../constants";
+import { PRODUCTS } from "../../utils/constants";
 import "./Cart.css";
 
 function Cart(props) {
@@ -23,7 +23,7 @@ function Cart(props) {
   }, [cart]);
 
   return (
-    <div className="Cart-container p-nav">
+    <div className="Cart-container p-container">
       {items.length ? (
         <>
           <div className="flex-c">

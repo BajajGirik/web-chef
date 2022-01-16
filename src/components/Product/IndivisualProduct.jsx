@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { VEG_ICON_URI } from "../../constants";
+import { ROUTES, VEG_ICON_URI } from "../../utils/constants";
 import { saveToCart } from "../../state/cart/cartActions";
 import { Carousal } from "../UI/Caraousal";
 import "./IndivisualProduct.css";
@@ -38,7 +38,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
         ) : (
           <button
             className="IndivisualProduct-btn remove-cart-btn"
-            onClick={() => navigate("/cart")}
+            onClick={() => navigate(ROUTES.CART)}
           >
             Go To Cart
           </button>

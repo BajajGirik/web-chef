@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { ROUTES } from "../../utils/constants";
 import { auth } from "../../firebase";
 import { setCartErrors, setCartLoadingTrue } from "../cart/cartActions";
 import {
@@ -113,7 +114,7 @@ export function signinViaEmailPass(email, password, navigate) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         dispatch(signinViaEmailPassSuccess(result.user));
-        navigate("/");
+        navigate(ROUTES.HOME);
       })
       .catch((error) =>
         dispatch(setUserErrors("", "Email already registered"))
@@ -128,7 +129,7 @@ export function loginViaEmailPass(email, password, navigate) {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         dispatch(loginViaEmailPassSuccess(result.user));
-        navigate("/");
+        navigate(ROUTES.HOME);
       })
       .catch((error) => dispatch(setUserErrors("", "Invalid Credentials")));
   };

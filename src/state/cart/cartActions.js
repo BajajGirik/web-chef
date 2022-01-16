@@ -48,6 +48,16 @@ export function deleteFromCartSuccess(updatedCart, changeInAmount) {
 
 export function saveToCart(productId, qty, changeInAmount) {
   return (dispatch, getState) => {
+    if (!getState().user.isLoggedIn) {
+      dispatch(
+        setCartErrors(
+          "Please Login/Signup to add items to cart",
+          "User Not Logged in"
+        )
+      );
+      return;
+    }
+
     const docRef = doc(db, "users", auth.currentUser.uid);
     const cart = getState().cart.data;
     const updateItemIndex = cart.findIndex(

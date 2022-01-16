@@ -23,7 +23,7 @@ function OurProducts({
             {starterDesc} <b>{boldTxt}</b> {finalDesc}
           </p>
         </div>
-        <Link className="OurProducts-btn link flex al-center" to={btnLink}>
+        <Link className="OurProducts-btn link flex al-center mh-auto" to={btnLink}>
           {btnText} &nbsp;
           <ArrowForwardIcon />
         </Link>

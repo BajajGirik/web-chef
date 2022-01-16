@@ -12,11 +12,24 @@ import AllCakes4 from "../assets/All_Cakes_016.jpg";
 import AllCakes5 from "../assets/All_Cakes_005.jpg";
 import Logo from "../assets/Logo.png";
 
+export const ROUTES = {
+  LOGIN: "/auth/log-in",
+  SIGNUP: "/auth/sign-up",
+  HOME: "/",
+  CAKE: "/product/cakes",
+  LADOOS: "/product/ladoos",
+  CART: "/cart",
+  SHIPPING: "/shipping",
+  TNC: "/tnc",
+  PRIVACYPOLICY: "/privacypolicy",
+  REFUNDPOLICY: "/refundpolicy",
+};
+
 export const NAV_ITEMS = [
-  { to: "/", displayText: "Home" },
-  { to: "/product/cakes", displayText: "Cakes" },
-  { to: "/product/ladoos", displayText: "Ladoos" },
-  { to: "/cart", displayText: "Cart" },
+  { to: ROUTES.HOME, displayText: "Home" },
+  { to: ROUTES.CAKE, displayText: "Cakes" },
+  { to: ROUTES.LADOOS, displayText: "Ladoos" },
+  { to: ROUTES.CART, displayText: "Cart" },
 ];
 
 export const HOME_PRODUCTS_LIST = [
@@ -26,7 +39,7 @@ export const HOME_PRODUCTS_LIST = [
     starterDesc: "Get tasty, healthy ",
     boldTxt: "Home-Made",
     finalDesc: " cakes at a very low price.",
-    btnLink: "/product/cakes",
+    btnLink: ROUTES.CAKE,
     btnText: "Order Cakes Now!",
   },
   {
@@ -35,7 +48,7 @@ export const HOME_PRODUCTS_LIST = [
     starterDesc: "Get tasty, healthy ",
     boldTxt: "Home-Made",
     finalDesc: " ladoos at a very low price.",
-    btnLink: "/product/ladoos",
+    btnLink: ROUTES.LADOOS,
     btnText: "Order Ladoos Now!",
   },
 ];

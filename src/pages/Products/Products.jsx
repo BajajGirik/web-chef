@@ -1,22 +1,49 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import { IndivisualProduct } from "../../components/Product";
-import { PRODUCTS } from "../../constants";
+import { Popup } from "../../components/UI/Popup";
+import { PRODUCTS, ROUTES } from "../../utils/constants";
 import "./Products.css";
 
-function Products() {
+function Products({ cart }) {
+  const [isError, setIsError] = useState(false);
   const params = useParams();
+  const navigate = useNavigate();
+
   const productArray = PRODUCTS.filter(
     (product) => product.type === params.category
   );
 
+  useEffect(() => {
+    if (cart?.error) setIsError(true);
+  }, [cart]);
+
   return (
-    <div key={params.category} className="Products-container p-nav">
-      {productArray?.map((props) => (
-        <IndivisualProduct key={props.id} {...props} />
-      ))}
-    </div>
+    <>
+      {isError && (
+        <Popup
+          heading={cart.error}
+          desc={cart.msg}
+          priText="Go to Login Page"
+          priFn={() => navigate(ROUTES.LOGIN)}
+          exitFn={() => setIsError(false)}
+        />
+      )}
+      <div key={params.category} className="Products-container p-container">
+        {productArray?.map((props) => (
+          <IndivisualProduct key={props.id} {...props} />
+        ))}
+      </div>
+    </>
   );
 }
 
-export default Products;
+function mapStateToProps(state) {
+  return {
+    cart: state.cart,
+  };
+}
+
+export default connect(mapStateToProps)(Products);
