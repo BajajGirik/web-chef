@@ -5,7 +5,14 @@ import {
   SET_CART_ERRORS,
   SET_CART_LOADING_TRUE,
 } from "./cartActionTypes";
-import { setDoc, doc } from "firebase/firestore";
+import {
+  setDoc,
+  doc,
+  getDocs,
+  collection,
+  deleteDoc,
+  getDoc,
+} from "firebase/firestore";
 import { auth, db } from "../../firebase";
 
 export function setCartLoadingTrue() {
@@ -46,6 +53,34 @@ export function deleteFromCartSuccess(updatedCart, changeInAmount) {
   };
 }
 
+export function getCart() {
+  return async (dispatch) => {
+    const cartRef = collection(db, "users", auth.currentUser.uid, "cart");
+    const cartDoc = doc(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "private",
+      "cartAmount"
+    );
+    try {
+      const docs = await getDocs(cartRef);
+      const cartItems = docs.docs.map((indivisualDoc) => ({
+        productId: indivisualDoc.id,
+        qty: indivisualDoc.data().qty,
+      }));
+
+      const cartAmountSnap = await getDoc(cartDoc);
+      let { amount } = cartAmountSnap.data();
+      amount === undefined && (amount = 0);
+
+      dispatch(getCartSuccess(cartItems, docs.size, amount));
+    } catch (error) {
+      dispatch(setCartErrors("", "Failed to load cart info"));
+    }
+  };
+}
+
 export function saveToCart(productId, qty, changeInAmount) {
   return (dispatch, getState) => {
     if (!getState().user.isLoggedIn) {
@@ -58,7 +93,6 @@ export function saveToCart(productId, qty, changeInAmount) {
       return;
     }
 
-    const docRef = doc(db, "users", auth.currentUser.uid);
     const cart = getState().cart.data;
     const updateItemIndex = cart.findIndex(
       (item) => item.productId === productId
@@ -75,7 +109,8 @@ export function saveToCart(productId, qty, changeInAmount) {
       ];
     }
 
-    setDoc(docRef, { cart: updatedCart }, { merge: true })
+    const docRef = doc(db, "users", auth.currentUser.uid, "cart", productId);
+    setDoc(docRef, { qty: qty }, { merge: true })
       .then(() =>
         dispatch(
           saveToCartSuccess(updatedCart, changeInAmount, updateItemIndex !== -1)
@@ -87,12 +122,14 @@ export function saveToCart(productId, qty, changeInAmount) {
 
 export function deleteFromCart(productId, changeInAmount) {
   return (dispatch, getState) => {
-    const docRef = doc(db, "users", auth.currentUser.uid);
     const cart = getState().cart.data;
     const updatedCart = cart.filter((item) => item.productId !== productId);
 
-    setDoc(docRef, { cart: updatedCart }, { merge: true })
+    const docRef = doc(db, "users", auth.currentUser.uid, "cart", productId);
+    deleteDoc(docRef)
       .then(() => dispatch(deleteFromCartSuccess(updatedCart, changeInAmount)))
-      .catch(() => dispatch(setCartErrors("", "Failed to update cart")));
+      .catch(() =>
+        dispatch(setCartErrors("", "Failed to delete item from cart"))
+      );
   };
 }

@@ -32,10 +32,23 @@ export function signUpErrors(email, pass, repass) {
 }
 
 export function getPinCodeError(pincode) {
+  if (!pincode) return "";
   if (isNaN(pincode)) return "Pincode Should be a number";
   return pincode.length !== 6 ? "Pincode should be 6-digit" : "";
 }
 
 export function getPhoneNumberError(phoneNo) {
-  return phoneNo.match(phoneRegex) && !phoneNo.match(/0{5,}/);
+  if (!phoneNo) return "";
+  return phoneNo.match(phoneRegex) && !phoneNo.match(/0{5,}/)
+    ? ""
+    : "Invalid Phone Number";
+}
+
+export function shippingErrors(phoneNo, pincode) {
+  const isFieldEmpty = !phoneNo || !pincode ? true : false;
+  return (
+    isFieldEmpty ||
+    getPhoneNumberError(phoneNo) !== "" ||
+    getPinCodeError(pincode) !== ""
+  );
 }

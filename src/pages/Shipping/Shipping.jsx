@@ -1,11 +1,21 @@
 import { TextField, Select, MenuItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Popup } from "../../components/UI/Popup";
+import { saveShippingDetails } from "../../state/shipping/shippingActions";
+import {
+  getPhoneNumberError,
+  getPinCodeError,
+  shippingErrors,
+} from "../../utils/validations";
 import "./Shipping.css";
 
 function Shipping(props) {
-  const { user, dispatch } = props;
+  const { shipping, dispatch } = props;
+  const navigate = useNavigate();
 
+  const [showPopup, setShowPopup] = useState(false);
   const [userDetails, setUserDetails] = useState({
     name: "",
     phone: "",
@@ -13,99 +23,153 @@ function Shipping(props) {
     city: "",
     pincode: "",
   });
+  const [activeFields, setActiveFields] = useState({
+    phoneActive: false,
+    pincodeActive: false,
+  });
+  const [formErrors, setFormErrors] = useState({
+    phoneError: "",
+    pincodeError: "",
+  });
 
-	const handleFormSubmit = () => {
-		
-	};
-	
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (shippingErrors(userDetails.phone, userDetails.pincode)) return;
+
+    dispatch(saveShippingDetails(userDetails, navigate));
+  };
+
   const handleChange = (event) => {
     setUserDetails({
       ...userDetails,
       [event.target.name]: event.target.value,
     });
+
+    if (event.target.name == "phone") {
+      setFormErrors({
+        ...formErrors,
+        phoneError: getPhoneNumberError(event.target.value),
+      });
+    } else if (event.target.name == "pincode") {
+      setFormErrors({
+        ...formErrors,
+        pincodeError: getPinCodeError(event.target.value),
+      });
+    }
   };
-	
+
   useEffect(() => {
     setUserDetails({
-      name: user.data?.name ? user.data.name : "",
-      phone: user.data?.phone ? user.data.phone : "",
-      address: user.data?.address ? user.data.address : "",
-      city: user.data?.city ? user.data.city : "",
-      pincode: user.data?.pincode ? user.data.pincode : "",
+      name: shipping.data?.name ? shipping.data.name : "",
+      phone: shipping.data?.phone ? shipping.data.phone : "",
+      address: shipping.data?.address ? shipping.data.address : "",
+      city: shipping.data?.city ? shipping.data.city : "",
+      pincode: shipping.data?.pincode ? shipping.data.pincode : "",
     });
-  }, [user]);
+
+    if (shipping?.error) setShowPopup(true);
+  }, [shipping]);
 
   return (
-    <div className="p-container">
-      <div className="Shipping-container mh-auto">
-        <h1 className="txt-al-center">Shipping Details</h1>
-        <form onSubmit={handleFormSubmit} className="txt-al-center">
-          <TextField
-            className="input-fields"
-            name="name"
-            label="Full Name"
-            value={userDetails.name}
-            onChange={handleChange}
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            className="input-fields"
-            name="phone"
-            label="Phone No"
-            value={userDetails.phone}
-            onChange={handleChange}
-            variant="outlined"
-            fullWidth
-          />
-          <Select
-            className="input-fields"
-            value="India"
-            label="Country"
-            fullWidth
-            disabled
-          >
-            <MenuItem value="India">India</MenuItem>
-          </Select>
-          <TextField
-            className="input-fields"
-            name="address"
-            label="Address"
-            value={userDetails.address}
-            onChange={handleChange}
-            variant="outlined"
-            fullWidth
-          />
-          <TextField
-            className="input-fields"
-            name="city"
-            label="Town/City"
-            value={userDetails.city}
-            onChange={handleChange}
-            variant="outlined"
-            fullWidth
-		  />
-          <TextField
-            className="input-fields"
-            name="pincode"
-            label="Pincode"
-            value={userDetails.pincode}
-            onChange={handleChange}
-            type="number"
-            variant="outlined"
-            fullWidth
-          />
+    <>
+      {showPopup && (
+        <Popup
+          heading={shipping.error}
+          desc={shipping.msg}
+          exitFn={() => setShowPopup(false)}
+        />
+      )}
+      <div className="p-container">
+        <div className="Shipping-container mh-auto">
+          <h1 className="txt-al-center">Shipping Details</h1>
+          <form onSubmit={handleFormSubmit} className="txt-al-center">
+            <TextField
+              className="input-fields"
+              name="name"
+              label="Full Name"
+              value={userDetails.name}
+              onChange={handleChange}
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              className="input-fields"
+              name="phone"
+              label="Phone No"
+              value={userDetails.phone}
+              onChange={handleChange}
+              error={!activeFields.phoneActive && formErrors.phoneError != ""}
+              helperText={!activeFields.phoneActive && formErrors.phoneError}
+              onFocus={() =>
+                setActiveFields({ ...activeFields, phoneActive: true })
+              }
+              onBlur={() =>
+                setActiveFields({ ...activeFields, phoneActive: false })
+              }
+              variant="outlined"
+              fullWidth
+            />
+            <Select
+              className="input-fields"
+              value="India"
+              label="Country"
+              fullWidth
+              disabled
+            >
+              <MenuItem value="India">India</MenuItem>
+            </Select>
+            <TextField
+              className="input-fields"
+              name="address"
+              label="Address"
+              value={userDetails.address}
+              onChange={handleChange}
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              className="input-fields"
+              name="city"
+              label="Town/City"
+              value={userDetails.city}
+              onChange={handleChange}
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              className="input-fields"
+              name="pincode"
+              label="Pincode"
+              value={userDetails.pincode}
+              onChange={handleChange}
+              error={
+                !activeFields.pincodeActive && formErrors.pincodeError != ""
+              }
+              helperText={
+                !activeFields.pincodeActive && formErrors.pincodeError
+              }
+              onFocus={() =>
+                setActiveFields({ ...activeFields, pincodeActive: true })
+              }
+              onBlur={() =>
+                setActiveFields({ ...activeFields, pincodeActive: false })
+              }
+              type="number"
+              variant="outlined"
+              fullWidth
+            />
 
-		<button className="Shipping-form-btn">Save And Place Order</button>
-        </form>
+            <button className="Shipping-form-btn">Save And Place Order</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    shipping: state.shipping,
   };
 }
 

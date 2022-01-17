@@ -6,7 +6,11 @@ import {
 } from "firebase/auth";
 import { ROUTES } from "../../utils/constants";
 import { auth } from "../../firebase";
-import { setCartErrors, setCartLoadingTrue } from "../cart/cartActions";
+import {
+  getCart,
+  setCartErrors,
+  setCartLoadingTrue,
+} from "../cart/cartActions";
 import {
   getShippingDetails,
   setShippingErrors,
@@ -77,6 +81,7 @@ export function getUser() {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(getUserSuccess(user));
+        dispatch(getCart());
         dispatch(getShippingDetails());
       } else {
         dispatch(setUserErrors("User Not Logged In", ""));
@@ -129,6 +134,7 @@ export function loginViaEmailPass(email, password, navigate) {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         dispatch(loginViaEmailPassSuccess(result.user));
+        dispatch(getShippingDetails());
         navigate(ROUTES.HOME);
       })
       .catch((error) => dispatch(setUserErrors("", "Invalid Credentials")));

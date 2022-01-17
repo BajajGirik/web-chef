@@ -7,7 +7,13 @@ import {
 
 const initialShippingState = {
   loading: false,
-  data: {},
+  data: {
+    name: "",
+    phone: "",
+    address: "",
+    pincode: "",
+    city: "",
+  },
   msg: "",
   error: "",
 };

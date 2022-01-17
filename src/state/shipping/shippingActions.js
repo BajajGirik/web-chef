@@ -6,6 +6,7 @@ import {
   SET_SHIPPING_ERRORS,
   SET_SHIPPING_LOADING_TRUE,
 } from "./shippingActiontypes";
+import { ROUTES } from "../../utils/constants";
 import { auth, db } from "../../firebase";
 
 export function setShippingLoadingTrue() {
@@ -41,37 +42,40 @@ export function getShippingDetails() {
 
     getDoc(userDocRef)
       .then((userSnap) => {
-        let { name, phone, address, pincode, city, cart, amount } =
-          userSnap.data();
+        let { name, phone, address, pincode, city, amount } = userSnap.data();
         name === undefined && (name = "");
         phone === undefined && (phone = "");
         address === undefined && (address = "");
         pincode === undefined && (pincode = "");
         city === undefined && (city = "");
-        cart === undefined && (cart = []);
         amount === undefined && (amount = 0);
 
-        dispatch(getCartSuccess(cart, cart.length, amount));
         dispatch(
           getShippingDetailsSuccess(name, phone, address, pincode, city)
         );
       })
       .catch(() => {
-        dispatch(setCartErrors("", "Failed to load cart info"));
         dispatch(setShippingErrors("", "Failed to load shipping details"));
       });
   };
 }
 
-export function saveShippingDetails(name, phone, address, city, pincode) {
+export function saveShippingDetails(data, navigate) {
   return (dispatch) => {
     const docRef = doc(db, "users", auth.currentUser.uid);
-    const data = { name, phone, address, city, pincode };
 
     setDoc(docRef, data, { merge: true })
-      .then(() => dispatch(saveShippingDetailsSuccess(data)))
+      .then(() => {
+        dispatch(saveShippingDetailsSuccess(data));
+        navigate(ROUTES.HOME);
+      })
       .catch(() =>
-        dispatch(setShippingErrors("", "Failed to update Shipping Details"))
+        dispatch(
+          setShippingErrors(
+            "Some error occurred while updating shipping details. Please try again",
+            "Failed to update Shipping Details"
+          )
+        )
       );
   };
 }

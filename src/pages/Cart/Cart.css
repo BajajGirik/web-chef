@@ -1,4 +1,5 @@
 .Cart-container {
+  flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 2.5em;

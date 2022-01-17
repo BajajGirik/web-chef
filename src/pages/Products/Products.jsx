@@ -8,7 +8,7 @@ import { PRODUCTS, ROUTES } from "../../utils/constants";
 import "./Products.css";
 
 function Products({ cart }) {
-  const [isError, setIsError] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -17,18 +17,18 @@ function Products({ cart }) {
   );
 
   useEffect(() => {
-    if (cart?.error) setIsError(true);
+    if (cart?.error) setShowPopup(true);
   }, [cart]);
 
   return (
     <>
-      {isError && (
+      {showPopup && (
         <Popup
           heading={cart.error}
           desc={cart.msg}
           priText="Go to Login Page"
           priFn={() => navigate(ROUTES.LOGIN)}
-          exitFn={() => setIsError(false)}
+          exitFn={() => setShowPopup(false)}
         />
       )}
       <div key={params.category} className="Products-container p-container">

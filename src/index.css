@@ -7,7 +7,7 @@
 
 :root {
   --nav-container-bg: #000000;
-  --nav-link-active: #ffea00;
+  --nav-link-active: #d81159;
   --nav-cta-btn-bg: #d81159;
   --home-our-product-continer-bg: #f7efef;
   --home-our-product-btn-bg: #210707;
@@ -17,20 +17,9 @@
   --auth-container-bg: #f2f2f2;
   --auth-btn-bg: #dcb948;
   --popup-btn-bg: #d81159;
-
-  /* #7D2CF5 */
-
-  /* --nav-container-bg: #850f98;
-  --nav-link-active: #ffea00;
-  --home-our-product-continer-bg: #a5c8f7;
-  --home-our-product-btn-bg: #186bd6;
-  --product-indivisual-prod-container-bg: #ffbea0;
-  --product-indivisual-prod-btn-bg: #d81159;
-  --product-indivisual-prod-rmcart-btn-bg: #b5582d;
-  --auth-container-bg: #ffefba;
-  --auth-btn-bg: #ae9235; */
+  --shipping-heading-clr: #d81159;
 }
-
+/* #ffea00 */
 @keyframes change-opacity {
   100% {
     opacity: 1;

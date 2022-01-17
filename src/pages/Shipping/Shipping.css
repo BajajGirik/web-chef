@@ -8,6 +8,7 @@
 
 .Shipping-container > h1 {
   margin: 0 0 1em 0;
+  color: var(--shipping-heading-clr);
 }
 
 .input-fields {
@@ -20,9 +21,15 @@
   width: 60%;
   padding: 0.7rem;
   margin-top: 1em;
-  border: none;
-  background-color: pink;
+  background-color: transparent;
+  border: solid 1px var(--shipping-heading-clr);
   border-radius: 6px;
+  cursor: pointer;
+}
+
+.Shipping-form-btn:hover {
+  color: white;
+  background-image: linear-gradient(to left, #dd2476 0%, #ff512f 100%);
 }
 
 @media screen and (max-width: 64.7rem) {
