@@ -38,7 +38,7 @@ function SignUp(props) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (
-      signUpErrors(
+		signUpErrors(
         emailRef.current.value,
         passRef.current.value,
         rePassRef.current.value

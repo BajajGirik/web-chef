@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IndivisualProduct } from "../../components/Product";
 import { Popup } from "../../components/UI/Popup";
 import { PRODUCTS, ROUTES } from "../../utils/constants";
 import "./Products.css";
 
-function Products({ cart }) {
+function Products({ cart, params }) {
   const [showPopup, setShowPopup] = useState(false);
-  const params = useParams();
   const navigate = useNavigate();
 
   const productArray = PRODUCTS.filter(
-    (product) => product.type === params.category
+    (product) => product.type === params
   );
 
   useEffect(() => {
@@ -31,7 +30,7 @@ function Products({ cart }) {
           exitFn={() => setShowPopup(false)}
         />
       )}
-      <div key={params.category} className="Products-container p-container">
+      <div key={params} className="Products-container p-container">
         {productArray?.map((props) => (
           <IndivisualProduct key={props.id} {...props} />
         ))}

@@ -1,5 +1,5 @@
 import {
-  GET_ORDER_HISTORY_REQUEST,
+  SET_ORDER_LOADING_TRUE,
   GET_ORDER_HISTORY_SUCCESS,
   PLACE_ORDER_SUCCESS,
   SET_ORDER_ERRORS,
@@ -14,7 +14,7 @@ const intialOrderState = {
 
 const orderReducer = (state = intialOrderState, action) => {
   switch (action.type) {
-    case GET_ORDER_HISTORY_REQUEST:
+    case SET_ORDER_LOADING_TRUE:
       return {
         ...state,
         loading: true,

@@ -1,0 +1,58 @@
+.Shipping-form-container {
+  border-radius: 1em;
+  width: 62.5rem;
+  padding: 2.5em 4em;
+  border: solid 0.7px rgb(211, 211, 211);
+  box-shadow: 1px 1px 60px 10px lightgray;
+}
+
+.Shipping-container > h1 {
+  margin: 0 0 1em 0;
+  color: var(--shipping-heading-clr);
+}
+
+.input-fields {
+  margin-bottom: 1em !important;
+  text-align: left;
+}
+
+.Shipping-form-btn {
+  font-size: 1rem;
+  width: 60%;
+  padding: 0.7rem;
+  margin-top: 1em;
+  background-color: transparent;
+  border: solid 1px var(--shipping-heading-clr);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.Shipping-form-btn:hover {
+  color: white;
+  background-image: linear-gradient(to left, #dd2476 0%, #ff512f 100%);
+}
+
+@media screen and (max-width: 64.7rem) {
+  .Shipping-form-container {
+    width: 45rem;
+    padding: 2.5em 1em;
+  }
+}
+
+@media screen and (max-width: 50rem) {
+  .Shipping-form-container {
+    width: 38rem;
+  }
+}
+
+@media screen and (max-width: 38rem) {
+  .Shipping-form-container {
+    width: 25rem;
+  }
+}
+
+@media screen and (max-width: 28rem) {
+  .Shipping-form-container {
+    width: 20rem;
+  }
+}

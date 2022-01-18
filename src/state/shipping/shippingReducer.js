@@ -1,19 +1,14 @@
 import {
   GET_SHIPPING_DETAILS_SUCCESS,
-  SAVE_SHIPPING_DETAILS_SUCCESS,
+  EDIT_SHIPPING_DETAILS_SUCCESS,
   SET_SHIPPING_ERRORS,
   SET_SHIPPING_LOADING_TRUE,
+  ADD_SHIPPING_DETAILS_SUCCESS,
 } from "./shippingActiontypes";
 
 const initialShippingState = {
   loading: false,
-  data: {
-    name: "",
-    phone: "",
-    address: "",
-    pincode: "",
-    city: "",
-  },
+  data: [],
   msg: "",
   error: "",
 };
@@ -42,7 +37,15 @@ const shippingReducer = (state = initialShippingState, action) => {
         error: "",
       };
 
-    case SAVE_SHIPPING_DETAILS_SUCCESS:
+    case ADD_SHIPPING_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        data: [...state.data, action.payload],
+        msg: "SUCESS",
+        error: "",
+      };
+
+    case EDIT_SHIPPING_DETAILS_SUCCESS:
       return {
         loading: false,
         data: action.payload,

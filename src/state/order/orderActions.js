@@ -4,7 +4,13 @@ import {
   SET_ORDER_ERRORS,
   SET_ORDER_LOADING_TRUE,
 } from "./orderActionTypes";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+import { auth, db } from "../../firebase";
 
 export function setOrderLoadingTrue() {
   return {
@@ -43,6 +49,7 @@ export function getOrderHistory() {
       );
       const orderHistory = collectionSnap.docs.map((docSnap) => ({
         id: docSnap.id,
+        orderedAt: docSnap.data().orderedAt,
         ...docSnap.data(),
       }));
 
@@ -50,5 +57,27 @@ export function getOrderHistory() {
     } catch (error) {
       dispatch(setOrderErrors("", "Failed to load order history"));
     }
+  };
+}
+
+export function placeOrder() {
+  return async (dispatch, getState) => {
+    const orderCollection = collection(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "orderHistory"
+    );
+
+    const data = {
+      items: getState().cart.data,
+      totalItems: getState().cart.size,
+      orderedOn: serverTimestamp(),
+    };
+    addDoc(orderCollection, data).then((res) =>
+      dispatch(
+        placeOrder({ id: res.id, orderedAt: new Date().toString(), ...data })
+      )
+    );
   };
 }

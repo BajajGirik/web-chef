@@ -1,10 +1,17 @@
-import { getCartSuccess, setCartErrors } from "../cart/cartActions";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 import {
   GET_SHIPPING_DETAILS_SUCCESS,
-  SAVE_SHIPPING_DETAILS_SUCCESS,
+  EDIT_SHIPPING_DETAILS_SUCCESS,
   SET_SHIPPING_ERRORS,
   SET_SHIPPING_LOADING_TRUE,
+  ADD_SHIPPING_DETAILS_SUCCESS,
 } from "./shippingActiontypes";
 import { ROUTES } from "../../utils/constants";
 import { auth, db } from "../../firebase";
@@ -22,51 +29,93 @@ export function setShippingErrors(msg, error) {
   };
 }
 
-export function getShippingDetailsSuccess(name, phone, address, pincode, city) {
+export function getShippingDetailsSuccess(data) {
   return {
     type: GET_SHIPPING_DETAILS_SUCCESS,
-    payload: { name, phone, address, pincode, city },
+    payload: data,
   };
 }
 
-export function saveShippingDetailsSuccess(data) {
+export function addShippingDetailsSuccess(newDetails) {
   return {
-    type: SAVE_SHIPPING_DETAILS_SUCCESS,
-    payload: data,
+    type: ADD_SHIPPING_DETAILS_SUCCESS,
+    payload: newDetails,
+  };
+}
+
+export function editShippingDetailsSuccess(updatedData) {
+  return {
+    type: EDIT_SHIPPING_DETAILS_SUCCESS,
+    payload: updatedData,
   };
 }
 
 export function getShippingDetails() {
   return (dispatch) => {
-    const userDocRef = doc(db, "users", auth.currentUser.uid);
+    const shippingCollectionRef = collection(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "shipping"
+    );
 
-    getDoc(userDocRef)
-      .then((userSnap) => {
-        let { name, phone, address, pincode, city, amount } = userSnap.data();
-        name === undefined && (name = "");
-        phone === undefined && (phone = "");
-        address === undefined && (address = "");
-        pincode === undefined && (pincode = "");
-        city === undefined && (city = "");
-        amount === undefined && (amount = 0);
+    getDocs(shippingCollectionRef)
+      .then((shipCollecSnap) => {
+        const data = shipCollecSnap.docs.map((shipDocSnap) => ({
+          id: shipDocSnap.id,
+          ...shipDocSnap.data(),
+        }));
 
-        dispatch(
-          getShippingDetailsSuccess(name, phone, address, pincode, city)
-        );
+        dispatch(getShippingDetailsSuccess(data));
       })
       .catch(() => {
-        dispatch(setShippingErrors("", "Failed to load shipping details"));
+        dispatch(setShippingErrors("", "Failed to get all shipping details"));
       });
   };
 }
 
-export function saveShippingDetails(data, navigate) {
+export function addShippingDetails(data, navigate) {
   return (dispatch) => {
-    const docRef = doc(db, "users", auth.currentUser.uid);
+    const shipCollRef = collection(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "shipping"
+    );
+
+    addDoc(shipCollRef, data)
+      .then((shipDocRef) => {
+        dispatch(addShippingDetailsSuccess({ id: shipDocRef.id, ...data }));
+        navigate(ROUTES.HOME);
+      })
+      .catch(() =>
+        dispatch(
+          setShippingErrors(
+            "Some error occurred while updating shipping details. Please try again",
+            "Failed to add new Shipping Details"
+          )
+        )
+      );
+  };
+}
+
+export function editShippingDetails(id, data, navigate) {
+  return (dispatch, getState) => {
+    const docRef = doc(db, "users", auth.currentUser.uid, "shipping", id);
+    const shipDetails = getState().shipping.data;
+    const editIndex = shipDetails.findIndex(
+      (indvShipDet) => indvShipDet.id === id
+    );
+
+    const updatedShipDets = [
+      ...shipDetails.slice(0, editIndex),
+      { id, ...data },
+      ...shipDetails.slice(editIndex + 1),
+    ];
 
     setDoc(docRef, data, { merge: true })
       .then(() => {
-        dispatch(saveShippingDetailsSuccess(data));
+        dispatch(editShippingDetailsSuccess(updatedShipDets));
         navigate(ROUTES.HOME);
       })
       .catch(() =>
