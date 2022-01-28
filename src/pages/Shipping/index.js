@@ -1,3 +1,4 @@
-import Shipping from "./Shipping";
+import ShippingList from "./ShippingList";
+import AddEditShipping from "./AddEditShipping";
 
-export { Shipping };
+export { ShippingList, AddEditShipping };

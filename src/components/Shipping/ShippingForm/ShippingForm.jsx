@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import {
   addShippingDetails,
   editShippingDetails,
-} from "../../state/shipping/shippingActions";
+} from "../../../state/shipping/shippingActions";
 import {
   getPhoneNumberError,
   getPinCodeError,
   shippingErrors,
-} from "../../utils/validations";
+} from "../../../utils/validations";
 import "./ShippingForm.css";
 
 function ShippingForm(props) {

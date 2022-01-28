@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Products } from "./pages/Products";
 import { Cart } from "./pages/Cart";
-import { Shipping } from "./pages/Shipping/";
+import { ShippingList, AddEditShipping } from "./pages/Shipping/";
 import { Terms, PrivacyPolicy, RefundPolicy } from "./pages/T&C";
 import { Home } from "./pages/Home";
 import { Login, SignUp } from "./pages/Auth";
@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { ROUTES } from "./utils/constants";
+import { IndivisualShippingCard } from "./components/Shipping";
 
 function App(props) {
   const { user, cart, shipping, orders, dispatch } = props;
@@ -33,8 +34,15 @@ function App(props) {
         <Route path={ROUTES.CAKE} element={<Products params="cakes" />} />
         <Route path={ROUTES.LADOOS} element={<Products params="ladoos" />} />
         <Route path={ROUTES.CART} element={<Cart />} />
-        <Route path={ROUTES.ADD_SHIPPING_DETAILS} element={<Shipping />} />
-        <Route path={ROUTES.EDIT_SHIPPING_DETAILS} element={<Shipping />} />
+        <Route path={ROUTES.SHIPPING} element={<ShippingList />} />
+        <Route
+          path={ROUTES.ADD_SHIPPING_DETAILS}
+          element={<AddEditShipping />}
+        />
+        <Route
+          path={ROUTES.EDIT_SHIPPING_DETAILS}
+          element={<AddEditShipping />}
+        />
         <Route path={ROUTES.TNC} element={<Terms />} />
         <Route path={ROUTES.PRIVACYPOLICY} element={<PrivacyPolicy />} />
         <Route path={ROUTES.REFUNDPOLICY} element={<RefundPolicy />} />

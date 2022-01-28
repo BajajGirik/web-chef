@@ -1,3 +1,3 @@
 import ShippingForm from "./ShippingForm";
 
-export { ShippingForm };
+export default ShippingForm;

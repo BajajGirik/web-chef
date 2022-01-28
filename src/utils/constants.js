@@ -19,6 +19,7 @@ export const ROUTES = {
   CAKE: "/product/cakes",
   LADOOS: "/product/ladoos",
   CART: "/cart",
+  SHIPPING: "/shipping",
   ADD_SHIPPING_DETAILS: "/shipping/add",
   EDIT_SHIPPING_DETAILS: "/shipping/edit",
   TNC: "/tnc",

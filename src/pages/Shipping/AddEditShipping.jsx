@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import ShippingForm from "../../components/ShippingForm/ShippingForm";
+import ShippingForm from "../../components/Shipping/ShippingForm";
 import { Popup } from "../../components/UI/Popup";
 import { getShippingDetails } from "../../state/shipping/shippingActions";
 import "./Shipping.css";
 
-function Shipping(props) {
+function AddEditShipping(props) {
   const { shipping, dispatch } = props;
   const [searchParams] = useSearchParams();
   const [shipDetToUpdate, setShipDetToUpdate] = useState({});
@@ -49,4 +49,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Shipping);
+export default connect(mapStateToProps)(AddEditShipping);

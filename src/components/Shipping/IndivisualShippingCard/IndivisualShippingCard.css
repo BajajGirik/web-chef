@@ -1,0 +1,46 @@
+.IndivisualShippingCard-container {
+  /* max-width: 18.75rem; */
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0.7rem 0.7rem 0.7rem #eee;
+  border: solid 0.5px #eee;
+  transition: transform 300ms linear;
+}
+
+.IndivisualShippingCard-container section h2 {
+  margin-top: 0;
+}
+
+.IndivisualShippingCard-container section > div {
+  margin-bottom: 0.6rem;
+}
+
+.IndivisualShippingCard-container section > div:last-child {
+  margin-bottom: 1.2rem;
+}
+
+.IndivisualShippingCard-container section span {
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.IndivisualShippingCard-container > div {
+  text-align: right;
+}
+
+.IndivisualShippingCard-container button {
+  background-color: #ffffff;
+  outline: none;
+  font-size: clamp(0.8rem, 2.8vw, 1rem);
+  padding: 5px;
+  margin-right: 10px;
+  border: solid 0.5px #ededed;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 400ms ease-in, color 300ms ease-in;
+}
+
+.IndivisualShippingCard-container button:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+}
