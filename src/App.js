@@ -12,23 +12,24 @@ import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { ROUTES } from "./utils/constants";
 import { IndivisualShippingCard } from "./components/Shipping";
+import { IndivisualOrder } from "./components/Orders";
 
 function App(props) {
   const { user, cart, shipping, orders, dispatch } = props;
   const loading =
     user.loading || cart.loading || shipping.loading || orders.loading;
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(getUser());
+  //   }, [dispatch]);
 
-  if (loading || !user.isLoggedIn) return "Loading";
+  //   if (loading || !user.isLoggedIn) return "Loading";
 
   return (
-    <div className="App">
+    <div className="App" >
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<IndivisualOrder />} /> */}
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.SIGNUP} element={<SignUp />} />
         <Route path={ROUTES.CAKE} element={<Products params="cakes" />} />

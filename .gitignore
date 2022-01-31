@@ -12,6 +12,7 @@
 /build
 
 # misc
+/thoughts.txt
 .DS_Store
 .env
 .env.local

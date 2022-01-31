@@ -73,6 +73,7 @@ export function placeOrder() {
       items: getState().cart.data,
       totalItems: getState().cart.size,
       orderedOn: serverTimestamp(),
+      //   shippingDetails
     };
     addDoc(orderCollection, data).then((res) =>
       dispatch(
