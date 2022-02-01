@@ -11,25 +11,22 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { ROUTES } from "./utils/constants";
-import { IndivisualShippingCard } from "./components/Shipping";
-import { IndivisualOrder } from "./components/Orders";
+import { Orders } from "./pages/Orders";
 
-function App(props) {
-  const { user, cart, shipping, orders, dispatch } = props;
-  const loading =
-    user.loading || cart.loading || shipping.loading || orders.loading;
+function App({ user, cart, shipping, orders, dispatch }) {
+  const loading = user.loading || cart.loading;
 
-  //   useEffect(() => {
-  //     dispatch(getUser());
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
-  //   if (loading || !user.isLoggedIn) return "Loading";
+  if (loading) return "Loading";
 
   return (
-    <div className="App" >
+    <div className="App">
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<IndivisualOrder />} /> */}
+        <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.SIGNUP} element={<SignUp />} />
         <Route path={ROUTES.CAKE} element={<Products params="cakes" />} />
@@ -44,6 +41,7 @@ function App(props) {
           path={ROUTES.EDIT_SHIPPING_DETAILS}
           element={<AddEditShipping />}
         />
+        <Route path={ROUTES.ORDERS} element={<Orders />} />
         <Route path={ROUTES.TNC} element={<Terms />} />
         <Route path={ROUTES.PRIVACYPOLICY} element={<PrivacyPolicy />} />
         <Route path={ROUTES.REFUNDPOLICY} element={<RefundPolicy />} />

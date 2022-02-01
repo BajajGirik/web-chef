@@ -22,6 +22,7 @@ export const ROUTES = {
   SHIPPING: "/shipping",
   ADD_SHIPPING_DETAILS: "/shipping/add",
   EDIT_SHIPPING_DETAILS: "/shipping/edit",
+  ORDERS: "/orders",
   TNC: "/tnc",
   PRIVACYPOLICY: "/privacypolicy",
   REFUNDPOLICY: "/refundpolicy",

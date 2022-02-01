@@ -40,9 +40,18 @@ export function placeOrderSuccess(order) {
 }
 
 export function getOrderHistory() {
-  return async (dispatch) => {
-    dispatch(setOrderLoadingTrue());
+  return async (dispatch, getState) => {
+    if (!getState().user.isLoggedIn) {
+      dispatch(
+        setOrderErrors(
+          "Please Login/Signup to add items to cart",
+          "User Not Logged in"
+        )
+      );
+      return;
+    }
 
+    dispatch(setOrderLoadingTrue());
     try {
       const collectionSnap = await getDocs(
         collection(db, "users", auth.currentUser.uid, "orderHistory")
@@ -77,7 +86,11 @@ export function placeOrder() {
     };
     addDoc(orderCollection, data).then((res) =>
       dispatch(
-        placeOrder({ id: res.id, orderedAt: new Date().toString(), ...data })
+        placeOrderSuccess({
+          id: res.id,
+          orderedAt: new Date().toString(),
+          ...data,
+        })
       )
     );
   };

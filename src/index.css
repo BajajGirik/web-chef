@@ -66,6 +66,10 @@ code {
   flex-direction: column;
 }
 
+.fg-1 {
+  flex-grow: 1;
+}
+
 .al-center {
   align-items: center;
 }

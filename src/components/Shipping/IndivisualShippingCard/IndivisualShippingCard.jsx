@@ -1,10 +1,20 @@
 import HomeIcon from "@mui/icons-material/Home";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { removeShippingDetails } from "../../../state/shipping/shippingActions";
 import { ROUTES } from "../../../utils/constants";
 import "./IndivisualShippingCard.css";
 
-function IndivisualShippingCard({ id, name, phone, address, city, pincode }) {
+function IndivisualShippingCard({
+  id,
+  name,
+  phone,
+  address,
+  //   city,
+  pincode,
+  dispatch,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -29,10 +39,12 @@ function IndivisualShippingCard({ id, name, phone, address, city, pincode }) {
         >
           Edit
         </button>
-        <button>Remove</button>
+        <button onClick={() => dispatch(removeShippingDetails(id))}>
+          Remove
+        </button>
       </div>
     </div>
   );
 }
 
-export default IndivisualShippingCard;
+export default connect(null)(IndivisualShippingCard);

@@ -4,6 +4,7 @@ import {
   SET_SHIPPING_ERRORS,
   SET_SHIPPING_LOADING_TRUE,
   ADD_SHIPPING_DETAILS_SUCCESS,
+  REMOVE_SHIPPING_DETAILS_SUCCESS,
 } from "./shippingActiontypes";
 
 const initialShippingState = {
@@ -49,6 +50,15 @@ const shippingReducer = (state = initialShippingState, action) => {
       return {
         loading: false,
         data: action.payload,
+        msg: "SUCESS",
+        error: "",
+      };
+
+    case REMOVE_SHIPPING_DETAILS_SUCCESS:
+      const newState = state.data.filter((item) => item.id !== action.payload);
+      return {
+        loading: false,
+        data: newState,
         msg: "SUCESS",
         error: "",
       };

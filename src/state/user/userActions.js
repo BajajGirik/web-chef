@@ -11,11 +11,7 @@ import {
   setCartErrors,
   setCartLoadingTrue,
 } from "../cart/cartActions";
-import {
-  getShippingDetails,
-  setShippingErrors,
-  setShippingLoadingTrue,
-} from "../shipping/shippingActions";
+import { getShippingDetails } from "../shipping/shippingActions";
 import {
   GET_USER_SUCCESS,
   LOGOUT_SUCCESS,
@@ -76,17 +72,14 @@ export function getUser() {
   return (dispatch) => {
     dispatch(setUserLoadingTrue());
     dispatch(setCartLoadingTrue());
-    dispatch(setShippingLoadingTrue());
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(getUserSuccess(user));
         dispatch(getCart());
-        dispatch(getShippingDetails());
       } else {
         dispatch(setUserErrors("User Not Logged In", ""));
         dispatch(setCartErrors("User Not Logged In", ""));
-        dispatch(setShippingErrors("User Not Logged In", ""));
       }
     });
 

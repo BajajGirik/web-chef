@@ -2,9 +2,9 @@ import {
   addDoc,
   collection,
   doc,
-  getDoc,
   getDocs,
   setDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import {
   GET_SHIPPING_DETAILS_SUCCESS,
@@ -12,6 +12,7 @@ import {
   SET_SHIPPING_ERRORS,
   SET_SHIPPING_LOADING_TRUE,
   ADD_SHIPPING_DETAILS_SUCCESS,
+  REMOVE_SHIPPING_DETAILS_SUCCESS,
 } from "./shippingActiontypes";
 import { ROUTES } from "../../utils/constants";
 import { auth, db } from "../../firebase";
@@ -50,8 +51,25 @@ export function editShippingDetailsSuccess(updatedData) {
   };
 }
 
+export function removeShippingDetailsSuccess(id) {
+  return {
+    type: REMOVE_SHIPPING_DETAILS_SUCCESS,
+    payload: id,
+  };
+}
+
 export function getShippingDetails() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    if (!getState().user.isLoggedIn) {
+      dispatch(
+        setShippingErrors(
+          "Please Login/Signup to get Shipping Details",
+          "User Not Logged in"
+        )
+      );
+      return;
+    }
+
     const shippingCollectionRef = collection(
       db,
       "users",
@@ -123,6 +141,22 @@ export function editShippingDetails(id, data, navigate) {
           setShippingErrors(
             "Some error occurred while updating shipping details. Please try again",
             "Failed to update Shipping Details"
+          )
+        )
+      );
+  };
+}
+
+export function removeShippingDetails(id) {
+  return (dispatch) => {
+    const docRef = doc(db, "users", auth.currentUser.uid, "shipping", id);
+    deleteDoc(docRef)
+      .then(() => dispatch())
+      .catch(() =>
+        dispatch(
+          setShippingErrors(
+            "Some error occurred while deleting shipping details. Please try again",
+            "Failed to delete Shipping Details"
           )
         )
       );

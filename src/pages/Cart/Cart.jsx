@@ -23,7 +23,7 @@ function Cart(props) {
   }, [cart]);
 
   return (
-    <div className="Cart-container p-container">
+    <div className="Cart-container fg-1 p-container">
       {items.length ? (
         <>
           <div className="flex-c">

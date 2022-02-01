@@ -47,12 +47,12 @@ function ShippingForm(props) {
       [event.target.name]: event.target.value,
     });
 
-    if (event.target.name == "phone") {
+    if (event.target.name === "phone") {
       setFormErrors({
         ...formErrors,
         phoneError: getPhoneNumberError(event.target.value),
       });
-    } else if (event.target.name == "pincode") {
+    } else if (event.target.name === "pincode") {
       setFormErrors({
         ...formErrors,
         pincodeError: getPinCodeError(event.target.value),
@@ -89,7 +89,7 @@ function ShippingForm(props) {
           label="Phone No"
           value={userDetails.phone}
           onChange={handleChange}
-          error={!activeFields.phoneActive && formErrors.phoneError != ""}
+          error={!activeFields.phoneActive && formErrors.phoneError !== ""}
           helperText={!activeFields.phoneActive && formErrors.phoneError}
           onFocus={() =>
             setActiveFields({ ...activeFields, phoneActive: true })
@@ -133,7 +133,7 @@ function ShippingForm(props) {
           label="Pincode"
           value={userDetails.pincode}
           onChange={handleChange}
-          error={!activeFields.pincodeActive && formErrors.pincodeError != ""}
+          error={!activeFields.pincodeActive && formErrors.pincodeError !== ""}
           helperText={!activeFields.pincodeActive && formErrors.pincodeError}
           onFocus={() =>
             setActiveFields({ ...activeFields, pincodeActive: true })

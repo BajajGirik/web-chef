@@ -31,6 +31,7 @@ const orderReducer = (state = intialOrderState, action) => {
     case GET_ORDER_HISTORY_SUCCESS:
       return {
         ...state,
+        loading: false,
         history: action.payload,
         msg: "SUCCESS",
       };
