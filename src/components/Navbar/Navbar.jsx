@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { NAV_ITEMS, ROUTES } from "../../utils/constants";
+import { NAV_DROPDOWNS, NAV_ITEMS, ROUTES } from "../../utils/constants";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Navbar.css";
 import { connect } from "react-redux";
+import { Avatar } from "@mui/material";
 import { logout } from "../../state/user/userActions";
 
 function Navbar(props) {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedIn, dispatch } = props;
+  const { isLoggedIn, email, dispatch } = props;
 
   return (
     <>
@@ -38,27 +39,57 @@ function Navbar(props) {
             {NAV_ITEMS.map(({ to, displayText }) => (
               <li key={displayText} className="Navbar-list-item">
                 <NavLink
+                  to={to}
                   className={({ isActive }) =>
                     isActive ? "link nav-active" : "link"
                   }
-                  to={to}
                   onClick={() => setIsMovNavOpen(false)}
                 >
                   {displayText}
                 </NavLink>
               </li>
             ))}
+
+            <li className="Navbar-list-item Navbar-dropdown-container">
+              <span className="link">
+                <Avatar>{email && email[0]}</Avatar>
+              </span>
+              <div className="flex-c al-center">
+                {NAV_DROPDOWNS.map(({ to, displayText }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    className={({ isActive }) =>
+                      isActive ? "link dropdown-active" : "link"
+                    }
+                    onClick={() => setIsMovNavOpen(false)}
+                  >
+                    {displayText}
+                  </NavLink>
+                ))}
+                <NavLink
+                  to={ROUTES.LOGIN}
+                  className="link"
+                  onClick={() => {
+                    setIsMovNavOpen(false);
+                    isLoggedIn && dispatch(logout());
+                  }}
+                >
+                  Logout
+                </NavLink>
+              </div>
+            </li>
           </ul>
         </div>
-        <button
+        {/* <button
           className="Navbar-CTA-btn"
           onClick={() => {
             setIsMovNavOpen(false);
             isLoggedIn ? dispatch(logout()) : navigate(ROUTES.LOGIN);
           }}
         >
-          {isLoggedIn ? "Logout" : "Login"}
-        </button>
+          {isLoggedIn ? "Profile" : "Login"}
+        </button> */}
       </nav>
       <div className="nav-height"></div>
     </>

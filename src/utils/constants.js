@@ -35,6 +35,11 @@ export const NAV_ITEMS = [
   { to: ROUTES.CART, displayText: "Cart" },
 ];
 
+export const NAV_DROPDOWNS = [
+  { to: ROUTES.SHIPPING, displayText: "Your Addresses" },
+  { to: ROUTES.ORDERS, displayText: "Orders" },
+];
+
 export const HOME_PRODUCTS_LIST = [
   {
     carouselImgs: [AllCakes1, AllCakes2, AllCakes3, AllCakes4, AllCakes5],

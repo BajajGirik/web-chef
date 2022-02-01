@@ -16,9 +16,9 @@ import { Orders } from "./pages/Orders";
 function App({ user, cart, shipping, orders, dispatch }) {
   const loading = user.loading || cart.loading;
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(getUser());
+  //   }, [dispatch]);
 
   if (loading) return "Loading";
 
