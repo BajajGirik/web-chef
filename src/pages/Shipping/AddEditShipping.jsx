@@ -6,8 +6,7 @@ import { Popup } from "../../components/UI/Popup";
 import { getShippingDetails } from "../../state/shipping/shippingActions";
 import "./Shipping.css";
 
-function AddEditShipping(props) {
-  const { shipping, dispatch } = props;
+function AddEditShipping({ isCheckout, shipping, dispatch }) {
   const [searchParams] = useSearchParams();
   const [shipDetToUpdate, setShipDetToUpdate] = useState({});
   const [showPopup, setShowPopup] = useState(false);
@@ -37,7 +36,7 @@ function AddEditShipping(props) {
         />
       )}
       <div className="p-container">
-        <ShippingForm id={shipDetToUpdate?.id} shipInfo={shipDetToUpdate} />
+        <ShippingForm isCheckout={isCheckout} id={shipDetToUpdate?.id} shipInfo={shipDetToUpdate} />
       </div>
     </>
   );

@@ -26,12 +26,12 @@ function OrderSummary({ amount }) {
         *Delivery Charges will be updated within 2 days after order confirmation. (Max - ₹100)
       </span> */}
 
-      <div
-        onClick={() => navigate(ROUTES.SHIPPING)}
-        className="place-order-btn disabled"
+      <button
+        onClick={() => navigate(ROUTES.CHECKOUT_SHIPPING)}
+        className="place-order-btn"
       >
         Proceed to Buy
-      </div>
+      </button>
     </div>
   );
 }

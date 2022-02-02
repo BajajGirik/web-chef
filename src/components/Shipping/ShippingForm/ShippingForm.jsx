@@ -6,6 +6,7 @@ import {
   addShippingDetails,
   editShippingDetails,
 } from "../../../state/shipping/shippingActions";
+import { ROUTES } from "../../../utils/constants";
 import {
   getPhoneNumberError,
   getPinCodeError,
@@ -13,8 +14,7 @@ import {
 } from "../../../utils/validations";
 import "./ShippingForm.css";
 
-function ShippingForm(props) {
-  const { id, shipInfo, dispatch } = props;
+function ShippingForm({ isCheckout, id, shipInfo, dispatch }) {
   const navigate = useNavigate();
 
   const [userDetails, setUserDetails] = useState({
@@ -33,12 +33,17 @@ function ShippingForm(props) {
     pincodeError: "",
   });
 
+  const navigateToShippingList = () => {
+    isCheckout ? navigate(ROUTES.SHIPPING) : navigate(ROUTES.CHECKOUT_SHIPPING);
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (shippingErrors(userDetails.phone, userDetails.pincode)) return;
 
-    if (id === undefined) dispatch(addShippingDetails(userDetails, navigate));
-    else dispatch(editShippingDetails(id, userDetails, navigate));
+    if (id === undefined)
+      dispatch(addShippingDetails(userDetails, navigateToShippingList));
+    else dispatch(editShippingDetails(id, userDetails, navigateToShippingList));
   };
 
   const handleChange = (event) => {

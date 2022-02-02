@@ -14,7 +14,6 @@ import {
   ADD_SHIPPING_DETAILS_SUCCESS,
   REMOVE_SHIPPING_DETAILS_SUCCESS,
 } from "./shippingActiontypes";
-import { ROUTES } from "../../utils/constants";
 import { auth, db } from "../../firebase";
 
 export function setShippingLoadingTrue() {
@@ -92,7 +91,7 @@ export function getShippingDetails() {
   };
 }
 
-export function addShippingDetails(data, navigate) {
+export function addShippingDetails(data, navigateToShippingList) {
   return (dispatch) => {
     const shipCollRef = collection(
       db,
@@ -104,7 +103,7 @@ export function addShippingDetails(data, navigate) {
     addDoc(shipCollRef, data)
       .then((shipDocRef) => {
         dispatch(addShippingDetailsSuccess({ id: shipDocRef.id, ...data }));
-        navigate(ROUTES.HOME);
+        navigateToShippingList();
       })
       .catch(() =>
         dispatch(
@@ -117,7 +116,7 @@ export function addShippingDetails(data, navigate) {
   };
 }
 
-export function editShippingDetails(id, data, navigate) {
+export function editShippingDetails(id, data, navigateToShippingList) {
   return (dispatch, getState) => {
     const docRef = doc(db, "users", auth.currentUser.uid, "shipping", id);
     const shipDetails = getState().shipping.data;
@@ -134,7 +133,7 @@ export function editShippingDetails(id, data, navigate) {
     setDoc(docRef, data, { merge: true })
       .then(() => {
         dispatch(editShippingDetailsSuccess(updatedShipDets));
-        navigate(ROUTES.HOME);
+        navigateToShippingList();
       })
       .catch(() =>
         dispatch(

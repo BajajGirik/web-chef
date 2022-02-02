@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NAV_DROPDOWNS, NAV_ITEMS, ROUTES } from "../../utils/constants";
 import MenuIcon from "@mui/icons-material/Menu";
-import "./Navbar.css";
 import { connect } from "react-redux";
 import { Avatar } from "@mui/material";
 import { logout } from "../../state/user/userActions";
+import "./Navbar.css";
 
 function Navbar(props) {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);

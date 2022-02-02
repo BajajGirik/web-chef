@@ -1,10 +1,14 @@
 .IndivisualShippingCard-container {
   /* max-width: 18.75rem; */
   padding: 1.5rem 1rem;
-  margin-bottom: 1.2rem;
+  /* margin-bottom: 1.2rem; */
   box-shadow: 0.7rem 0.7rem 0.7rem #eee;
   border: solid 0.5px #eee;
   transition: transform 300ms linear;
+}
+
+.IndivisualShippingCard-container input[type="radio"] {
+  margin-right: 1rem;
 }
 
 .IndivisualShippingCard-container section h2 {
@@ -24,9 +28,9 @@
   margin-left: 5px;
 }
 
-.IndivisualShippingCard-container > div {
+/* .IndivisualShippingCard-container > div {
   text-align: right;
-}
+} */
 
 .IndivisualShippingCard-container button {
   background-color: #ffffff;

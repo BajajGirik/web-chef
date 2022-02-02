@@ -13,38 +13,57 @@ function IndivisualShippingCard({
   address,
   //   city,
   pincode,
+
+  isCheckout,
+  selectedShippingId,
+  setSelectedShippingId,
+
   dispatch,
 }) {
   const navigate = useNavigate();
 
   return (
-    <div className="IndivisualShippingCard-container">
-      <section>
-        <h2>{name}</h2>
-        <div className="flex">
-          <HomeIcon fontSize="small" />
-          <span>
-            {address} - {pincode}
-          </span>
-        </div>
-        <div className="flex">
-          <PhoneIphoneIcon fontSize="small" />
-          <span>{phone}</span>
-        </div>
-      </section>
-
+    <div
+      onClick={() => setSelectedShippingId(id)}
+      className="IndivisualShippingCard-container flex al-center"
+    >
+      {isCheckout && (
+        <input type="radio" value={id} checked={id === selectedShippingId} />
+      )}
       <div>
-        <button
-          onClick={() => navigate(`${ROUTES.EDIT_SHIPPING_DETAILS}?id=${id}`)}
-        >
-          Edit
-        </button>
-        <button onClick={() => dispatch(removeShippingDetails(id))}>
-          Remove
-        </button>
+        <section>
+          <h2>{name}</h2>
+          <div className="flex">
+            <HomeIcon fontSize="small" />
+            <span>
+              {address} - {pincode}
+            </span>
+          </div>
+          <div className="flex">
+            <PhoneIphoneIcon fontSize="small" />
+            <span>{phone}</span>
+          </div>
+        </section>
+
+        <div>
+          <button
+            onClick={() => navigate(`${ROUTES.EDIT_SHIPPING_DETAILS}?id=${id}`)}
+          >
+            Edit
+          </button>
+          <button onClick={() => dispatch(removeShippingDetails(id))}>
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
-export default connect(null)(IndivisualShippingCard);
+function mapStateToProps(state) {
+  return {
+    checkoutShippingStage: state.checkout.stage.shipping,
+  };
+}
+
+export default connect(mapStateToProps)(IndivisualShippingCard);

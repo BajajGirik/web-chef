@@ -116,7 +116,7 @@ code {
 }
 
 .p-container {
-  padding: 1.5em;
+  padding: 1.5rem;
   opacity: 0;
   animation: change-opacity 1.5s ease-in forwards;
 }

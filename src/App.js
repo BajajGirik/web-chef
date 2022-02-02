@@ -16,9 +16,9 @@ import { Orders } from "./pages/Orders";
 function App({ user, cart, shipping, orders, dispatch }) {
   const loading = user.loading || cart.loading;
 
-  //   useEffect(() => {
-  //     dispatch(getUser());
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   if (loading) return "Loading";
 
@@ -42,6 +42,20 @@ function App({ user, cart, shipping, orders, dispatch }) {
           element={<AddEditShipping />}
         />
         <Route path={ROUTES.ORDERS} element={<Orders />} />
+
+        <Route
+          path={ROUTES.CHECKOUT_SHIPPING}
+          element={<ShippingList isCheckout={true} />}
+        />
+        <Route
+          path={ROUTES.CHECKOUT_ADD_SHIPPING}
+          element={<AddEditShipping isCheckout={true} />}
+        />
+        <Route
+          path={ROUTES.CHECKOUT_EDIT_SHIPPING}
+          element={<AddEditShipping isCheckout={true} />}
+        />
+
         <Route path={ROUTES.TNC} element={<Terms />} />
         <Route path={ROUTES.PRIVACYPOLICY} element={<PrivacyPolicy />} />
         <Route path={ROUTES.REFUNDPOLICY} element={<RefundPolicy />} />

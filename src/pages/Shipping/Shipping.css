@@ -1,0 +1,26 @@
+.ShippingList-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ShippingCheckout-btn {
+  color: #ffffff;
+  background-color: var(--nav-cta-btn-bg);
+  display: block;
+  width: 100%;
+  max-width: 16rem;
+  padding: 0.5rem 0;
+  margin: 0 auto 1rem auto;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ShippingCheckout-btn.disabled {
+  background-color: #ffffff;
+  color: #000000;
+  border: solid 0.5px var(--nav-cta-btn-bg);
+}
