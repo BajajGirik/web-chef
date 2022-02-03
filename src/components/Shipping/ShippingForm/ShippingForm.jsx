@@ -34,7 +34,7 @@ function ShippingForm({ isCheckout, id, shipInfo, dispatch }) {
   });
 
   const navigateToShippingList = () => {
-    isCheckout ? navigate(ROUTES.SHIPPING) : navigate(ROUTES.CHECKOUT_SHIPPING);
+    isCheckout ? navigate(ROUTES.CHECKOUT_SHIPPING) : navigate(ROUTES.SHIPPING);
   };
 
   const handleFormSubmit = (e) => {

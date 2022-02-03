@@ -22,6 +22,12 @@ function IndivisualShippingCard({
 }) {
   const navigate = useNavigate();
 
+  const navigateToEditShipping = () => {
+    isCheckout
+      ? navigate(`${ROUTES.CHECKOUT_EDIT_SHIPPING}?id=${id}`)
+      : navigate(`${ROUTES.EDIT_SHIPPING_DETAILS}?id=${id}`);
+  };
+
   return (
     <div
       onClick={() => setSelectedShippingId(id)}
@@ -46,11 +52,7 @@ function IndivisualShippingCard({
         </section>
 
         <div>
-          <button
-            onClick={() => navigate(`${ROUTES.EDIT_SHIPPING_DETAILS}?id=${id}`)}
-          >
-            Edit
-          </button>
+          <button onClick={navigateToEditShipping}>Edit</button>
           <button onClick={() => dispatch(removeShippingDetails(id))}>
             Remove
           </button>

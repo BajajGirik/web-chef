@@ -11,6 +11,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { auth, db } from "../../firebase";
+import { ROUTES } from "../../utils/constants";
 
 export function setOrderLoadingTrue() {
   return {
@@ -69,7 +70,7 @@ export function getOrderHistory() {
   };
 }
 
-export function placeOrder() {
+export function placeOrder(navigate) {
   return async (dispatch, getState) => {
     const orderCollection = collection(
       db,
@@ -78,20 +79,32 @@ export function placeOrder() {
       "orderHistory"
     );
 
+    const shipId = getState().checkout.shippingId;
+    const shippingDetails = getState().shipping.data.find(
+      (item) => item.id === shipId
+    );
+
     const data = {
       items: getState().cart.data,
       totalItems: getState().cart.size,
       orderedOn: serverTimestamp(),
-      //   shippingDetails
+      shippingDetails: shippingDetails,
     };
-    addDoc(orderCollection, data).then((res) =>
-      dispatch(
-        placeOrderSuccess({
-          id: res.id,
-          orderedAt: new Date().toString(),
-          ...data,
-        })
-      )
-    );
+
+    addDoc(orderCollection, data)
+      .then((res) => {
+        dispatch(
+          placeOrderSuccess({
+            id: res.id,
+            orderedAt: new Date().toString(),
+            ...data,
+          })
+        );
+
+        navigate(ROUTES.ORDERS);
+      })
+      .catch(() =>
+        dispatch(setOrderErrors("Unable to place order", "Some error occured"))
+      );
   };
 }

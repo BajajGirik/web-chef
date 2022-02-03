@@ -150,7 +150,7 @@ export function removeShippingDetails(id) {
   return (dispatch) => {
     const docRef = doc(db, "users", auth.currentUser.uid, "shipping", id);
     deleteDoc(docRef)
-      .then(() => dispatch())
+      .then(() => dispatch(removeShippingDetailsSuccess(id)))
       .catch(() =>
         dispatch(
           setShippingErrors(

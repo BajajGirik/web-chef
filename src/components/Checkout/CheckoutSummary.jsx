@@ -1,9 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import "./CheckoutSummary.css";
 
 function OrderDetails({ amount }) {
   return (
-    <div>
+    <div className="CheckoutSummary-li-container">
       <h3>Order Details:</h3>
       <div className="flex j-between CheckoutSummary-li">
         <b>Subtotal: </b>
@@ -23,7 +22,7 @@ function OrderDetails({ amount }) {
 
 function ShippingDetails({ name, phone, address, city, pincode }) {
   return (
-    <div>
+    <div className="CheckoutSummary-li-container">
       <h3>Shipping Details:</h3>
       <div className="flex j-between CheckoutSummary-li">
         <b>Name: </b>
@@ -45,15 +44,15 @@ function ShippingDetails({ name, phone, address, city, pincode }) {
 
 function PaymentDetails() {
   return (
-    <div>
+    <div className="CheckoutSummary-li-container">
       <h3>Payment Details:</h3>
       <div className="flex j-between CheckoutSummary-li">
         <b>Mode: </b>
         <span>Cash On Delivery</span>
       </div>
       <div className="flex j-between CheckoutSummary-li">
-        <b>Expected Delivery: </b>
-        <span>Very Soon</span>
+        <b>Delivery Time: </b>
+        <span>5 working days</span>
       </div>
     </div>
   );

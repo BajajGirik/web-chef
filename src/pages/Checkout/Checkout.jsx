@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
@@ -8,27 +8,39 @@ import {
   PaymentDetails,
 } from "../../components/Checkout";
 import "./Checkout.css";
+import { placeOrder } from "../../state/order/orderActions";
 
 function Checkout({ cart, shipping, isSummaryStage, shippingId, dispatch }) {
-  const [step, setStep] = useState(0);
   const navigate = useNavigate();
+
+  const shippingDetails = shipping?.data?.find(
+    (item) => item.id === shippingId
+  );
 
   useEffect(() => {
     if (!isSummaryStage) navigate(ROUTES.HOME);
   }, [isSummaryStage]);
 
+  console.log(shippingDetails);
   return (
-    <div className="Checkout-container flex-c al-center p-container">
-      <h2>Order Summary</h2>
+    <div className="p-container">
+      <div className="Checkout-container flex-c al-center ">
+        <h2>Order Summary</h2>
 
-      <OrderDetails />
-      <ShippingDetails />
-      <PaymentDetails />
+        <OrderDetails amount={cart?.amount} />
+        <ShippingDetails {...shippingDetails} />
+        <PaymentDetails />
 
-      {/* <span className="CheckoutSummary-conditions">
+        {/* <span className="CheckoutSummary-conditions">
         *Delivery Charges will be updated within 2 days after order confirmation. (Max - ₹100)
       </span> */}
-      <button className="place-order-btn">Proceed to Buy</button>
+        <button
+          className="place-order-btn"
+          onClick={() => dispatch(placeOrder(navigate))}
+        >
+          Proceed to Buy
+        </button>
+      </div>
     </div>
   );
 }
@@ -38,7 +50,7 @@ function mapStateToProps(state) {
     cart: state.cart,
     shipping: state.shipping,
     isSummaryStage: state.checkout.stage.summary,
-    shippingId: state.checkout.shi,
+    shippingId: state.checkout.shippingId,
   };
 }
 
