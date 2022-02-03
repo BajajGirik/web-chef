@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { IndivisualShippingCard } from "../../components/Shipping";
 import { getShippingDetails } from "../../state/shipping/shippingActions";
 import {
-  setCheckoutShippingIndex,
+  setCheckoutShippingId,
   setCheckoutStageShipping,
 } from "../../state/checkout/checkoutActions";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,7 @@ function ShippingList({ isCheckout, shipping, dispatch }) {
       return;
     }
 
-    dispatch(setCheckoutShippingIndex(selectedShippingId));
+    dispatch(setCheckoutShippingId(selectedShippingId));
     navigate(ROUTES.CHECKOUT_CONFIRM);
   };
 

@@ -1,5 +1,5 @@
 import {
-  SET_CHECKOUT_SHIPPING_INDEX,
+  SET_CHECKOUT_SHIPPING_ID,
   SET_CHECKOUT_STAGE_SHIPPING,
 } from "./checkoutActionTypes";
 
@@ -8,7 +8,7 @@ const initialCheckoutState = {
     shipping: false,
     summary: false,
   },
-  shippingIndex: -1,
+  shippingId: "",
 };
 
 const checkoutReducer = (state = initialCheckoutState, action) => {
@@ -22,14 +22,14 @@ const checkoutReducer = (state = initialCheckoutState, action) => {
         },
       };
 
-    case SET_CHECKOUT_SHIPPING_INDEX:
+    case SET_CHECKOUT_SHIPPING_ID:
       return {
         ...state,
         stage: {
           ...initialCheckoutState.stage,
           summary: true,
         },
-        shippingIndex: action.payload,
+        shippingId: action.payload,
       };
 
     default:

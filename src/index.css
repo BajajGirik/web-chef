@@ -116,9 +116,12 @@ code {
 }
 
 .p-container {
+  width: 100%;
+  max-width: 84.375rem;
   padding: 1.5rem;
+  margin: 0 auto;
   opacity: 0;
-  animation: change-opacity 1.5s ease-in forwards;
+  animation: change-opacity 1s ease-in forwards;
 }
 
 .img-veg {

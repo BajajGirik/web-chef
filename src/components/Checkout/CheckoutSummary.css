@@ -1,23 +1,9 @@
-.OrderSummary-container {
-  min-width: 21.875rem;
-  border-radius: 0.75em;
-  margin: 0.8em 0;
-  margin-bottom: auto;
-  padding: 1.5em;
-  border: solid 0.7px rgb(211, 211, 211);
-}
-
-.OrderSummary-container h2 {
-  margin: 0.5em 0;
-  text-decoration: underline;
-}
-
-.OrderSummary-li {
+.CheckoutSummary-li {
   width: 100%;
   margin: 0.5em 0;
 }
 
-.OrderSummary-conditions {
+.CheckoutSummary-conditions {
   display: block;
   max-width: 18rem;
   margin: 0.7em;
@@ -59,11 +45,11 @@
 }
 
 @media screen and (max-width: 58.5em) {
-  .OrderSummary-container {
+  .CheckoutSummary-container {
     min-width: none;
   }
 
-  .OrderSummary-conditions {
+  .CheckoutSummary-conditions {
     max-width: none;
   }
 }

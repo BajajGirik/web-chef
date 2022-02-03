@@ -1,0 +1,16 @@
+.Checkout-container {
+  min-width: 21.875rem;
+  border-radius: 0.75em;
+  margin: 2rem auto;
+  padding: 1.5em;
+  border: solid 0.7px rgb(211, 211, 211);
+}
+
+.Checkout-container > div {
+  width: 100%;
+}
+
+.Checkout-container h2 {
+  margin: 0.5em 0;
+  text-decoration: underline;
+}

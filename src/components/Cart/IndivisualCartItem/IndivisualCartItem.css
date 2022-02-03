@@ -50,7 +50,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 36.25rem) {
+@media screen and (max-width: 42rem) {
   .IndivisualCartItem-container {
     padding-right: 0.7em;
     font-size: 0.95em;

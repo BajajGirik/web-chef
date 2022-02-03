@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { ROUTES } from "./utils/constants";
 import { Orders } from "./pages/Orders";
+import { Checkout } from "./pages/Checkout";
 
 function App({ user, cart, shipping, orders, dispatch }) {
   const loading = user.loading || cart.loading;
@@ -56,6 +57,7 @@ function App({ user, cart, shipping, orders, dispatch }) {
           element={<AddEditShipping isCheckout={true} />}
         />
 
+        <Route path={ROUTES.CHECKOUT_CONFIRM} element={<Checkout />} />
         <Route path={ROUTES.TNC} element={<Terms />} />
         <Route path={ROUTES.PRIVACYPOLICY} element={<PrivacyPolicy />} />
         <Route path={ROUTES.REFUNDPOLICY} element={<RefundPolicy />} />

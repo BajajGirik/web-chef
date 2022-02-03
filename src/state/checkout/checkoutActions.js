@@ -1,5 +1,5 @@
 import {
-  SET_CHECKOUT_SHIPPING_INDEX,
+  SET_CHECKOUT_SHIPPING_ID,
   SET_CHECKOUT_STAGE_SHIPPING,
 } from "./checkoutActionTypes";
 
@@ -9,9 +9,9 @@ export function setCheckoutStageShipping() {
   };
 }
 
-export function setCheckoutShippingIndex(index) {
+export function setCheckoutShippingId(id) {
   return {
-    type: SET_CHECKOUT_SHIPPING_INDEX,
-    payload: index,
+    type: SET_CHECKOUT_SHIPPING_ID,
+    payload: id,
   };
 }

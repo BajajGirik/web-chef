@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {
-  IndivisualCartItem,
-  OrderSummary,
-  CartEmpty,
-} from "../../components/Cart";
-import { PRODUCTS } from "../../utils/constants";
+import { useNavigate } from "react-router-dom";
+import { IndivisualCartItem, CartEmpty } from "../../components/Cart";
+import { PRODUCTS, ROUTES } from "../../utils/constants";
 import "./Cart.css";
 
-function Cart(props) {
+function Cart({ cart }) {
   const [items, setItems] = useState([]);
-
-  const { cart } = props;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const finalList = cart.data.map(({ productId, qty }) => {
@@ -31,7 +27,17 @@ function Cart(props) {
               <IndivisualCartItem key={props.id} {...props} />
             ))}
           </div>
-          <OrderSummary amount={cart?.amount} />
+
+          <div className="Cart-summary flex al-center j-between">
+            <p>
+              <b>Subtotal: </b> &nbsp;₹
+              {cart?.amount ? cart.amount : "Loading..."}
+            </p>
+
+            <button onClick={() => navigate(ROUTES.CHECKOUT_SHIPPING)}>
+              Continue
+            </button>
+          </div>
         </>
       ) : (
         <CartEmpty />
