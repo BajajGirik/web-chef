@@ -21,7 +21,6 @@ function Checkout({ cart, shipping, isSummaryStage, shippingId, dispatch }) {
     if (!isSummaryStage) navigate(ROUTES.HOME);
   }, [isSummaryStage]);
 
-  console.log(shippingDetails);
   return (
     <div className="p-container">
       <div className="Checkout-container flex-c al-center ">

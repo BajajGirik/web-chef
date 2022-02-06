@@ -11,6 +11,16 @@
   border-bottom: none;
 }
 
+.CheckoutSummary-li-container h3 {
+  color: var(--nav-link-active);
+}
+
+.CheckoutSummary-li-container .link {
+  font-family: cursive;
+  font-size: 0.95em;
+  text-decoration: underline;
+}
+
 .CheckoutSummary-li {
   width: 100%;
   margin: 0.5em 0;

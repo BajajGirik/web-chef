@@ -5,6 +5,7 @@
   border-radius: 7px;
   width: 95%;
   font-size: 1.1rem;
+  box-shadow: 0 0 15px 3px rgb(203, 199, 199);
 }
 
 .OurProducts-container:nth-child(even) {
@@ -12,13 +13,17 @@
 }
 
 .OurProducts-carousal {
-  width: 55%;
+  width: 50%;
   height: 19em;
   border-radius: 10px;
 }
 
 .OurProducts-desc-container {
-  width: 50%;
+  width: 45%;
+}
+
+.OurProducts-desc-container h1 {
+  color: var(--nav-link-active);
 }
 
 .OurProducts-desc-container p {
@@ -26,23 +31,22 @@
 }
 
 .OurProducts-btn {
-  width: fit-content;
-  font-size: 1rem;
-  cursor: pointer;
   background-color: var(--home-our-product-btn-bg);
+  width: fit-content;
   padding: 0.75em 1.5em;
+  font-size: 1rem;
   text-align: center;
   text-transform: uppercase;
-  transition: 1.5s;
-  background-size: 200% auto;
-  box-shadow: 3px 3px 5px #353434;
-  border-radius: 10px;
+  border-radius: 20px 0;
+  /* box-shadow: 3px 3px 5px #353434; */
+  cursor: pointer;
   animation: scale-infinite 2.6s ease-in-out infinite;
 }
 
 @media screen and (max-width: 46.875rem) {
   .OurProducts-container {
     flex-direction: column !important;
+    align-items: center;
     padding: 1.3em 1em;
   }
 

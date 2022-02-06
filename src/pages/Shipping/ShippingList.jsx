@@ -9,6 +9,7 @@ import {
 } from "../../state/checkout/checkoutActions";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
+import {Loading} from "../../components/Loading";
 
 function ShippingList({ isCheckout, shipping, dispatch }) {
   const [selectedShippingId, setSelectedShippingId] = useState("");
@@ -34,7 +35,7 @@ function ShippingList({ isCheckout, shipping, dispatch }) {
   return (
     <>
       {shipping.loading ? (
-        "Loading..."
+        <Loading />
       ) : (
         <div className="p-container fg-1">
           <div className="ShippingList-container">

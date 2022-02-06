@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { Loading } from "../../components/Loading";
 import { IndivisualOrder } from "../../components/Orders";
 import { getOrderHistory } from "../../state/order/orderActions";
 
 function Orders({ orders, dispatch }) {
   const { loading, history } = orders;
+
+  console.log(orders);
 
   useEffect(() => {
     dispatch(getOrderHistory());
@@ -13,11 +16,11 @@ function Orders({ orders, dispatch }) {
   return (
     <>
       {loading ? (
-        "Loading..."
+        <Loading />
       ) : (
         <div className="p-container fg-1">
           {history.map((order) => (
-            <IndivisualOrder key={order.id} />
+            <IndivisualOrder key={order.id} {...order} />
           ))}
         </div>
       )}

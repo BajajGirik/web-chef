@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../utils/constants";
 import "./CheckoutSummary.css";
 
 function OrderDetails({ amount }) {
@@ -23,7 +25,12 @@ function OrderDetails({ amount }) {
 function ShippingDetails({ name, phone, address, city, pincode }) {
   return (
     <div className="CheckoutSummary-li-container">
-      <h3>Shipping Details:</h3>
+      <div className="flex al-center j-between">
+        <h3>Shipping Details:</h3>
+        <Link className="link blue" to={ROUTES.CHECKOUT_SHIPPING}>
+          Change
+        </Link>
+      </div>
       <div className="flex j-between CheckoutSummary-li">
         <b>Name: </b>
         <span>{name}</span>

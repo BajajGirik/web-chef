@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { NAV_DROPDOWNS, NAV_ITEMS, ROUTES } from "../../utils/constants";
 import MenuIcon from "@mui/icons-material/Menu";
 import { connect } from "react-redux";
@@ -9,7 +9,6 @@ import "./Navbar.css";
 
 function Navbar(props) {
   const [isMobNavOpen, setIsMovNavOpen] = useState(false);
-  const navigate = useNavigate();
   const { isLoggedIn, email, dispatch } = props;
 
   return (

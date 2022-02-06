@@ -59,7 +59,6 @@ export function getOrderHistory() {
       );
       const orderHistory = collectionSnap.docs.map((docSnap) => ({
         id: docSnap.id,
-        orderedAt: docSnap.data().orderedAt,
         ...docSnap.data(),
       }));
 
@@ -80,7 +79,7 @@ export function placeOrder(navigate) {
     );
 
     const shipId = getState().checkout.shippingId;
-    const shippingDetails = getState().shipping.data.find(
+    const { id, ...shippingDetails } = getState().shipping.data.find(
       (item) => item.id === shipId
     );
 

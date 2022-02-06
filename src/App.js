@@ -13,6 +13,7 @@ import { getUser } from "./state/user/userActions";
 import { ROUTES } from "./utils/constants";
 import { Orders } from "./pages/Orders";
 import { Checkout } from "./pages/Checkout";
+import { Loading } from "./components/Loading";
 
 function App({ user, cart, shipping, orders, dispatch }) {
   const loading = user.loading || cart.loading;
@@ -21,7 +22,12 @@ function App({ user, cart, shipping, orders, dispatch }) {
     dispatch(getUser());
   }, [dispatch]);
 
-  if (loading) return "Loading";
+  if (loading)
+    return (
+      <div className="App">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="App">

@@ -68,14 +68,16 @@
     position: absolute;
     top: 100%;
     right: -40px;
+    transform: translateY(-5px);
 
-    display: none;
     /* transform: scale(0); */
-    /* transition: transform 400ms; */
+    visibility: hidden;
+    transition: transform 400ms;
   }
 
   .Navbar-dropdown-container:hover > div {
-    display: flex;
+    animation: drop-down 250ms ease-in forwards;
+    z-index: -1;
     /* transform: scale(1); */
   }
 
@@ -92,6 +94,17 @@
 
   .Navbar-dropdown-container > div .link:hover {
     background-color: var(--nav-cta-btn-bg);
+  }
+
+  @keyframes drop-down {
+    0% {
+      visibility: visible;
+    }
+
+    100% {
+      transform: translateY(0);
+      visibility: visible;
+    }
   }
 }
 
