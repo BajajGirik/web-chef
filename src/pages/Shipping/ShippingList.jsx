@@ -9,7 +9,7 @@ import {
 } from "../../state/checkout/checkoutActions";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
-import {Loading} from "../../components/Loading";
+import { Loading } from "../../components/Loading";
 
 function ShippingList({ isCheckout, shipping, dispatch }) {
   const [selectedShippingId, setSelectedShippingId] = useState("");
@@ -27,10 +27,10 @@ function ShippingList({ isCheckout, shipping, dispatch }) {
   };
 
   useEffect(() => {
-    dispatch(getShippingDetails());
+    if (!shipping.dataLoaded) dispatch(getShippingDetails());
 
     if (isCheckout) dispatch(setCheckoutStageShipping());
-  }, []);
+  }, [shipping.dataLoaded, isCheckout, dispatch]);
 
   return (
     <>

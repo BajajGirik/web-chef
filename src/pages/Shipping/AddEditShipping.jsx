@@ -12,8 +12,8 @@ function AddEditShipping({ isCheckout, shipping, dispatch }) {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    dispatch(getShippingDetails());
-  }, [dispatch]);
+    if (!shipping.dataLoaded) dispatch(getShippingDetails());
+  }, [shipping.dataLoaded, dispatch]);
 
   useEffect(() => {
     if (searchParams.get("id")) {
@@ -36,7 +36,11 @@ function AddEditShipping({ isCheckout, shipping, dispatch }) {
         />
       )}
       <div className="p-container">
-        <ShippingForm isCheckout={isCheckout} id={shipDetToUpdate?.id} shipInfo={shipDetToUpdate} />
+        <ShippingForm
+          isCheckout={isCheckout}
+          id={shipDetToUpdate?.id}
+          shipInfo={shipDetToUpdate}
+        />
       </div>
     </>
   );

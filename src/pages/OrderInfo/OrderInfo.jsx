@@ -14,8 +14,8 @@ function OrderInfo({ isLoggedIn, orders, dispatch }) {
   console.log(order?.orderedOn?.toDate());
 
   useEffect(() => {
-    dispatch(getOrderHistory());
-  }, [isLoggedIn]);
+    if (!orders.dataLoaded) dispatch(getOrderHistory());
+  }, [dispatch, orders.dataLoaded]);
 
   return (
     <div className="p-container">

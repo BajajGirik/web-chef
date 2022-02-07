@@ -7,6 +7,7 @@ import {
 
 const intialOrderState = {
   loading: false,
+  dataLoaded: false,
   history: [],
   msg: "",
   error: "",
@@ -32,6 +33,7 @@ const orderReducer = (state = intialOrderState, action) => {
       return {
         ...state,
         loading: false,
+        dataLoaded: true,
         history: action.payload,
         msg: "SUCCESS",
       };

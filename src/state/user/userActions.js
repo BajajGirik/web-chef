@@ -139,6 +139,6 @@ export function logout() {
     auth
       .signOut()
       .then(() => dispatch(logoutSuccess()))
-      .catch((error) => setUserErrors("", "Error Logging Out"));
+      .catch((err) => setUserErrors("", "Error Logging Out"));
   };
 }

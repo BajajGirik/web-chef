@@ -10,8 +10,8 @@ function Orders({ orders, dispatch }) {
   console.log(orders);
 
   useEffect(() => {
-    dispatch(getOrderHistory());
-  }, [dispatch]);
+    if (!orders.dataLoaded) dispatch(getOrderHistory());
+  }, [orders.dataLoaded, dispatch]);
 
   return (
     <>

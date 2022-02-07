@@ -9,6 +9,7 @@ import {
 
 const initialShippingState = {
   loading: false,
+  dataLoaded: false,
   data: [],
   msg: "",
   error: "",
@@ -33,6 +34,7 @@ const shippingReducer = (state = initialShippingState, action) => {
     case GET_SHIPPING_DETAILS_SUCCESS:
       return {
         loading: false,
+        dataLoaded: true,
         data: action.payload,
         msg: "SUCESS",
         error: "",

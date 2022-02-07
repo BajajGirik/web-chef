@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
 import {
   OrderDetails,
@@ -17,9 +16,7 @@ function Checkout({ cart, shipping, isSummaryStage, shippingId, dispatch }) {
     (item) => item.id === shippingId
   );
 
-  useEffect(() => {
-    if (!isSummaryStage) navigate(ROUTES.HOME);
-  }, [isSummaryStage]);
+  if (!isSummaryStage) return <Navigate replace to={ROUTES.HOME} />;
 
   return (
     <div className="p-container">
