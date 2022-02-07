@@ -23,6 +23,7 @@ export const ROUTES = {
   ADD_SHIPPING_DETAILS: "/shipping/add",
   EDIT_SHIPPING_DETAILS: "/shipping/edit",
   ORDERS: "/orders",
+  ORDER_INFO: "/orders/info",
   CHECKOUT_SHIPPING: "/checkout/shipping",
   CHECKOUT_ADD_SHIPPING: "/checkout/shipping/add",
   CHECKOUT_EDIT_SHIPPING: "/checkout/shipping/edit",

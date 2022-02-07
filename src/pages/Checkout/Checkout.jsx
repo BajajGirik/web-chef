@@ -5,7 +5,7 @@ import { ROUTES } from "../../utils/constants";
 import {
   OrderDetails,
   ShippingDetails,
-  PaymentDetails,
+  OtherDetails,
 } from "../../components/Checkout";
 import "./Checkout.css";
 import { placeOrder } from "../../state/order/orderActions";
@@ -27,8 +27,8 @@ function Checkout({ cart, shipping, isSummaryStage, shippingId, dispatch }) {
         <h2>Order Summary</h2>
 
         <OrderDetails amount={cart?.amount} />
-        <ShippingDetails {...shippingDetails} />
-        <PaymentDetails />
+        <ShippingDetails {...shippingDetails} showChangeLink={true} />
+        <OtherDetails />
 
         {/* <span className="CheckoutSummary-conditions">
         *Delivery Charges will be updated within 2 days after order confirmation. (Max - ₹100)

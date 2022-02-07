@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Loading } from "../../components/Loading";
-import { IndivisualOrder } from "../../components/Orders";
+import { IndivisualOrderCard } from "../../components/Orders";
 import { getOrderHistory } from "../../state/order/orderActions";
 
 function Orders({ orders, dispatch }) {
@@ -20,7 +20,7 @@ function Orders({ orders, dispatch }) {
       ) : (
         <div className="p-container fg-1">
           {history.map((order) => (
-            <IndivisualOrder key={order.id} {...order} />
+            <IndivisualOrderCard key={order.id} {...order} />
           ))}
         </div>
       )}

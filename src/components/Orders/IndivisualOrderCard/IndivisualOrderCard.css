@@ -1,4 +1,4 @@
-.IndivisualOrder-container {
+.IndivisualOrderCard-container {
   height: 9rem;
   padding: 0.5rem;
   margin: 1rem;
@@ -7,20 +7,20 @@
   cursor: pointer;
 }
 
-.IndivisualOrder-img-container {
+.IndivisualOrderCard-img-container {
   /* text-align: center; */
   height: 100%;
   position: relative;
 }
 
-.IndivisualOrder-img-container > img {
+.IndivisualOrderCard-img-container > img {
   height: 100%;
   /* width: 85%; */
   object-fit: cover;
   border-radius: 5px;
 }
 
-.IndivisualOrder-img-container > span {
+.IndivisualOrderCard-img-container > span {
   background-color: #f6f6f6;
   width: 100%;
   height: fit-content;
@@ -38,7 +38,7 @@
 }
 
 @media screen and (max-width: 51rem) {
-  .IndivisualOrder-container > p {
+  .IndivisualOrderCard-container > p {
     display: none;
   }
 }

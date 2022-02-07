@@ -1,7 +1,3 @@
-import {
-  OrderDetails,
-  ShippingDetails,
-  PaymentDetails,
-} from "./CheckoutSummary";
+import { OrderDetails, ShippingDetails, OtherDetails } from "./CheckoutSummary";
 
-export { OrderDetails, ShippingDetails, PaymentDetails };
+export { OrderDetails, ShippingDetails, OtherDetails };

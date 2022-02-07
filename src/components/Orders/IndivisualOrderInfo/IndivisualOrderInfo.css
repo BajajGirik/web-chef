@@ -1,0 +1,44 @@
+.IndivisualOrderInfo-container {
+  border: solid 1px #ddd;
+  margin-bottom: 1.5em;
+}
+
+@media screen and (max-width: 47.5rem) {
+  .IndivisualOrderInfo-container > div.flex {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 47.5rem) {
+  .IndivisualOrderInfo-container {
+    justify-content: space-between;
+  }
+
+  .IndivisualOrderInfo-container > div.flex {
+    width: 100%;
+  }
+
+  .IndivisualOrderInfo-container > div.flex > div {
+    width: 50%;
+    border: none !important;
+  }
+
+  .IndivisualOrderInfo-container > div.flex > div:first-child {
+    width: 40%;
+  }
+}
+
+/*********************** IndivisualOrderItem ***********************/
+
+.IndivisualOrderItem {
+  padding: 0.5rem;
+  border-radius: 20px 0;
+  border: solid 1px #bbb;
+  margin-bottom: 1rem;
+}
+
+.IndivisualOrderItem > img {
+  width: 200px;
+  object-fit: cover;
+  border-radius: 20px 0;
+}

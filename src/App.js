@@ -12,11 +12,13 @@ import { connect } from "react-redux";
 import { getUser } from "./state/user/userActions";
 import { ROUTES } from "./utils/constants";
 import { Orders } from "./pages/Orders";
+import { OrderInfo } from "./pages/OrderInfo";
 import { Checkout } from "./pages/Checkout";
 import { Loading } from "./components/Loading";
 
 function App({ user, cart, shipping, orders, dispatch }) {
-  const loading = user.loading || cart.loading;
+  //   const loading = user.loading || cart.loading;
+  const loading = false;
 
   useEffect(() => {
     dispatch(getUser());
@@ -49,7 +51,7 @@ function App({ user, cart, shipping, orders, dispatch }) {
           element={<AddEditShipping />}
         />
         <Route path={ROUTES.ORDERS} element={<Orders />} />
-
+        <Route path={ROUTES.ORDER_INFO} element={<OrderInfo />} />
         <Route
           path={ROUTES.CHECKOUT_SHIPPING}
           element={<ShippingList isCheckout={true} />}

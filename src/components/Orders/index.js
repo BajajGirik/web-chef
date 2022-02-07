@@ -1,3 +1,7 @@
-import IndivisualOrder from "./IndivisualOrder";
+import { IndivisualOrderCard } from "./IndivisualOrderCard";
+import {
+  IndivisualOrderInfo,
+  IndivisualOrderItem,
+} from "./IndivisualOrderInfo";
 
-export { IndivisualOrder };
+export { IndivisualOrderCard, IndivisualOrderInfo, IndivisualOrderItem };

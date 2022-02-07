@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../utils/constants";
+import { Loading } from "../Loading";
 import "./CheckoutSummary.css";
 
 function OrderDetails({ amount }) {
@@ -8,7 +9,7 @@ function OrderDetails({ amount }) {
       <h3>Order Details:</h3>
       <div className="flex j-between CheckoutSummary-li">
         <b>Subtotal: </b>
-        <span>{amount ? `₹${amount}` : "Loading..."}</span>
+        <span>{amount ? `₹${amount}` : <Loading />}</span>
       </div>
       <div className="flex j-between CheckoutSummary-li">
         <b>Delivery: </b>
@@ -16,20 +17,29 @@ function OrderDetails({ amount }) {
       </div>
       <div className="flex j-between CheckoutSummary-li">
         <b>Total: </b>
-        <b>{amount ? `₹${amount + 50}` : "Loading..."}</b>
+        <b>{amount ? `₹${amount + 50}` : <Loading />}</b>
       </div>
     </div>
   );
 }
 
-function ShippingDetails({ name, phone, address, city, pincode }) {
+function ShippingDetails({
+  name,
+  phone,
+  address,
+  city,
+  pincode,
+  showChangeLink,
+}) {
   return (
     <div className="CheckoutSummary-li-container">
       <div className="flex al-center j-between">
         <h3>Shipping Details:</h3>
-        <Link className="link blue" to={ROUTES.CHECKOUT_SHIPPING}>
-          Change
-        </Link>
+        {showChangeLink && (
+          <Link className="link blue" to={ROUTES.CHECKOUT_SHIPPING}>
+            Change
+          </Link>
+        )}
       </div>
       <div className="flex j-between CheckoutSummary-li">
         <b>Name: </b>
@@ -49,14 +59,26 @@ function ShippingDetails({ name, phone, address, city, pincode }) {
   );
 }
 
-function PaymentDetails() {
+function OtherDetails({ orderId, orderedOn }) {
   return (
     <div className="CheckoutSummary-li-container">
-      <h3>Payment Details:</h3>
+      <h3>Other Details:</h3>
+      {orderId && (
+        <div className="flex j-between CheckoutSummary-li">
+          <b>Ordered Id: </b>
+          <span>{orderId}</span>
+        </div>
+      )}
       <div className="flex j-between CheckoutSummary-li">
-        <b>Mode: </b>
+        <b>Payment Mode: </b>
         <span>Cash On Delivery</span>
       </div>
+      {orderedOn && (
+        <div className="flex j-between CheckoutSummary-li">
+          <b>Ordered On: </b>
+          <span>{orderedOn}</span>
+        </div>
+      )}
       <div className="flex j-between CheckoutSummary-li">
         <b>Delivery Time: </b>
         <span>5 working days</span>
@@ -65,4 +87,4 @@ function PaymentDetails() {
   );
 }
 
-export { OrderDetails, ShippingDetails, PaymentDetails };
+export { OrderDetails, ShippingDetails, OtherDetails };
