@@ -1,11 +1,15 @@
 .OurProducts-container {
   background-color: var(--home-our-product-continer-bg);
   padding: 1.4em;
-  margin: 0.5em 0;
+  margin-bottom: 1rem;
   border-radius: 7px;
   width: 95%;
   font-size: 1.1rem;
   box-shadow: 0 0 15px 3px rgb(203, 199, 199);
+}
+
+.OurProducts-container:last-child {
+  margin-bottom: 0;
 }
 
 .OurProducts-container:nth-child(even) {
@@ -24,17 +28,22 @@
 
 .OurProducts-desc-container h1 {
   color: var(--nav-link-active);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  line-height: 1;
+  margin: 0.25em 0 0.5em 0;
 }
 
 .OurProducts-desc-container p {
   color: rgb(41, 41, 41);
+  margin-top: 1em;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
 }
 
 .OurProducts-btn {
   background-color: var(--home-our-product-btn-bg);
   width: fit-content;
   padding: 0.75em 1.5em;
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2.1vw, 1rem);
   text-align: center;
   text-transform: uppercase;
   border-radius: 20px 0;
@@ -60,15 +69,15 @@
   }
 
   .OurProducts-desc-container > div {
-    margin: 1em 0 2em 0;
+    margin: 1em 0 1.5em 0;
   }
 
-  .OurProducts-desc-container h1,
+  /* .OurProducts-desc-container h1,
   .OurProducts-desc-container p {
     margin: 0;
   }
 
   .OurProducts-desc-container p {
     margin-top: 0.25em;
-  }
+  } */
 }

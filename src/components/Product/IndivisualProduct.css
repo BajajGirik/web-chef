@@ -2,32 +2,37 @@
   background-color: var(--product-indivisual-prod-container-bg);
   /* background-image: linear-gradient(to bottom, #fff5f1 40%, #ffbea0); */
   width: 20em;
-  border-radius: 0.75em;
-  border-top: 50px;
-  box-shadow: 4px 4px 10px #807d7d;
+  border-radius: 1.25rem 0;
+  box-shadow: 3px 2px 8px 8px #cecece;
 }
 
 .IndivisualProduct-img {
   height: 15rem;
   width: 100%;
-  border-radius: 0.75em;
-  /* border-top-left-radius: 0.75em;
-  border-top-right-radius: 0.75em; */
+  border-top-left-radius: 1.25rem;
 }
 
 .IndivisualProduct-details-container {
-  padding: 1em 0;
+  padding: 1rem 0.25rem;
 }
 
 .IndivisualProduct-det-item {
   margin: 0.1em 0.5em;
   color: rgb(59, 59, 59);
-  letter-spacing: 0.03rem;
-  font-size: 1.25rem;
+}
+
+.IndivisualProduct-det-item > h2 {
+  font-size: clamp(1.36rem, 3vw, 1.5rem);
+  font-weight: 600;
+  margin: 0.25em 0;
+}
+
+.IndivisualProduct-det-item > span {
+  font-size: clamp(1.11rem, 2vw, 1.25rem);
 }
 
 .IndivisualProduct-btn {
-  font-size: 1em;
+  font-size: 1rem;
   cursor: pointer;
   background-color: var(--product-indivisual-prod-btn-bg);
   border: none;
@@ -35,10 +40,9 @@
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
-  transition: all 1.5s;
-  background-size: 200% auto;
+  transition: transform 1s;
   color: white;
-  border-radius: 10px;
+  border-radius: 1rem 0;
 }
 
 .IndivisualProduct-btn:hover {

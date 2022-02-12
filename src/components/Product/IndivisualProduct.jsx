@@ -23,7 +23,7 @@ function IndivisualProduct({ id, name, pricing, imgUrl, ...rest }) {
       <Carousal classname="IndivisualProduct-img" imgArray={imgUrl} />
       <div className="IndivisualProduct-details-container">
         <div className="IndivisualProduct-det-item flex al-center j-between">
-          <span>{name}</span>
+          <h2>{name}</h2>
           <img className="img-veg" src={VEG_ICON_URI} alt="_Veg" />
         </div>
         <div className="IndivisualProduct-det-item">

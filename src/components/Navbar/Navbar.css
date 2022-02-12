@@ -11,6 +11,8 @@
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: 0.02em;
+
+  text-shadow: 3px 3px 3px #d81159;
 }
 
 .Navbar-hamburger-icon {

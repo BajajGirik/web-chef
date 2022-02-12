@@ -57,7 +57,7 @@ function SignUp(props) {
   };
 
   return (
-    <div className="p-container mh-auto">
+    <div className="p-container flex al-center j-center">
       <div className="Auth-container flex al-center">
         <img className="Auth-img" src={LOGO} alt="_Logo" />
 
