@@ -7,6 +7,7 @@ function IndivisualOrderCard({
   id,
   items,
   orderedOn,
+  orderStatus,
   shippingDetails,
   totalItems,
 }) {
@@ -26,11 +27,19 @@ function IndivisualOrderCard({
       </div>
 
       <div className="IndivisualOrderCard-details">
-        <p>Status : {"Delivered"}</p>
-        <p>Ordered On {date}</p>
+        <p>
+          <b>Status :</b> {orderStatus === 1 ? "Delivered ✅" : "Pending 🟡"}
+        </p>
+        <p>
+          <b>Ordered On</b> {date}
+        </p>
       </div>
 
-      <p>Shipped To : {shippingDetails?.name}</p>
+      <div className="IndivisualOrderCard-details">
+        <p>
+          <b>Shipped To :</b> {shippingDetails?.name}
+        </p>
+      </div>
 
       <ChevronRightIcon />
     </div>

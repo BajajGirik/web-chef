@@ -1,5 +1,6 @@
-import { PRODUCTS } from "../../../utils/constants";
-import { OrderDetails, OtherDetails, ShippingDetails } from "../../Checkout";
+import { PRODUCTS, VEG_ICON_URI } from "../../../utils/constants";
+import {OrderDetails, OtherDetails, ShippingDetails} from "../../Checkout";
+import BgImg from "../../../assets/background.jpg";
 import "./IndivisualOrderInfo.css";
 
 function IndivisualOrderInfo({ id, amount, shippingDetails, orderedOn }) {
@@ -21,10 +22,10 @@ function IndivisualOrderItem({ productId, qty }) {
   const product = PRODUCTS.find(({ id }) => id === productId);
   const image = product?.imgUrl?.[0];
   return (
-    <div className="IndivisualOrderItem flex al-center j-between">
+    <div style={{backgroundImage: `url(${BgImg})`}} className="IndivisualOrderItem flex al-center j-between">
       <img src={image} alt="_ProductImg" />
-      <p>{product?.name}</p>
-      <p>X {qty}</p>
+      <p><b>{product?.name}</b> <img className="img-veg" src={VEG_ICON_URI} alt="_Veg" /> </p>
+      <p><b>X {qty}</b></p>
     </div>
   );
 }

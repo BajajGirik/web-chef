@@ -17,8 +17,7 @@ import { Checkout } from "./pages/Checkout";
 import { Loading } from "./components/Loading";
 
 function App({ user, cart, shipping, orders, dispatch }) {
-  //   const loading = user.loading || cart.loading;
-  const loading = false;
+  const loading = user.loading || cart.loading;
 
   useEffect(() => {
     dispatch(getUser());

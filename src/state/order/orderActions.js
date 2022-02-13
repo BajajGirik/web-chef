@@ -87,6 +87,7 @@ export function placeOrder(navigate) {
       items: getState().cart.data,
       totalItems: getState().cart.size,
       orderedOn: serverTimestamp(),
+      orderStatus: 0,
       shippingDetails: shippingDetails,
     };
 
